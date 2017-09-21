@@ -1,0 +1,30 @@
+{
+  "homeCamera": {
+    "north": -8,
+    "east": 158,
+    "south": -45,
+    "west": 109
+  },
+  "catalog": [{
+    "name": "Example Datasets",
+    "type": "group",
+    "preserveOrder": true,
+    "isOpen": true,
+    "items": [{
+      "name": "Cartoview",
+      "type": "group",
+      "isOpen": true,
+      "items": [{
+          "name": "WFS",
+          "type": "wfs-getCapabilities",
+          "url": "http://try.cartoview.net/geoserver/wfs"
+        },
+        {
+          "name": "WMS",
+          "url": "http://try.cartoview.net/geoserver/wms",
+          "type": "wms-getCapabilities"
+        }
+      ]
+    }]
+  }]
+}

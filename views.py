@@ -63,7 +63,7 @@ def terria_json(request):
             "west": 109
         },
         "catalog": [{
-                    "name": "Example Datasets",
+                    "name": "Cartoview Demo",
                     "type": "group",
                     "preserveOrder": True,
                     "isOpen": True,
@@ -72,14 +72,15 @@ def terria_json(request):
                         "type": "group",
                         "isOpen": True,
                         "items": [{
-                            "name": "WFS",
+                            "name": "All WFS Dataset",
                             "type": "wfs-getCapabilities",
                             "url": "http://try.cartoview.net/geoserver/wfs"
                         },
                             {
-                            "name": "WMS",
+                            "name": "regioni Layer",
                             "url": "http://try.cartoview.net/geoserver/wms",
-                            "type": "wms-getCapabilities",
+                            "type": "wms",
+                            "layers": "geonode:regioni"
                         }
                         ]
                     }]

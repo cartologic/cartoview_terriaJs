@@ -1,5 +1,6 @@
-from django.shortcuts import HttpResponse, render, render_to_response
 import json
+
+from django.shortcuts import HttpResponse, render, render_to_response
 
 
 def server_config(request):
@@ -77,10 +78,28 @@ def terria_json(request):
                             "url": "http://try.cartoview.net/geoserver/wfs"
                         },
                             {
-                            "name": "regioni Layer",
-                            "url": "http://try.cartoview.net/geoserver/wms",
+                            "name": "nyc_fatality_yearly",
+                            "url": "http://try.cartoview.net/geoserver/gwc/service/wms",
                             "type": "wms",
-                            "layers": "geonode:regioni"
+                            "layers": "geonode:nyc_fatality_yearly",
+                            "isGeoServer": True,
+                            "availableStyles": [
+                                {
+                                    "name": "nyc_fatality_yearly_1502620816915",
+                                    "title": "style123",
+                                    "legendUrl": "http://try.cartoview.net/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=geonode%3Anyc_fatality_yearly&style=nyc_fatality_yearly_1502620816915"
+                                }
+                            ]
+                        },
+                            {
+                            "name": "GeoWebCache WMS (fast)",
+                            "url": "http://try.cartoview.net/geoserver/gwc/service/wms",
+                            "type": "wms-getCapabilities"
+                        },
+                            {
+                            "name": "Normal WMS (slow)",
+                            "url": "http://try.cartoview.net/geoserver/wms",
+                            "type": "wms-getCapabilities"
                         }
                         ]
                     }]

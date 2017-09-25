@@ -1,0 +1,43 @@
+{
+  "name": "CartoviewTerriaMap",
+  "version": "1.0.0",
+  "description": "Cartoview TerriaJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --progress",
+    "dev": "webpack -d --config webpack.config-dev.js --watch --progress --color"
+  },
+  "author": "cartologic",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "copy-to-clipboard": "^3.0.8",
+    "material-ui": "^1.0.0-beta.12",
+    "material-ui-icons": "^1.0.0-beta.10",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "typeface-roboto": "0.0.35"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^0.28.2",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.1.0",
+    "file-loader": "^0.11.2",
+    "js-beautify": "^1.6.14",
+    "json-loader": "^0.5.4",
+    "path": "^0.12.7",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.18.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0",
+    "xml-loader": "^1.2.1"
+  }
+}

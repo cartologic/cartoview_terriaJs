@@ -86,5 +86,4 @@ ENV/
 
 # Rope project settings
 .ropeproject
-static/cartoview_storymap/node_modules
-static/cartoview_storymap/build
+static/cartoview_terriaJs/node_modules

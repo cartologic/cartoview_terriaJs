@@ -3,7 +3,8 @@ import json
 
 from django.conf import settings
 from django.conf.urls import patterns, url
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import HttpResponse, get_object_or_404, render
+from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
 from pyproj import Proj, transform
@@ -55,7 +56,7 @@ class CartoviewTerriaMap(object):
             {'version': "2.6.7"})
 
     def reproject(self, x1, y1):
-        """reproject Geonode maps center to terria 
+        """reproject Geonode maps center to terria
           :param x1: map.center_x
           :param y1: map.center_y
           :type x1: type int
@@ -86,23 +87,34 @@ class CartoviewTerriaMap(object):
         return HttpResponse(content=json.dumps(self.main_config),
                             content_type='application/json')
 
-    def build_map_catalog(self, map, current_map_id):
+    def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
         for layer in map.local_layers:
             layer_item = {
                 "name": layer.title,
-                "url": "{}{}".format(self.geoserver_url, 'wms'),
+                "dataUrlType": "none",
+                "url": "/geoserver/ows",
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
                 "layers": layer.typename
             }
+            if access_token:
+                layer_item.update({"parameters": {
+                    "access_token": "lued44jtr9V2Dqa68UuwFnR1JHO3Hz"
+                }})
             if current_map_id and int(current_map_id) == map.id:
                 layer_item.update({"isShown": True, "isEnabled": True})
             layers.append(layer_item)
         return layers
 
-    def build_main_catalog(self, permitted_ids, current_map_id, config={}):
+    def layer_metadata(self, request, layer_id=None):
+        """metadata_xml"""
+        layer = get_object_or_404(Layer, pk=layer_id)
+        layer_metadata = layer.metadata_xml
+        return HttpResponse(layer_metadata, content_type="application/xml")
+
+    def build_main_catalog(self, permitted_ids, current_map_id, access_token=None, config={}):
         maps = Map.objects.filter(id__in=permitted_ids)
         maps_catalog = {
             "name": "Cartoview Maps",
@@ -117,7 +129,7 @@ class CartoviewTerriaMap(object):
                 "isOpen": False
             }
             layers_as_catalog_item = self.build_map_catalog(
-                map, current_map_id)
+                map, current_map_id, access_token)
             if current_map_id and int(current_map_id) == map.id:
                 x, y = self.reproject(map.center_x, map.center_y)
                 config.update({"homeCamera": {
@@ -132,10 +144,11 @@ class CartoviewTerriaMap(object):
         return config
 
     def terria_json(self, request):
+        access_token = request.session.get('access_token', None)
         map_id = request.session.get(self.terria_map, None)
         permitted_ids = get_objects_for_user(
             request.user, 'base.view_resourcebase').values('id')
-        catalog = self.build_main_catalog(permitted_ids, map_id)
+        catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
         return HttpResponse(content=json.dumps(catalog),
                             content_type='application/json')
 
@@ -151,6 +164,9 @@ class CartoviewTerriaMap(object):
                                 url(r'^proxyabledomains/$',
                                     self.proxyable_domains,
                                     name='%s.proxy' % APP_NAME),
+                                url(r'^metadata/(?P<layer_id>\d+)$',
+                                    self.layer_metadata,
+                                    name='%s.metadata' % APP_NAME),
                                 url(r'^init/terria.json$', self.terria_json,
                                     name='%s.json' % APP_NAME)
 

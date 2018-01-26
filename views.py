@@ -90,11 +90,13 @@ class CartoviewTerriaMap(object):
     def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
         for layer in map.local_layers:
-            workspace,name=layer.typename.split(':')
+            workspace, name = layer.typename.split(':')
             layer_item = {
                 "name": layer.title,
-                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url,workspace,name,access_token),
-                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url,workspace,name,access_token),
+                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url,
+                                                                                                          workspace, name, access_token),
+                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url,
+                                                             workspace, name, access_token),
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
@@ -129,9 +131,10 @@ class CartoviewTerriaMap(object):
                 map, current_map_id, access_token)
             if current_map_id and int(current_map_id) == map.id:
                 x, y = self.reproject(map.center_x, map.center_y)
+                #TODO: fix 3d 
                 config.update({"homeCamera": {
                     "west": x,
-                    "south": y,}})
+                    "south": y, }})
             map_item.update({"items": layers_as_catalog_item})
             catalog.append(map_item)
         maps_catalog.update({"items": catalog})

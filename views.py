@@ -14,24 +14,27 @@ _templates = {
     "map_list_template": "cartoview_terriaJs/list.html"
 }
 _config = {
-    'allowProxyFor': ["nicta.com.au", "gov.au", "csiro.au",
-                      "arcgis.com",
-                      "argo.jcommops.org",
-                      "www.abc.net.au",
-                      "geoserver.aurin.org.au",
-                      "mapsengine.google.com",
-                      "s3-ap-southeast-2.amazonaws.com",
-                      "adelaidecitycouncil.com",
-                      "www.dptiapps.com.au",
-                      "geoserver-123.aodn.org.au",
-                      "geoserver.imos.org.au",
-                      "nci.org.au",
-                      "static.nationalmap.nicta.com.au",
-                      "githubusercontent.com",
-                      "gov",
-                      "gov.uk",
-                      "gov.nz"
-                      ],
+    'allowProxyFor': [
+        "nicta.com.au", 
+        "gov.au", 
+        "csiro.au",
+        "arcgis.com",
+        "argo.jcommops.org",
+        "www.abc.net.au",
+        "geoserver.aurin.org.au",
+        "mapsengine.google.com",
+        "s3-ap-southeast-2.amazonaws.com",
+        "adelaidecitycouncil.com",
+        "www.dptiapps.com.au",
+        "geoserver-123.aodn.org.au",
+        "geoserver.imos.org.au",
+        "nci.org.au",
+        "static.nationalmap.nicta.com.au",
+        "githubusercontent.com",
+        "gov",
+        "gov.uk",
+        "gov.nz"
+    ],
     'proxyAllDomains': False
 }
 
@@ -50,8 +53,7 @@ class CartoviewTerriaMap(object):
         self.out_proj = Proj(init='epsg:4326')
         self.main_config = _config
         self.server_config = self.main_config.copy()
-        self.server_config.update(
-            {'version': "2.6.7"})
+        self.server_config.update({'version': "2.6.7"})
 
     def reproject(self, x1, y1):
         """reproject Geonode maps center to terria
@@ -89,10 +91,8 @@ class CartoviewTerriaMap(object):
             workspace, name = layer.typename.split(':')
             layer_item = {
                 "name": layer.title,
-                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url,
-                                                                                                          workspace, name, access_token),
-                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url,
-                                                             workspace, name, access_token),
+                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url, workspace, name, access_token),
+                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url, workspace, name, access_token),
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
@@ -115,7 +115,8 @@ class CartoviewTerriaMap(object):
             "name": "Cartoview Maps",
             "type": "group",
             "preserveOrder": True,
-            "isOpen": True}
+            "isOpen": True
+        }
         catalog = []
         for map in maps:
             map_item = {
@@ -128,9 +129,14 @@ class CartoviewTerriaMap(object):
             if current_map_id and int(current_map_id) == map.id:
                 x, y = self.reproject(map.center_x, map.center_y)
                 #TODO: fix 3d 
-                config.update({"homeCamera": {
-                    "west": x,
-                    "south": y, }})
+                config.update(
+                    {
+                        "homeCamera": {
+                            "west": x,
+                            "south": y, 
+                        }
+                    }
+                )
             map_item.update({"items": layers_as_catalog_item})
             catalog.append(map_item)
         maps_catalog.update({"items": catalog})
@@ -140,8 +146,7 @@ class CartoviewTerriaMap(object):
     def terria_json(self, request):
         access_token = request.session.get('access_token', None)
         map_id = request.session.get(self.terria_map, None)
-        permitted_ids = get_objects_for_user(
-            request.user, 'base.view_resourcebase').values('id')
+        permitted_ids = get_objects_for_user(request.user, 'base.view_resourcebase').values('id')
         catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
         return JsonResponse(catalog)
 

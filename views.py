@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-import json
-
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.urls import re_path
 from django.shortcuts import HttpResponse, get_object_or_404, render
+from django.http import JsonResponse
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
@@ -80,12 +78,10 @@ class CartoviewTerriaMap(object):
         return render(request, template, context={"site_url": settings.SITEURL})
 
     def server_config_view(self, request):
-        return HttpResponse(content=json.dumps(self.server_config),
-                            content_type='application/json')
+        return JsonResponse(self.server_config)
 
     def proxyable_domains(self, request):
-        return HttpResponse(content=json.dumps(self.main_config),
-                            content_type='application/json')
+        return JsonResponse(self.main_config)
 
     def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
@@ -147,28 +143,17 @@ class CartoviewTerriaMap(object):
         permitted_ids = get_objects_for_user(
             request.user, 'base.view_resourcebase').values('id')
         catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
-        return HttpResponse(content=json.dumps(catalog),
-                            content_type='application/json')
+        return JsonResponse(catalog)
 
     def get_urls_patterns(self):
-        url_patterns = patterns('',
-                                url(r'^$', self.map_list,
-                                    name='%s.index' % APP_NAME),
-                                url(r'^(?P<map_id>\d+)$', self.index_page,
-                                    name='%s.list' % APP_NAME),
-                                url(r'^serverconfig/$',
-                                    self.server_config_view,
-                                    name='%s.config' % APP_NAME),
-                                url(r'^proxyabledomains/$',
-                                    self.proxyable_domains,
-                                    name='%s.proxy' % APP_NAME),
-                                url(r'^metadata/(?P<layer_id>\d+)$',
-                                    self.layer_metadata,
-                                    name='%s.metadata' % APP_NAME),
-                                url(r'^init/terria.json$', self.terria_json,
-                                    name='%s.json' % APP_NAME)
-
-                                )
+        url_patterns = [
+            re_path(r'^$', self.map_list, name='%s.index' % APP_NAME),
+            re_path(r'^(?P<map_id>\d+)$', self.index_page, name='%s.list' % APP_NAME),
+            re_path(r'^serverconfig/$', self.server_config_view, name='%s.config' % APP_NAME),
+            re_path(r'^proxyabledomains/$', self.proxyable_domains, name='%s.proxy' % APP_NAME),
+            re_path(r'^metadata/(?P<layer_id>\d+)$', self.layer_metadata, name='%s.metadata' % APP_NAME),
+            re_path(r'^init/terria.json$', self.terria_json, name='%s.json' % APP_NAME)
+        ]
         return url_patterns
 
 

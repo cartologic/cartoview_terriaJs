@@ -134,7 +134,8 @@ class CartoviewTerriaMap(object):
                         "homeCamera": {
                             "west": x,
                             "south": y, 
-                        }
+                        },
+                        "viewerMode": "2d",
                     }
                 )
             map_item.update({"items": layers_as_catalog_item})

@@ -2,6 +2,7 @@ from django.conf import settings
 from django.urls import re_path
 from django.shortcuts import HttpResponse, get_object_or_404, render
 from django.http import JsonResponse
+from django.views.generic import TemplateView
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
@@ -11,7 +12,8 @@ from . import APP_NAME
 
 _templates = {
     "terria_template": "cartoview_terriaJs/terria.html",
-    "map_list_template": "cartoview_terriaJs/list.html"
+    "map_list_template": "cartoview_terriaJs/list.html",
+    "terria_help_template": "cartoview_terriaJs/help/help.html",
 }
 _config = {
     'allowProxyFor': [
@@ -158,7 +160,8 @@ class CartoviewTerriaMap(object):
             re_path(r'^serverconfig/$', self.server_config_view, name='%s.config' % APP_NAME),
             re_path(r'^proxyabledomains/$', self.proxyable_domains, name='%s.proxy' % APP_NAME),
             re_path(r'^metadata/(?P<layer_id>\d+)$', self.layer_metadata, name='%s.metadata' % APP_NAME),
-            re_path(r'^init/terria.json$', self.terria_json, name='%s.json' % APP_NAME)
+            re_path(r'^init/terria.json$', self.terria_json, name='%s.json' % APP_NAME),
+            re_path(r'^help/help.html', TemplateView.as_view(template_name=_templates.get('terria_help_template', None)),name='terria_help'),
         ]
         return url_patterns
 

@@ -101,7 +101,7 @@ class CartoviewTerriaMap(object):
                 "layers": name
             }
             if current_map_id and int(current_map_id) == map.id:
-                layer_item.update({"isShown": True, "isEnabled": True})
+                layer_item.update({"isShown": True})
             layers.append(layer_item)
         return layers
 
@@ -129,13 +129,15 @@ class CartoviewTerriaMap(object):
             layers_as_catalog_item = self.build_map_catalog(
                 map, current_map_id, access_token)
             if current_map_id and int(current_map_id) == map.id:
-                x, y = self.reproject(map.center_x, map.center_y)
-                #TODO: fix 3d 
+                x0, y0 = self.reproject(map.bbox[0], map.bbox[1])
+                x1, y1 = self.reproject(map.bbox[2], map.bbox[3]) 
                 config.update(
                     {
                         "homeCamera": {
-                            "west": x,
-                            "south": y, 
+                            "south": y0,
+                            "west": x0,
+                            "north": y1,
+                            "east": x1 
                         },
                         "viewerMode": "2d",
                     }

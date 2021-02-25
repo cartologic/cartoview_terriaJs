@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
-import json
-
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.urls import re_path
 from django.shortcuts import HttpResponse, get_object_or_404, render
+from django.http import JsonResponse
+from django.views.generic import TemplateView
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
@@ -13,27 +12,31 @@ from . import APP_NAME
 
 _templates = {
     "terria_template": "cartoview_terriaJs/terria.html",
-    "map_list_template": "cartoview_terriaJs/list.html"
+    "map_list_template": "cartoview_terriaJs/list.html",
+    "terria_help_template": "cartoview_terriaJs/help/help.html",
 }
 _config = {
-    'allowProxyFor': ["nicta.com.au", "gov.au", "csiro.au",
-                      "arcgis.com",
-                      "argo.jcommops.org",
-                      "www.abc.net.au",
-                      "geoserver.aurin.org.au",
-                      "mapsengine.google.com",
-                      "s3-ap-southeast-2.amazonaws.com",
-                      "adelaidecitycouncil.com",
-                      "www.dptiapps.com.au",
-                      "geoserver-123.aodn.org.au",
-                      "geoserver.imos.org.au",
-                      "nci.org.au",
-                      "static.nationalmap.nicta.com.au",
-                      "githubusercontent.com",
-                      "gov",
-                      "gov.uk",
-                      "gov.nz"
-                      ],
+    'allowProxyFor': [
+        "nicta.com.au", 
+        "gov.au", 
+        "csiro.au",
+        "arcgis.com",
+        "argo.jcommops.org",
+        "www.abc.net.au",
+        "geoserver.aurin.org.au",
+        "mapsengine.google.com",
+        "s3-ap-southeast-2.amazonaws.com",
+        "adelaidecitycouncil.com",
+        "www.dptiapps.com.au",
+        "geoserver-123.aodn.org.au",
+        "geoserver.imos.org.au",
+        "nci.org.au",
+        "static.nationalmap.nicta.com.au",
+        "githubusercontent.com",
+        "gov",
+        "gov.uk",
+        "gov.nz"
+    ],
     'proxyAllDomains': False
 }
 
@@ -52,8 +55,7 @@ class CartoviewTerriaMap(object):
         self.out_proj = Proj(init='epsg:4326')
         self.main_config = _config
         self.server_config = self.main_config.copy()
-        self.server_config.update(
-            {'version': "2.6.7"})
+        self.server_config.update({'version': "2.6.7"})
 
     def reproject(self, x1, y1):
         """reproject Geonode maps center to terria
@@ -80,12 +82,10 @@ class CartoviewTerriaMap(object):
         return render(request, template, context={"site_url": settings.SITEURL})
 
     def server_config_view(self, request):
-        return HttpResponse(content=json.dumps(self.server_config),
-                            content_type='application/json')
+        return JsonResponse(self.server_config)
 
     def proxyable_domains(self, request):
-        return HttpResponse(content=json.dumps(self.main_config),
-                            content_type='application/json')
+        return JsonResponse(self.main_config)
 
     def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
@@ -93,17 +93,15 @@ class CartoviewTerriaMap(object):
             workspace, name = layer.typename.split(':')
             layer_item = {
                 "name": layer.title,
-                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url,
-                                                                                                          workspace, name, access_token),
-                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url,
-                                                             workspace, name, access_token),
+                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url, workspace, name, access_token),
+                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url, workspace, name, access_token),
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
                 "layers": name
             }
             if current_map_id and int(current_map_id) == map.id:
-                layer_item.update({"isShown": True, "isEnabled": True})
+                layer_item.update({"isShown": True})
             layers.append(layer_item)
         return layers
 
@@ -119,7 +117,8 @@ class CartoviewTerriaMap(object):
             "name": "Cartoview Maps",
             "type": "group",
             "preserveOrder": True,
-            "isOpen": True}
+            "isOpen": True
+        }
         catalog = []
         for map in maps:
             map_item = {
@@ -130,11 +129,19 @@ class CartoviewTerriaMap(object):
             layers_as_catalog_item = self.build_map_catalog(
                 map, current_map_id, access_token)
             if current_map_id and int(current_map_id) == map.id:
-                x, y = self.reproject(map.center_x, map.center_y)
-                #TODO: fix 3d 
-                config.update({"homeCamera": {
-                    "west": x,
-                    "south": y, }})
+                x0, y0 = self.reproject(map.bbox[0], map.bbox[3])
+                x1, y1 = self.reproject(map.bbox[2], map.bbox[1]) 
+                config.update(
+                    {
+                        "homeCamera": {
+                            "south": y0,
+                            "west": x0,
+                            "north": y1,
+                            "east": x1 
+                        },
+                        "viewerMode": "2d",
+                    }
+                )
             map_item.update({"items": layers_as_catalog_item})
             catalog.append(map_item)
         maps_catalog.update({"items": catalog})
@@ -144,31 +151,20 @@ class CartoviewTerriaMap(object):
     def terria_json(self, request):
         access_token = request.session.get('access_token', None)
         map_id = request.session.get(self.terria_map, None)
-        permitted_ids = get_objects_for_user(
-            request.user, 'base.view_resourcebase').values('id')
+        permitted_ids = get_objects_for_user(request.user, 'base.view_resourcebase').values('id')
         catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
-        return HttpResponse(content=json.dumps(catalog),
-                            content_type='application/json')
+        return JsonResponse(catalog)
 
     def get_urls_patterns(self):
-        url_patterns = patterns('',
-                                url(r'^$', self.map_list,
-                                    name='%s.index' % APP_NAME),
-                                url(r'^(?P<map_id>\d+)$', self.index_page,
-                                    name='%s.list' % APP_NAME),
-                                url(r'^serverconfig/$',
-                                    self.server_config_view,
-                                    name='%s.config' % APP_NAME),
-                                url(r'^proxyabledomains/$',
-                                    self.proxyable_domains,
-                                    name='%s.proxy' % APP_NAME),
-                                url(r'^metadata/(?P<layer_id>\d+)$',
-                                    self.layer_metadata,
-                                    name='%s.metadata' % APP_NAME),
-                                url(r'^init/terria.json$', self.terria_json,
-                                    name='%s.json' % APP_NAME)
-
-                                )
+        url_patterns = [
+            re_path(r'^$', self.map_list, name='%s.index' % APP_NAME),
+            re_path(r'^(?P<map_id>\d+)$', self.index_page, name='%s.list' % APP_NAME),
+            re_path(r'^serverconfig/$', self.server_config_view, name='%s.config' % APP_NAME),
+            re_path(r'^proxyabledomains/$', self.proxyable_domains, name='%s.proxy' % APP_NAME),
+            re_path(r'^metadata/(?P<layer_id>\d+)$', self.layer_metadata, name='%s.metadata' % APP_NAME),
+            re_path(r'^init/terria.json$', self.terria_json, name='%s.json' % APP_NAME),
+            re_path(r'^help/help.html', TemplateView.as_view(template_name=_templates.get('terria_help_template', None)),name='terria_help'),
+        ]
         return url_patterns
 
 

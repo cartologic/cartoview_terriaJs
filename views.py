@@ -129,8 +129,8 @@ class CartoviewTerriaMap(object):
             layers_as_catalog_item = self.build_map_catalog(
                 map, current_map_id, access_token)
             if current_map_id and int(current_map_id) == map.id:
-                x0, y0 = self.reproject(map.bbox[0], map.bbox[1])
-                x1, y1 = self.reproject(map.bbox[2], map.bbox[3]) 
+                x0, y0 = self.reproject(map.bbox[0], map.bbox[3])
+                x1, y1 = self.reproject(map.bbox[2], map.bbox[1]) 
                 config.update(
                     {
                         "homeCamera": {

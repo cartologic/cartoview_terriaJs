@@ -1,17 +1,24 @@
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const path = require("path")
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+const CompressionPlugin = require("compression-webpack-plugin")
 const BUILD_DIR = path.resolve(__dirname, "dist")
 const APP_DIR = path.resolve(__dirname, "src")
 const filename = "[name].bundle.js"
 
 const plugins = [
     new MiniCssExtractPlugin({}),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.SourceMapDevToolPlugin({
         filename: "sourcemaps/[file].map",
         publicPath: "/static/cartoview_terriaJs/dist/",
         fileContext: "public",
-    })
+    }),
+    new BundleAnalyzerPlugin(),
+    new CompressionPlugin(),
 ]
 
 const config = {
@@ -24,7 +31,8 @@ const config = {
             automaticNameDelimiter: "-",
         },
     },
-    devtool: "eval-cheap-module-source-map",
+    devtool: "source-map",
+    mode: "production",
     output: {
         path: BUILD_DIR,
         filename: filename,
@@ -64,24 +72,23 @@ const config = {
             },
             {
                 test: /\.xml$/,
-                loader: "raw-loader",
+                use: "raw-loader",
             },
             {
                 type: "javascript/auto",
                 test: /\.json$/,
-                loader: "json-loader",
+                use: "json-loader",
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: "file-loader",
+                use: "file-loader",
             },
             {
                 test: /\.(woff|woff2)$/,
-                loader: "url-loader?limit=100000",
+                use: "url-loader?limit=100000",
             },
         ],
         noParse: [/dist\/ol\.js/, /dist\/jspdf.debug\.js/, /dist\/js\/tether\.js/],
     },
 }
-
 module.exports = config

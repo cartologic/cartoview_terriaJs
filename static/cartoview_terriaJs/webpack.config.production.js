@@ -23,7 +23,7 @@ const plugins = [
 
 const config = {
     entry: {
-        CartoviewTerria: path.join(APP_DIR, "AppRender.jsx"),
+        CartoviewTerria: path.join(APP_DIR, "index.js"),
     },
     optimization: {
         splitChunks: {

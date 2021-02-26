@@ -11,6 +11,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import classNames from 'classnames'
+import terriaLogo from '../img/terria-logo.png'
 import {withStyles} from '@material-ui/core/styles'
 
 const drawerWidth = 240
@@ -65,8 +66,8 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        height: 'calc(100% - 56px)',
-        marginTop: 56,
+        height: 'calc(100% - 80px)',
+        marginTop: 80,
         [theme.breakpoints.up('sm')]: {
             content: {
                 height: 'calc(100% - 64px)',
@@ -80,6 +81,10 @@ const styles = theme => ({
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
+    },
+    logo: {
+        height: 40,
+        margin: "0px 20px"
     },
 })
 
@@ -123,15 +128,16 @@ class MapList extends React.Component {
                 <div className={classes.appFrame}>
                     <AppBar className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
                         <Toolbar disableGutters={!this.state.open}>
-                            <IconButton
+                            {/* <IconButton
                                 aria-label="open drawer"
                                 onClick={this.handleDrawerOpen}
                                 className={classNames(classes.menuButton, this.state.open && classes.hide)}
                             >
                                 <MenuIcon open/>
-                            </IconButton>
+                            </IconButton> */}
+                            <img src={terriaLogo} alt="Terria Logo" className={classNames(classes.logo)}/>
                             <Typography type="title" color="inherit" noWrap>
-                                Cartoview Terria Map
+                                Terria Map
                             </Typography>
                         </Toolbar>
                     </AppBar>

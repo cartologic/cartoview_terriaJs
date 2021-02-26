@@ -1,4 +1,4 @@
-import CartoviewTerriaViewer from './AppRender';
+import CartoviewTerriaViewer from './CartoviewTerriaViewer';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

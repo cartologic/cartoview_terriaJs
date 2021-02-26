@@ -2,11 +2,11 @@ import AppBar from 'material-ui/AppBar'
 import CloseIcon from 'material-ui-icons/Close';
 import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
-import MapCard from './CardItem'
+import MapCard from './MapCard'
 import MenuIcon from 'material-ui-icons/Menu'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SideDrawer from './Drawer'
+import SideDrawer from './SideDrawer'
 import Snackbar from 'material-ui/Snackbar';
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'

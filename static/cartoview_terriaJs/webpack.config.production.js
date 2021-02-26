@@ -1,7 +1,6 @@
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const path = require("path")
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const CompressionPlugin = require("compression-webpack-plugin")
 const BUILD_DIR = path.resolve(__dirname, "dist")
 const APP_DIR = path.resolve(__dirname, "src")
@@ -17,7 +16,6 @@ const plugins = [
         publicPath: "/static/cartoview_terriaJs/dist/",
         fileContext: "public",
     }),
-    new BundleAnalyzerPlugin(),
     new CompressionPlugin(),
 ]
 

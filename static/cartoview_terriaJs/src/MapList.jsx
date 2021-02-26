@@ -3,10 +3,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
 import MapCard from './MapCard'
-import MenuIcon from '@material-ui/icons/Menu'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SideDrawer from './SideDrawer'
 import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -14,7 +12,6 @@ import classNames from 'classnames'
 import terriaLogo from '../img/terria-logo.png'
 import {withStyles} from '@material-ui/core/styles'
 
-const drawerWidth = 240
 const styles = theme => ({
     root: {
         width: '100%',
@@ -42,14 +39,6 @@ const styles = theme => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
     menuButton: {
         marginLeft: 12,
         marginRight: 20,
@@ -75,13 +64,6 @@ const styles = theme => ({
             },
         },
     },
-    contentShift: {
-        marginLeft: 0,
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
     logo: {
         height: 40,
         margin: "0px 20px"
@@ -90,7 +72,6 @@ const styles = theme => ({
 
 class MapList extends React.Component {
     state = {
-        open: false,
         maps: [],
         snackOpen: false
     };
@@ -105,9 +86,6 @@ class MapList extends React.Component {
                     this.setState({maps: data.objects})
                 })
     }
-    handleDrawerOpen = () => {
-        this.setState({open: true})
-    }
     handleRequestClose = (event, reason) => {
         if (reason === 'clickaway') {
             return
@@ -117,32 +95,21 @@ class MapList extends React.Component {
     handleSnackOpen = () => {
         this.setState({snackOpen: true})
     }
-    handleDrawerClose = () => {
-        this.setState({open: false})
-    }
 
     render() {
         const {classes, urls} = this.props
         return (
             <div className={classes.root}>
                 <div className={classes.appFrame}>
-                    <AppBar className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
-                        <Toolbar disableGutters={!this.state.open}>
-                            {/* <IconButton
-                                aria-label="open drawer"
-                                onClick={this.handleDrawerOpen}
-                                className={classNames(classes.menuButton, this.state.open && classes.hide)}
-                            >
-                                <MenuIcon open/>
-                            </IconButton> */}
+                    <AppBar className={classNames(classes.appBar)}>
+                        <Toolbar disableGutters={true}>
                             <img src={terriaLogo} alt="Terria Logo" className={classNames(classes.logo)}/>
                             <Typography type="title" color="inherit" noWrap>
                                 Terria Map
                             </Typography>
                         </Toolbar>
                     </AppBar>
-                    <SideDrawer urls={urls} open={this.state.open} handleDrawerClose={this.handleDrawerClose}/>
-                    <main className={classNames(classes.content, this.state.open && classes.contentShift)}>
+                    <main className={classNames(classes.content)}>
                         <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
                             {this.state.maps.map((obj, i) => {
                                 return (

@@ -1,42 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Cartoview Terria Map">
-    <meta name="keywords" content="Cartoview,cartoview,geonode,terriaJS,terriaMap,Mapping,Market">
-    <meta name="author" content="Cartologic">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartoview Terria Map</title>
-<style>
-    html, body{
-        margin: 0px;
-        height: 100%;
-        padding:0px
-    }
-    [data-reactroot] {height: 100% !important; }
-</style>
-</head>
-<body>
-<div id="map-list">
-
-</div>
-<script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}" ></script>
-<script>
-    const urls={
-            layers: "{% url 'layer_browse' %}",
-            maps: "{% url 'maps_browse' %}",
-            apps: "{% url 'app_manager_base_url' %}",
-            mapsApiUrl:"{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
-            getTerriaUrl:function(id){
-                return "{{site_url}}apps/cartoview_terriaJs/"+id
-            },
-            getMapDetailsUrl:function(id){
-                return "/maps/"+id
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Cartoview Terria Map" />
+        <meta name="keywords" content="Cartoview,cartoview,geonode,terriaJS,terriaMap,Mapping,Market" />
+        <meta name="author" content="Cartologic" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'TerriaMap/wwwroot/favicons/favicon-96x96.png' %}">
+        <title>Terria Map</title>
+        <style>
+            html,
+            body {
+                margin: 0px;
+                height: 100%;
+                padding: 0px;
             }
-    }
-    const viewer=new CartoviewTerriaViewer("map-list",urls)
-    viewer.view()
-</script>
-</body>
+            [data-reactroot] {
+                height: 100% !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map-list"></div>
+        <script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}"></script>
+        <script>
+            const globalURLs = {
+                layers: "{% url 'layer_browse' %}",
+                maps: "{% url 'maps_browse' %}",
+                apps: "{% url 'app_manager_base_url' %}",
+                mapsApiUrl:
+                    "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
+                getTerriaUrl: function (id) {
+                    return "{{site_url}}apps/cartoview_terriaJs/" + id;
+                },
+                getMapDetailsUrl: function (id) {
+                    return "/maps/" + id;
+                },
+            };
+        </script>
+        <script src="{% static 'cartoview_terriaJs/dist/vendors-CartoviewTerria-chunk.js' %}"></script>
+        <script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}"></script>
+    </body>
 </html>

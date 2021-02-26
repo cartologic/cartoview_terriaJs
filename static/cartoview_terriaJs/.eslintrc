@@ -7,6 +7,12 @@
     },
     "extends": [ "eslint:recommended", "plugin:react/recommended" ],
     "plugins": [ "react" ],
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "17.0.1"
+        }
+    },
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 6,

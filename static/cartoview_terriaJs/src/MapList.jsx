@@ -122,7 +122,8 @@ class MapList extends React.Component {
                         <Snackbar
                             anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
                             open={this.state.snackOpen}
-                            onRequestClose={this.handleRequestClose}
+                            onClose={this.handleRequestClose}
+                            autoHideDuration={3000}
                             SnackbarContentProps={{
                                 'aria-describedby': 'message-id',
                             }}

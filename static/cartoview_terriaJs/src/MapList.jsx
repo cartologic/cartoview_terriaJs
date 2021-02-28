@@ -24,7 +24,13 @@ const styles = theme => ({
         height: theme.spacing(4),
     },
     rootGrid: {
-        flexGrow: 1
+        flexGrow: 1,
+        justifyContent: 'center'
+    },
+    cardGrid: {
+        ['@media (max-width: 1024px)']: {
+            minWidth: '33.333333%'
+        }
     },
     appFrame: {
         position: 'relative',
@@ -64,7 +70,7 @@ const styles = theme => ({
             },
         },
     },
-    logo: {
+    media: {
         height: 40,
         margin: "0px 20px"
     },
@@ -103,8 +109,8 @@ class MapList extends React.Component {
                 <div className={classes.appFrame}>
                     <AppBar className={classNames(classes.appBar)}>
                         <Toolbar disableGutters={true}>
-                            <img src={terriaLogo} alt="Terria Logo" className={classNames(classes.logo)}/>
-                            <Typography type="title" color="inherit" noWrap>
+                            <img src={terriaLogo} alt="Terria Maps list" className={classNames(classes.media)}/>
+                            <Typography variant="h5" type="title" color="inherit" noWrap>
                                 Terria Map
                             </Typography>
                         </Toolbar>
@@ -113,7 +119,7 @@ class MapList extends React.Component {
                         <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
                             {this.state.maps.map((obj, i) => {
                                 return (
-                                    <Grid key={i} item xs={12} sm={6} md={3} lg={3}>
+                                    <Grid key={i} item xs={12} sm={6} md={3} lg={3} className={classes.cardGrid}>
                                         <MapCard openSnack={this.handleSnackOpen} urls={urls} map={obj}/>
                                     </Grid>
                                 )

@@ -1,129 +1,215 @@
-import {Card, CardActions, CardContent, CardHeader, CardMedia} from '@material-ui/core'
+import {Card, CardHeader, CardMedia} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import Collapse from '@material-ui/core/Collapse'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import Grid from '@material-ui/core/Grid'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import DescriptionIcon from '@material-ui/icons/Description'
+import Grow from '@material-ui/core/Grow'
 import IconButton from '@material-ui/core/IconButton'
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser'
+import LaunchIcon from '@material-ui/icons/Launch'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import Paper from '@material-ui/core/Paper'
+import Popover from '@material-ui/core/Popover'
+import Popper from '@material-ui/core/Popper'
 import PropTypes from 'prop-types'
 import React from 'react'
 import ShareIcon from '@material-ui/icons/Share'
 import Typography from '@material-ui/core/Typography'
-import classnames from 'classnames'
 import copy from 'copy-to-clipboard'
 import {cyan} from '@material-ui/core/colors'
 import {withStyles} from '@material-ui/core/styles'
 
-const styles = theme => ({
+const styles = () => ({
     card: {
-        width: '100%'
-    },
-    rootGrid: {
-        flexGrow: 1
+        width: '100%',
+        minHeight: 290,
+        height: 300,
+        boxShadow: 'none',
+        border: '1px solid #DFE1E5',
+        '&:hover': {
+            border: '1px solid #3BBDD4',
+            transform: 'translateY(-10px)',
+            boxShadow: '0 12px 19px -7px #3BBDD4'
+        }
     },
     media: {
         height: 194,
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
+        cursor: 'pointer'
     },
     avatar: {
         backgroundColor: cyan[500],
     },
-    flexGrow: {
-        flex: '1 1 auto',
+    menuItemButton: {
+        color: '#3BBDD4',
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     },
-    button: {
-        margin: theme.spacing(),
+    menuItemIcon: {
+        marginLeft: -16
     },
-    gridItem: {
-        textAlign: 'center',
+    menuItemText: {
+        marginLeft: 16
+    },
+    mapDescribtion: {
+        padding: 10
     }
 })
 
 class MapCard extends React.Component {
-    state = {expanded: false}
-    handleExpandClick = () => {
-        this.setState({expanded: !this.state.expanded})
+    constructor(props) {
+        super(props)
+        this.anchorRef = React.createRef()
+    }
+    
+    state = {
+        expanded: false,
+        open: false,
+        anchorEl: null
+    }
+
+    handleToggle = () => {
+        this.setState({
+            open: !this.state.open
+        })
+    }
+    handleClose = (event) => {
+        if (this.anchorRef.current && this.anchorRef.current.contains(event.target)) {
+            return
+        }
+        this.setState({
+            open: false
+        })
     }
     copyTo = (id) => {
         const {urls} = this.props
         copy(urls.getTerriaUrl(id))
     }
+    handlePopupToggle = (event) => {
+        this.setState({
+            anchorEl: this.state.anchorEl ? null : event.currentTarget
+        })
+    }
 
     render() {
         const {classes, urls} = this.props
         const {map, openSnack} = this.props
+        const open = Boolean(this.state.anchorEl)
+        const id = open ? 'simple-popover' : undefined
         return (
-            <Card className={classes.card}>
+            <Card
+                className={classes.card}
+                title={`Open ${map.title} map`}
+            >
+                <CardMedia
+                    className={classes.media}
+                    image={map.thumbnail_url || "/static/cartoview_terriaJs/img/no-img.png"}
+                    onClick={() => window.location.href = urls.getTerriaUrl(map.id)}
+                />
                 <CardHeader
                     avatar={
                         <Avatar aria-label="Recipe" className={classes.avatar}>
                             {map.owner__username[0].toUpperCase()}
                         </Avatar>
                     }
+                    action={
+                        <div>
+                            <IconButton
+                                ref={this.anchorRef}
+                                aria-label="settings"
+                                aria-controls={this.state.open ? 'menu-list-grow' : undefined}
+                                onClick={this.handleToggle}
+                            >
+                                <MoreVertIcon />
+                            </IconButton>
+                            <Popper open={this.state.open} anchorEl={this.anchorRef.current} placement='bottom' transition>
+                                {({ TransitionProps, placement }) => (
+                                    <Grow
+                                        {...TransitionProps}
+                                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                                    >
+                                        <Paper>
+                                            <ClickAwayListener onClickAway={this.handleClose}>
+                                                <MenuList autoFocusItem={this.state.open} id="menu-list-grow">
+                                                    <MenuItem>
+                                                        <IconButton
+                                                            className={classes.menuItemButton}
+                                                            onClick={() => window.open(urls.getTerriaUrl(map.id), '_blank')}
+                                                            aria-label="Open in browser"
+                                                        >
+                                                            <LaunchIcon className={classes.menuItemIcon}/>
+                                                            <Typography
+                                                                variant="subtitle2"
+                                                                className={classes.menuItemText}
+                                                            >
+                                                                Open Terria Map
+                                                            </Typography>
+                                                        </IconButton>
+                                                    </MenuItem>
+                                                    <MenuItem>
+                                                        <IconButton
+                                                            className={classes.menuItemButton}
+                                                            onClick={() => {this.copyTo(map.id); openSnack()}}
+                                                            aria-label="Share app URL"
+                                                        >
+                                                            <ShareIcon className={classes.menuItemIcon}/>
+                                                            <Typography
+                                                                variant="subtitle2"
+                                                                className={classes.menuItemText}
+                                                            >
+                                                                Share app URL
+                                                            </Typography>
+                                                        </IconButton>
+                                                    </MenuItem>
+                                                    <MenuItem>
+                                                        <IconButton
+                                                            className={classes.menuItemButton}
+                                                            onClick={this.handlePopupToggle}
+                                                            aria-label="Map description"
+                                                        >
+                                                            <DescriptionIcon className={classes.menuItemIcon}/>
+                                                            <Typography
+                                                                variant="subtitle2"
+                                                                className={classes.menuItemText}
+                                                                aria-haspopup="true"
+                                                            >
+                                                                Show map details
+                                                            </Typography>
+                                                            <Popover
+                                                                id={id}
+                                                                className={classes.popover}
+                                                                classes={{
+                                                                    paper: classes.paper,
+                                                                }}
+                                                                open={open}
+                                                                anchorEl={this.state.anchorEl}
+                                                                anchorOrigin={{
+                                                                    vertical: 'bottom',
+                                                                    horizontal: 'right',
+                                                                }}
+                                                                transformOrigin={{
+                                                                    vertical: 'bottom',
+                                                                    horizontal: 'left',
+                                                                }}
+                                                                onClose={this.handlePopupToggle}
+                                                            >
+                                                                <Typography className={classes.mapDescribtion}>
+                                                                    {map.abstract === "" ? "No Description" : map.abstract}
+                                                                </Typography>
+                                                            </Popover>
+                                                        </IconButton>
+                                                    </MenuItem>
+                                                </MenuList>
+                                            </ClickAwayListener>
+                                        </Paper>
+                                    </Grow>
+                                )}
+                            </Popper>
+                        </div>
+                    }
                     title={map.title}
                     subheader={new Date(map.date).toDateString()}
                 />
-                <CardMedia
-                    className={classes.media}
-                    image={map.thumbnail_url || "/static/cartoview_terriaJs/img/no-img.png"}
-                    title={map.title}
-                />
-                <CardActions disableSpacing>
-                    <IconButton color="primary" onClick={() => window.location.href = urls.getTerriaUrl(map.id)}
-                        aria-label="Open in browser">
-                        <OpenInBrowserIcon/>
-                    </IconButton>
-                    <IconButton color="primary" onClick={() => {
-                        this.copyTo(map.id)
-                        openSnack()
-                    }} aria-label="Open in browser">
-                        <ShareIcon/>
-                    </IconButton>
-                    <div className={classes.flexGrow}/>
-                    <IconButton
-                        className={classnames(classes.expand, {
-                            [classes.expandOpen]: this.state.expanded,
-                        })}
-                        onClick={this.handleExpandClick}
-                        aria-expanded={this.state.expanded}
-                        aria-label="Show more"
-                    >
-                        <ExpandMoreIcon/>
-                    </IconButton>
-                </CardActions>
-                <Collapse in={this.state.expanded}>
-                    <CardContent>
-                        <Typography paragraph type="body2">
-                            Description:
-                        </Typography>
-                        <Typography paragraph>
-                            {map.abstract === "" ? "No Description" : map.abstract}
-                        </Typography>
-                        <Grid container direction={"row"} className={classes.rootGrid} spacing={10}>
-                            <Grid item xs={12} sm={6} md={6} lg={6} className={classes.gridItem}>
-                                <Button onClick={() => window.location.href = urls.getTerriaUrl(map.id)}
-                                    color="primary" className={classes.button}>
-                                    Open
-                                </Button>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={6} lg={6} className={classes.gridItem}>
-                                <Button onClick={() => window.location.href = urls.getMapDetailsUrl(map.id)}
-                                    color="accent" className={classes.button}>
-                                    Details
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Collapse>
             </Card>
         )
     }

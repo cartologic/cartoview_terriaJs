@@ -2,6 +2,7 @@ import {Card, CardHeader, CardMedia} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import DescriptionIcon from '@material-ui/icons/Description'
+import DialogWrapper from './Dialog/DialogWrapper'
 import Grow from '@material-ui/core/Grow'
 import IconButton from '@material-ui/core/IconButton'
 import LaunchIcon from '@material-ui/icons/Launch'
@@ -9,7 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Paper from '@material-ui/core/Paper'
-import Popover from '@material-ui/core/Popover'
 import Popper from '@material-ui/core/Popper'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -63,9 +63,9 @@ class MapCard extends React.Component {
     }
     
     state = {
-        expanded: false,
         open: false,
-        anchorEl: null
+        anchorEl: null,
+        openDialog: false
     }
 
     handleToggle = () => {
@@ -85,17 +85,16 @@ class MapCard extends React.Component {
         const {urls} = this.props
         copy(urls.getTerriaUrl(id))
     }
-    handlePopupToggle = (event) => {
+    handleDialogToggle = () => {
         this.setState({
-            anchorEl: this.state.anchorEl ? null : event.currentTarget
+            openDialog: !this.state.openDialog
         })
     }
 
     render() {
         const {classes, urls} = this.props
         const {map, openSnack} = this.props
-        const open = Boolean(this.state.anchorEl)
-        const id = open ? 'simple-popover' : undefined
+
         return (
             <Card
                 className={classes.card}
@@ -164,7 +163,7 @@ class MapCard extends React.Component {
                                                     <MenuItem>
                                                         <IconButton
                                                             className={classes.menuItemButton}
-                                                            onClick={this.handlePopupToggle}
+                                                            onClick={this.handleDialogToggle}
                                                             aria-label="Map description"
                                                         >
                                                             <DescriptionIcon className={classes.menuItemIcon}/>
@@ -175,28 +174,12 @@ class MapCard extends React.Component {
                                                             >
                                                                 Show map details
                                                             </Typography>
-                                                            <Popover
-                                                                id={id}
-                                                                className={classes.popover}
-                                                                classes={{
-                                                                    paper: classes.paper,
-                                                                }}
-                                                                open={open}
-                                                                anchorEl={this.state.anchorEl}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'right',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                                onClose={this.handlePopupToggle}
-                                                            >
-                                                                <Typography className={classes.mapDescribtion}>
-                                                                    {map.abstract === "" ? "No Description" : map.abstract}
-                                                                </Typography>
-                                                            </Popover>
+                                                            <DialogWrapper
+                                                                map={map}
+                                                                mapDetailsURL={urls.getMapDetailsUrl(map.id)}
+                                                                openDialog={this.state.openDialog}
+                                                                onDialogChange={this.handleDialogToggle}
+                                                            />
                                                         </IconButton>
                                                     </MenuItem>
                                                 </MenuList>

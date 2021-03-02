@@ -26,9 +26,6 @@
         <script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}"></script>
         <script>
             const globalURLs = {
-                layers: "{% url 'layer_browse' %}",
-                maps: "{% url 'maps_browse' %}",
-                apps: "{% url 'app_manager_base_url' %}",
                 mapsApiUrl:
                     "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
                 getTerriaUrl: function (id) {

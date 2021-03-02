@@ -130,7 +130,7 @@ class MapList extends React.Component {
                             open={this.state.snackOpen}
                             onClose={this.handleRequestClose}
                             autoHideDuration={3000}
-                            SnackbarContentProps={{
+                            ContentProps={{
                                 'aria-describedby': 'message-id',
                             }}
                             message={<span id="message-id">URL Copied to Clipboard</span>}

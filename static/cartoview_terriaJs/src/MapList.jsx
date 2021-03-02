@@ -1,13 +1,26 @@
-import React, { useEffect, useState} from 'react'
-import AppBar from '@material-ui/core/AppBar'
+import {
+    AppBar,
+    Chip,
+    ClickAwayListener,
+    FormControl,
+    FormControlLabel,
+    Grid,
+    Grow,
+    IconButton,
+    Paper,
+    Popper,
+    RadioGroup,
+    Snackbar,
+    Toolbar,
+    Typography
+} from '@material-ui/core'
+import React, {useEffect, useRef, useState} from 'react'
 import CloseIcon from '@material-ui/icons/Close'
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
 import MapCard from './MapCard'
 import PropTypes from 'prop-types'
-import Snackbar from '@material-ui/core/Snackbar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import SortIcon from '@material-ui/icons/Sort'
+import StyledRadio from './StyledRadio'
+import axios from 'axios'
 import terriaLogo from '../img/terria-logo.png'
 import {withStyles} from '@material-ui/core/styles'
 
@@ -25,6 +38,32 @@ const styles = theme => ({
     rootGrid: {
         flexGrow: 1,
         justifyContent: 'center'
+    },
+    title: {
+        flexGrow: 1
+    },
+    sortButton: {
+        margin: '0px 80px',
+        padding: 5,
+        backgroundColor: '#09274b',
+        fontSize: 15,
+        color: '#fff',
+        '&:hover, &:focus': {
+            backgroundColor: '#124e96'
+        },
+        ['@media (max-width: 768px)']: {
+            margin: '0px 14px',
+        }
+    },
+    sortIcon: {
+        color: '#fff'
+    },
+    radioGroup: {
+        margin: 10
+    },
+    formControlLabel: {
+        marginLeft: 0,
+        marginRight: 6,
     },
     cardGrid: {
         ['@media (max-width: 1024px)']: {
@@ -48,13 +87,9 @@ const styles = theme => ({
         marginLeft: 12,
         marginRight: 20,
     },
-    hide: {
-        display: 'none',
-    },
     content: {
         width: '100%',
         flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -71,23 +106,21 @@ const styles = theme => ({
     },
     media: {
         height: 40,
-        margin: "0px 20px"
+        margin: "0px 20px",
+        ['@media (max-width: 768px)']: {
+            margin: '0px 14px',
+        }
     },
 })
 
-const MapList = ({ classes, urls }) => {
+const MapList = ({classes, urls}) => {
+    const [openSortMenu, setOpenSortMenu] = useState(false)
     const [maps, setMaps] = useState([])
+    const [sortMapsBy, setSortMapsBy] = useState('-date')
     const [snackOpen, setSnackOpen] = useState(false)
+    const anchorSortRef = useRef(null)
 
-    const getMaps = () => {
-        fetch(urls.mapsApiUrl)
-            .then(response => response.json())
-            .then(data => setMaps(data.objects))
-    }
-
-    useEffect(() => {
-        getMaps()
-    }, [])
+    const handleSnackOpen = () => setSnackOpen(true)
 
     const handleRequestClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -96,17 +129,106 @@ const MapList = ({ classes, urls }) => {
         setSnackOpen(false)
     }
 
-    const handleSnackOpen = () => setSnackOpen(true)
+    const getMaps = () => {
+        axios(urls.mapsApiUrl, {
+            params: {
+                order_by: sortMapsBy,
+            },
+        })
+            .then(response => setMaps(response.data.objects))
+    }
+
+    useEffect(() => {
+        getMaps()
+    }, [sortMapsBy])
+
+    const handleToggle = () => {
+        setOpenSortMenu((prevOpenSortMenu) => !prevOpenSortMenu)
+    }
+
+    const handleSortMenuClose = event => {
+        if (anchorSortRef.current && anchorSortRef.current.contains(event.target)) {
+            return
+        }
+        setOpenSortMenu(false)
+    }
+
+    const prevOpenSortMenu = useRef(openSortMenu)
+    useEffect(() => {
+        if (prevOpenSortMenu.current === true && openSortMenu === false) {
+            anchorSortRef.current.focus()
+        }
+        prevOpenSortMenu.current = openSortMenu
+    }, [openSortMenu])
+
+    const handleChange = event => {
+        setSortMapsBy(event.target.value)
+    }
 
     return (
         <div className={classes.root}>
             <div className={classes.appFrame}>
-                <AppBar className={classes.appBar}>
+                <AppBar className={classes.appBar} position="static">
                     <Toolbar disableGutters={true}>
                         <img src={terriaLogo} alt="Terria Maps list" className={classes.media}/>
-                        <Typography variant="h5" type="title" color="inherit" noWrap>
-                                Terria Map
+                        <Typography variant="h5" type="title" color="inherit" noWrap className={classes.title}>
+                            Terria Map
                         </Typography>
+                        <Chip
+                            icon={<SortIcon className={classes.sortIcon}/>}
+                            label="Sort By"
+                            className={classes.sortButton}
+                            onClick={handleToggle}
+                            ref={anchorSortRef}
+                        />
+                        <Popper open={openSortMenu} anchorEl={anchorSortRef.current} role={undefined} transition
+                            disablePortal>
+                            {({TransitionProps, placement}) => (
+                                <Grow
+                                    {...TransitionProps}
+                                    style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                                >
+                                    <Paper>
+                                        <ClickAwayListener onClickAway={handleSortMenuClose}>
+                                            <FormControl component="fieldset">
+                                                <RadioGroup
+                                                    aria-label="order by"
+                                                    name="order by"
+                                                    value={sortMapsBy}
+                                                    onChange={handleChange}
+                                                    className={classes.radioGroup}
+                                                >
+                                                    <FormControlLabel
+                                                        value="-date"
+                                                        control={<StyledRadio/>}
+                                                        label="Most recent"
+                                                        className={classes.formControlLabel}
+                                                    />
+                                                    <FormControlLabel
+                                                        value="date"
+                                                        control={<StyledRadio/>}
+                                                        label="Less recent"
+                                                        className={classes.formControlLabel}
+                                                    />
+                                                    <FormControlLabel
+                                                        value="title"
+                                                        control={<StyledRadio/>}
+                                                        label="A - Z"
+                                                        className={classes.formControlLabel}
+                                                    />
+                                                    <FormControlLabel
+                                                        value="-title"
+                                                        control={<StyledRadio/>}
+                                                        label="Z - A"
+                                                        className={classes.formControlLabel}
+                                                    />
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </ClickAwayListener>
+                                    </Paper>
+                                </Grow>
+                            )}
+                        </Popper>
                     </Toolbar>
                 </AppBar>
                 <main className={classes.content}>

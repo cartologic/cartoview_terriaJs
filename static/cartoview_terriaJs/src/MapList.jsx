@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import classNames from 'classnames'
 import terriaLogo from '../img/terria-logo.png'
 import {withStyles} from '@material-ui/core/styles'
 
@@ -102,15 +101,15 @@ const MapList = ({ classes, urls }) => {
     return (
         <div className={classes.root}>
             <div className={classes.appFrame}>
-                <AppBar className={classNames(classes.appBar)}>
+                <AppBar className={classes.appBar}>
                     <Toolbar disableGutters={true}>
-                        <img src={terriaLogo} alt="Terria Maps list" className={classNames(classes.media)}/>
+                        <img src={terriaLogo} alt="Terria Maps list" className={classes.media}/>
                         <Typography variant="h5" type="title" color="inherit" noWrap>
                                 Terria Map
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <main className={classNames(classes.content)}>
+                <main className={classes.content}>
                     <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
                         {maps.map((obj, i) => {
                             return (

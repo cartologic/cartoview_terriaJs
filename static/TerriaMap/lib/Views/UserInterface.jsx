@@ -21,7 +21,7 @@ import MobileHeader from "terriajs/lib/ReactViews/Mobile/MobileHeader.jsx";
 import Notification from "terriajs/lib/ReactViews/Notification/Notification.jsx";
 import ObserveModelMixin from "terriajs/lib/ReactViews/ObserveModelMixin";
 import ProgressBar from "terriajs/lib/ReactViews/Map/ProgressBar.jsx";
-import SidePanel from "terriajs/lib/ReactViews/SidePanel/SidePanel.jsx";
+import SidePanel from "./CustomComponents/SidePanel";
 import processCustomElements from "terriajs/lib/ReactViews/StandardUserInterface/processCustomElements";
 import FullScreenButton from "terriajs/lib/ReactViews/SidePanel/FullScreenButton.jsx";
 import StoryPanel from "terriajs/lib/ReactViews/Story/StoryPanel.jsx";

@@ -1,10 +1,10 @@
+import React, { useEffect, useState} from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import CloseIcon from '@material-ui/icons/Close'
 import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
 import MapCard from './MapCard'
 import PropTypes from 'prop-types'
-import React from 'react'
 import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -76,81 +76,75 @@ const styles = theme => ({
     },
 })
 
-class MapList extends React.Component {
-    state = {
-        maps: [],
-        snackOpen: false
-    };
-    UNSAFE_componentWillMount = () => {
-        this.getMaps()
+const MapList = ({ classes, urls }) => {
+    const [maps, setMaps] = useState([])
+    const [snackOpen, setSnackOpen] = useState(false)
+
+    const getMaps = () => {
+        fetch(urls.mapsApiUrl)
+            .then(response => response.json())
+            .then(data => setMaps(data.objects))
     }
-    getMaps = () => {
-        const {urls} = this.props
-        fetch(urls.mapsApiUrl).then((response) => response.json())
-            .then(
-                (data) => {
-                    this.setState({maps: data.objects})
-                })
-    }
-    handleRequestClose = (event, reason) => {
+
+    useEffect(() => {
+        getMaps()
+    }, [])
+
+    const handleRequestClose = (event, reason) => {
         if (reason === 'clickaway') {
             return
         }
-        this.setState({snackOpen: false})
-    }
-    handleSnackOpen = () => {
-        this.setState({snackOpen: true})
+        setSnackOpen(false)
     }
 
-    render() {
-        const {classes, urls} = this.props
-        return (
-            <div className={classes.root}>
-                <div className={classes.appFrame}>
-                    <AppBar className={classNames(classes.appBar)}>
-                        <Toolbar disableGutters={true}>
-                            <img src={terriaLogo} alt="Terria Maps list" className={classNames(classes.media)}/>
-                            <Typography variant="h5" type="title" color="inherit" noWrap>
+    const handleSnackOpen = () => setSnackOpen(true)
+
+    return (
+        <div className={classes.root}>
+            <div className={classes.appFrame}>
+                <AppBar className={classNames(classes.appBar)}>
+                    <Toolbar disableGutters={true}>
+                        <img src={terriaLogo} alt="Terria Maps list" className={classNames(classes.media)}/>
+                        <Typography variant="h5" type="title" color="inherit" noWrap>
                                 Terria Map
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <main className={classNames(classes.content)}>
-                        <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
-                            {this.state.maps.map((obj, i) => {
-                                return (
-                                    <Grid key={i} item xs={12} sm={6} md={3} lg={3} className={classes.cardGrid}>
-                                        <MapCard openSnack={this.handleSnackOpen} urls={urls} map={obj}/>
-                                    </Grid>
-                                )
-                            })}
-                        </Grid>
-                        <Snackbar
-                            anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
-                            open={this.state.snackOpen}
-                            onClose={this.handleRequestClose}
-                            autoHideDuration={3000}
-                            ContentProps={{
-                                'aria-describedby': 'message-id',
-                            }}
-                            message={<span id="message-id">URL Copied to Clipboard</span>}
-                            action={[
-                                <IconButton
-                                    key="close"
-                                    aria-label="Close"
-                                    color="inherit"
-                                    className={classes.close}
-                                    onClick={this.handleRequestClose}
-                                >
-                                    <CloseIcon/>
-                                </IconButton>,
-                            ]}
-                        />
-                    </main>
-                </div>
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <main className={classNames(classes.content)}>
+                    <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
+                        {maps.map((obj, i) => {
+                            return (
+                                <Grid key={i} item xs={12} sm={6} md={3} lg={3} className={classes.cardGrid}>
+                                    <MapCard openSnack={handleSnackOpen} urls={urls} map={obj}/>
+                                </Grid>
+                            )
+                        })}
+                    </Grid>
+                    <Snackbar
+                        anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
+                        open={snackOpen}
+                        onClose={handleRequestClose}
+                        autoHideDuration={3000}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">URL Copied to Clipboard</span>}
+                        action={[
+                            <IconButton
+                                key="close"
+                                aria-label="Close"
+                                color="inherit"
+                                className={classes.close}
+                                onClick={handleRequestClose}
+                            >
+                                <CloseIcon/>
+                            </IconButton>,
+                        ]}
+                    />
+                </main>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 MapList.propTypes = {

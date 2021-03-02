@@ -75,7 +75,8 @@ class CartoviewTerriaMap(object):
         current_id = int(map_id_key) if map_id_key else 0
         if not current_id or current_id != map_id:
             request.session[self.terria_map] = map_id
-        return render(request, template, context={})
+        map_element = Map.objects.get(id=map_id)
+        return render(request, template, context={'mapTitle': map_element.title})
 
     def map_list(self, request):
         template = self.map_list_template

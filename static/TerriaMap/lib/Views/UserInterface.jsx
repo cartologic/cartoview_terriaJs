@@ -5,7 +5,7 @@ import classNames from "classnames";
 import "inobounce";
 import { withTranslation } from "react-i18next";
 
-import Branding from "terriajs/lib/ReactViews/SidePanel/Branding.jsx";
+import Branding from "./CustomComponents/Branding/Branding";
 import arrayContains from "terriajs/lib/Core/arrayContains";
 import DragDropFile from "terriajs/lib/ReactViews/DragDropFile.jsx";
 import DragDropNotification from "terriajs/lib/ReactViews/DragDropNotification.jsx";
@@ -191,7 +191,7 @@ const StandardUserInterface = createReactClass({
                       this.props.viewState.topElement = "SidePanel";
                     }}
                   >
-                    <Branding terria={terria} version={this.props.version} />
+                    <Branding />
                     <SidePanel
                       terria={terria}
                       viewState={this.props.viewState}

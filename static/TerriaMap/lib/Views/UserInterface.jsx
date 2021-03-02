@@ -17,7 +17,7 @@ import MapInteractionWindow from "terriajs/lib/ReactViews/Notification/MapIntera
 import MapNavigation from "terriajs/lib/ReactViews/Map/MapNavigation.jsx";
 import ExperimentalFeatures from "terriajs/lib/ReactViews/Map/ExperimentalFeatures.jsx";
 import MenuBar from "terriajs/lib/ReactViews/Map/MenuBar.jsx";
-import MobileHeader from "terriajs/lib/ReactViews/Mobile/MobileHeader.jsx";
+import MobileHeader from "./CustomComponents/MobileHeader";
 import Notification from "terriajs/lib/ReactViews/Notification/Notification.jsx";
 import ObserveModelMixin from "terriajs/lib/ReactViews/ObserveModelMixin";
 import ProgressBar from "terriajs/lib/ReactViews/Map/ProgressBar.jsx";

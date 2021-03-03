@@ -16,7 +16,7 @@ import MapColumn from "terriajs/lib/ReactViews/StandardUserInterface/MapColumn.j
 import MapInteractionWindow from "terriajs/lib/ReactViews/Notification/MapInteractionWindow.jsx";
 import MapNavigation from "terriajs/lib/ReactViews/Map/MapNavigation.jsx";
 import ExperimentalFeatures from "terriajs/lib/ReactViews/Map/ExperimentalFeatures.jsx";
-import MenuBar from "terriajs/lib/ReactViews/Map/MenuBar.jsx";
+import MenuBar from "./CustomComponents/MenuBar";
 import MobileHeader from "./CustomComponents/MobileHeader";
 import Notification from "terriajs/lib/ReactViews/Notification/Notification.jsx";
 import ObserveModelMixin from "terriajs/lib/ReactViews/ObserveModelMixin";

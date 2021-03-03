@@ -5,7 +5,7 @@ import PanelStyles from "terriajs/lib/ReactViews/Map/Panels/panel.scss";
 import Styles from "./maps.scss";
 import classNames from "classnames";
 import axios from "axios";
-import { withTranslation } from "react-i18next";
+import {withTranslation} from "react-i18next";
 
 const Maps = (props) => {
     const dropdownTheme = {
@@ -30,51 +30,52 @@ const Maps = (props) => {
         <MenuPanel
             theme={dropdownTheme}
             btnText={t("mapPanel.btnText")}
-            smallScreen={props.smallScreen}
+            smallScreen={props.viewState.useSmallScreenInterface}
             viewState={props.viewState}
             btnTitle={t("mapPanel.btnTitle")}
         >
-            <label className={PanelStyles.heading}>{t("mapPanel.panelLabel")}</label>
-            <p>{t("mapPanel.panelDescription")}</p>
-            {
-                maps.map(mapElement => {
-                    return (
-                        <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href={getTerriaUrl(mapElement.id)}
-                            >
-                                <img
-                                    className={Styles.image}
-                                    src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
-                                    alt={mapElement.title}
-                                />
-                            </a>
+            <div className={classNames(PanelStyles.section)}>
+                <label className={PanelStyles.heading}>{t("mapPanel.panelLabel")}</label>
+                <p>{t("mapPanel.panelDescription")}</p>
+                {
+                    maps.map(mapElement => {
+                        return (
+                            <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
+                                <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href={getTerriaUrl(mapElement.id)}
+                                >
+                                    <img
+                                        className={Styles.image}
+                                        src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
+                                        alt={mapElement.title}
+                                    />
+                                </a>
 
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={Styles.link}
-                                href={getTerriaUrl(mapElement.id)}
-                            >
-                                {mapElement.title}
-                            </a>
+                                <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={Styles.link}
+                                    href={getTerriaUrl(mapElement.id)}
+                                >
+                                    {mapElement.title}
+                                </a>
 
-                            <p>
-                                {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
-                            </p>
-                        </div>
-                    );
-                })
-            }
+                                <p>
+                                    {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
         </MenuPanel>
     );
 };
 
 Maps.propTypes = {
     viewState: PropTypes.object.isRequired,
-    smallScreen: PropTypes.bool,
     t: PropTypes.func.isRequired
 };
 

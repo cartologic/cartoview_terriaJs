@@ -13,11 +13,6 @@
             "url": ""
         },
         "appName": "Cartoview Terria Map",
-        "brandBarElements": [
-            "",
-            "<a target=\"_blank\" href=\"https://cartoview.net\"><img src=\"/static/TerriaMap/wwwroot/images/cartoview.png\" height=\"52\" title=\"Cartoview Terria Map\" /></a>",
-            ""
-        ],
         "supportEmail": "info@cartologic.com",
         "proj4ServiceBaseUrl": "proj4def/",
         "feedbackUrl": "feedback",

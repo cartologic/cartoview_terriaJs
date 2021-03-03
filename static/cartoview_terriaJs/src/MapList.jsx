@@ -11,6 +11,7 @@ import {
     Popper,
     RadioGroup,
     Snackbar,
+    SnackbarContent,
     Toolbar,
     Typography
 } from '@material-ui/core'
@@ -70,6 +71,9 @@ const styles = theme => ({
         ['@media (max-width: 1024px)']: {
             minWidth: '33.333333%'
         }
+    },
+    snackBarBg: {
+        backgroundColor: '#09274b'
     },
     appFrame: {
         position: 'relative',
@@ -259,22 +263,24 @@ const MapList = ({classes, urls}) => {
                                     open={snackOpen}
                                     onClose={handleRequestClose}
                                     autoHideDuration={3000}
-                                    ContentProps={{
-                                        'aria-describedby': 'message-id',
-                                    }}
-                                    message={<span id="message-id">URL Copied to Clipboard</span>}
-                                    action={[
-                                        <IconButton
-                                            key="close"
-                                            aria-label="Close"
-                                            color="inherit"
-                                            className={classes.close}
-                                            onClick={handleRequestClose}
-                                        >
-                                            <CloseIcon/>
-                                        </IconButton>,
-                                    ]}
-                                />
+                                >
+                                    <SnackbarContent
+                                        className={classes.snackBarBg}
+                                        aria-describedby="message-id"
+                                        message={<span id="message-id">URL Copied to Clipboard</span>}
+                                        action={[
+                                            <IconButton
+                                                key="close"
+                                                aria-label="Close"
+                                                color="inherit"
+                                                className={classes.close}
+                                                onClick={handleRequestClose}
+                                            >
+                                                <CloseIcon/>
+                                            </IconButton>,
+                                        ]}
+                                    />
+                                </Snackbar>
                             </div>
                         )
                     }

@@ -75,7 +75,13 @@ class CartoviewTerriaMap(object):
         current_id = int(map_id_key) if map_id_key else 0
         if not current_id or current_id != map_id:
             request.session[self.terria_map] = map_id
-        return render(request, template, context={})
+        map_element = Map.objects.get(id=map_id)
+        context = {
+            'mapTitle': map_element.title,
+            'site_url': settings.SITEURL,
+            'mapId': map_id
+        }
+        return render(request, template, context)
 
     def map_list(self, request):
         template = self.map_list_template
@@ -139,7 +145,6 @@ class CartoviewTerriaMap(object):
                             "north": y1,
                             "east": x1 
                         },
-                        "viewerMode": "2d",
                     }
                 )
             map_item.update({"items": layers_as_catalog_item})

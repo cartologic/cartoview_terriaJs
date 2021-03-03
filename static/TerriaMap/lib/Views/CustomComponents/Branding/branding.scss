@@ -1,0 +1,19 @@
+@import "~terriajs-variables";
+@import "~terriajs/lib/Sass/common/mixins";
+
+.branding {
+  overflow: hidden;
+  padding: 0 5px;
+  @include transition(all, 0.5s, linear);
+
+  @media (max-width: $sm) {
+    width: 100%;
+    padding: $padding;
+  }
+}
+
+.mapTitle {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}

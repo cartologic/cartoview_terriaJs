@@ -123,6 +123,12 @@
     "qualityLabel": "Quality",
     "performanceLabel": "Performance"
   },
+  "mapPanel": {
+    "btnText": "Maps",
+    "btnTitle": "See available maps",
+    "panelLabel": "Available Maps",
+    "panelDescription": "Clicking on a map below will open it in a separate window or tab."
+  },
   "feedback": {
     "feedbackPreamble": "We would love to hear from you!",
     "title": "Feedback",

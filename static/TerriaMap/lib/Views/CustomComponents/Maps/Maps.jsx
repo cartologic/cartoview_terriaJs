@@ -5,6 +5,7 @@ import PanelStyles from "terriajs/lib/ReactViews/Map/Panels/panel.scss";
 import Styles from "./maps.scss";
 import classNames from "classnames";
 import axios from "axios";
+import { withTranslation } from "react-i18next";
 
 const Maps = (props) => {
     const dropdownTheme = {
@@ -13,6 +14,7 @@ const Maps = (props) => {
     };
 
     const [maps, setMaps] = useState([]);
+    const { t } = props;
     // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
     const { mapsApiUrl, getTerriaUrl, currentMapId } = globalURLs;
 
@@ -27,16 +29,13 @@ const Maps = (props) => {
     return (
         <MenuPanel
             theme={dropdownTheme}
-            btnText="Maps"
+            btnText={t("mapPanel.btnText")}
             smallScreen={props.smallScreen}
             viewState={props.viewState}
-            btnTitle="See available maps"
+            btnTitle={t("mapPanel.btnTitle")}
         >
-            <label className={PanelStyles.heading}>Available Maps</label>
-            <p>
-                Clicking on a map below will open it in a separate window or
-                tab.
-            </p>
+            <label className={PanelStyles.heading}>{t("mapPanel.panelLabel")}</label>
+            <p>{t("mapPanel.panelDescription")}</p>
             {
                 maps.map(mapElement => {
                     return (
@@ -76,6 +75,7 @@ const Maps = (props) => {
 Maps.propTypes = {
     viewState: PropTypes.object.isRequired,
     smallScreen: PropTypes.bool,
+    t: PropTypes.func.isRequired
 };
 
-export default Maps;
+export default withTranslation()(Maps);

@@ -45,7 +45,7 @@ const styles = () => ({
 })
 
 const StyledRadio = props => {
-    const { classes } = props
+    const { classes, ...other } = props
     return (
         <Radio
             className={classes.root}
@@ -53,7 +53,7 @@ const StyledRadio = props => {
             color="default"
             checkedIcon={<span className={[classes.icon, classes.checkedIcon].join(" ")} />}
             icon={<span className={classes.icon} />}
-            {...props}
+            {...other}
         />
     )
 }

@@ -12,6 +12,7 @@ import Icon from "terriajs/lib/ReactViews/Icon.jsx";
 import ObserveModelMixin from "terriajs/lib/ReactViews/ObserveModelMixin";
 import Prompt from "terriajs/lib/ReactViews/Generic/Prompt";
 import Styles from "terriajs/lib/ReactViews/Map/menu-bar.scss";
+import Maps from "./Maps/Maps";
 
 // The map navigation region
 const MenuBar = createReactClass({
@@ -160,6 +161,11 @@ const MenuBar = createReactClass({
                             />
                         </li>
                     )}
+                    <li className={Styles.menuItem}>
+                        <Maps
+                            viewState={this.props.viewState}
+                        />
+                    </li>
                     <If condition={!this.props.viewState.useSmallScreenInterface}>
                         <For each="element" of={this.props.menuItems} index="i">
                             <li className={Styles.menuItem} key={i}>

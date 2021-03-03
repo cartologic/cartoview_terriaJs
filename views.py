@@ -145,7 +145,6 @@ class CartoviewTerriaMap(object):
                             "north": y1,
                             "east": x1 
                         },
-                        "viewerMode": "2d",
                     }
                 )
             map_item.update({"items": layers_as_catalog_item})

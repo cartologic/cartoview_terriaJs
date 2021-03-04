@@ -41,6 +41,7 @@ const styles = () => ({
     },
     menuItemButton: {
         color: '#3BBDD4',
+        padding: '1px 10px',
         '&:hover': {
             backgroundColor: 'transparent'
         }

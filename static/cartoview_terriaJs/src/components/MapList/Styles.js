@@ -13,32 +13,6 @@ const styles = theme => ({
         flexGrow: 1,
         justifyContent: 'center'
     },
-    title: {
-        flexGrow: 1
-    },
-    sortButton: {
-        margin: '0px 80px',
-        padding: 5,
-        backgroundColor: '#09274b',
-        fontSize: 15,
-        color: '#fff',
-        '&:hover, &:focus': {
-            backgroundColor: '#124e96'
-        },
-        ['@media (max-width: 768px)']: {
-            margin: '0px 14px',
-        }
-    },
-    sortIcon: {
-        color: '#fff'
-    },
-    radioGroup: {
-        margin: 10
-    },
-    formControlLabel: {
-        marginLeft: 0,
-        marginRight: 6,
-    },
     cardGrid: {
         ['@media (max-width: 1024px)']: {
             minWidth: '33.333333%'
@@ -80,13 +54,6 @@ const styles = theme => ({
                 marginTop: 64,
             },
         },
-    },
-    media: {
-        height: 40,
-        margin: "0px 20px",
-        ['@media (max-width: 768px)']: {
-            margin: '0px 14px',
-        }
     },
 })
 

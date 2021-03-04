@@ -1,5 +1,5 @@
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import MapList from './MapList'
+import MapList from './MapList/MapList'
 import React from 'react'
 import { cyan } from '@material-ui/core/colors'
 

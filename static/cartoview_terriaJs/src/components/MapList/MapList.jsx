@@ -17,13 +17,13 @@ import {
 } from '@material-ui/core'
 import React, {useEffect, useRef, useState} from 'react'
 import CloseIcon from '@material-ui/icons/Close'
-import CustomizedCircularProgress from './CircularProgress/CustomCircularProgress'
-import MapCard from './MapCard'
+import CustomizedCircularProgress from '../CircularProgress/CustomCircularProgress'
+import MapCard from '../MapCard/MapCard'
 import PropTypes from 'prop-types'
 import SortIcon from '@material-ui/icons/Sort'
-import StyledRadio from './StyledRadio'
+import StyledRadio from '../StyledRadio/StyledRadio'
 import axios from 'axios'
-import terriaLogo from '../img/terria-logo.png'
+import terriaLogo from '../../../img/terria-logo.png'
 import {withStyles} from '@material-ui/core/styles'
 
 const styles = theme => ({

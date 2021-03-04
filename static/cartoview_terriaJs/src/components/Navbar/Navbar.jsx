@@ -14,12 +14,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import SortIcon from '@material-ui/icons/Sort'
 import StyledRadio from '../StyledRadio/StyledRadio'
+import ToggleView from './ToggleView'
 import styles from './Styles'
 import terriaLogo from '../../../img/terria-logo.png'
 import { withStyles } from '@material-ui/core/styles'
 
 
-const Navbar = ({ classes, sortMapsBy, handleChange }) => {
+const Navbar = ({ classes, sortMapsBy, handleChange, mapsView, handleChangeMapsView }) => {
     const [openSortMenu, setOpenSortMenu] = useState(false)
     const anchorSortRef = useRef(null)
 
@@ -47,6 +48,7 @@ const Navbar = ({ classes, sortMapsBy, handleChange }) => {
             <Typography variant="h5" type="title" color="inherit" noWrap className={classes.title}>
                 Terria Map
             </Typography>
+            <ToggleView handleChangeMapsView={handleChangeMapsView} mapsView={mapsView}/>
             <Chip
                 icon={<SortIcon className={classes.sortIcon}/>}
                 label="Sort By"
@@ -114,7 +116,9 @@ const Navbar = ({ classes, sortMapsBy, handleChange }) => {
 Navbar.propTypes = {
     classes: PropTypes.object.isRequired,
     sortMapsBy: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
+    handleChange: PropTypes.func.isRequired,
+    mapsView: PropTypes.string.isRequired,
+    handleChangeMapsView: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Navbar)

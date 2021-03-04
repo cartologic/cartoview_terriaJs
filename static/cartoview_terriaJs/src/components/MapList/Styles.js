@@ -9,15 +9,6 @@ const styles = theme => ({
         width: theme.spacing(4),
         height: theme.spacing(4),
     },
-    rootGrid: {
-        flexGrow: 1,
-        justifyContent: 'center'
-    },
-    cardGrid: {
-        ['@media (max-width: 1024px)']: {
-            minWidth: '33.333333%'
-        }
-    },
     snackBarBg: {
         backgroundColor: '#09274b'
     },

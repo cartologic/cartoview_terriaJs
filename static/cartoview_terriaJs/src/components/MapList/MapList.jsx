@@ -1,6 +1,6 @@
 import {
     AppBar,
-    Grid,
+    Box,
     IconButton,
     Snackbar,
     SnackbarContent,
@@ -8,7 +8,8 @@ import {
 import React, {useEffect, useState} from 'react'
 import CloseIcon from '@material-ui/icons/Close'
 import CustomizedCircularProgress from '../CircularProgress/CustomCircularProgress'
-import MapCard from '../MapCard/MapCard'
+import GridView from './MapView/GridView'
+import ListView from './MapView/ListView'
 import Navbar from '../Navbar/Navbar'
 import PropTypes from 'prop-types'
 import axios from 'axios'
@@ -18,6 +19,7 @@ import {withStyles} from '@material-ui/core/styles'
 const MapList = ({classes, urls}) => {
     const [maps, setMaps] = useState([])
     const [loadingMaps, setLoadingMaps] = useState(true)
+    const [mapsView, setMapsView] = useState('grid')
     const [sortMapsBy, setSortMapsBy] = useState('-date')
     const [snackOpen, setSnackOpen] = useState(false)
 
@@ -53,27 +55,33 @@ const MapList = ({classes, urls}) => {
         setSortMapsBy(event.target.value)
     }
 
+    const handleChangeMapsView = (event, nextView) => {
+        setMapsView(nextView)
+    }
+
     return (
         <div className={classes.root}>
             <div className={classes.appFrame}>
                 <AppBar className={classes.appBar} position="static">
-                    <Navbar sortMapsBy={sortMapsBy} handleChange={handleChange}/>
+                    <Navbar
+                        sortMapsBy={sortMapsBy}
+                        handleChange={handleChange}
+                        mapsView={mapsView}
+                        handleChangeMapsView={handleChangeMapsView}
+                    />
                 </AppBar>
                 <main className={classes.content}>
                     {
                         loadingMaps ? (
                             <CustomizedCircularProgress />
                         ) : (
-                            <div>
-                                <Grid container direction={"row"} className={classes.rootGrid} spacing={4}>
-                                    {maps.map((obj, i) => {
-                                        return (
-                                            <Grid key={i} item xs={12} sm={6} md={3} lg={3} className={classes.cardGrid}>
-                                                <MapCard openSnack={handleSnackOpen} urls={urls} map={obj}/>
-                                            </Grid>
-                                        )
-                                    })}
-                                </Grid>
+                            <Box>
+                                {
+                                    mapsView === 'grid' ?
+                                        <GridView maps={maps} handleSnackOpen={handleSnackOpen} urls={urls}/>
+                                        :
+                                        <ListView maps={maps}/>
+                                }
                                 <Snackbar
                                     anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
                                     open={snackOpen}
@@ -97,7 +105,7 @@ const MapList = ({classes, urls}) => {
                                         ]}
                                     />
                                 </Snackbar>
-                            </div>
+                            </Box>
                         )
                     }
                 </main>

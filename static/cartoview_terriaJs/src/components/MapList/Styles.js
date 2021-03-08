@@ -37,8 +37,8 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        height: 'calc(100% - 80px)',
-        marginTop: 80,
+        height: 'calc(100% - 45px)',
+        marginTop: 45,
         [theme.breakpoints.up('sm')]: {
             content: {
                 height: 'calc(100% - 64px)',
@@ -46,6 +46,9 @@ const styles = theme => ({
             },
         },
     },
+    noMaps: {
+        textAlign: 'center'
+    }
 })
 
 export default styles

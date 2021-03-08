@@ -114,7 +114,7 @@
     "native": "محلي",
     "screen": "شاشة",
     "btnTitle": "تغيير العرض",
-    "btnText": "خريطة",
+    "btnText": "إعدادات الخريطة",
     "mapView": "عرض الخريطة",
     "baseMap": "خريطة أساسية",
     "imageOptimisation": "تحسين الصورة",
@@ -122,6 +122,15 @@
     "mapQuality": "جودة الخريطة النقطية:",
     "qualityLabel": "جودة",
     "performanceLabel": "أداء"
+  },
+  "mapPanel": {
+    "btnText": "الخرائط",
+    "btnTitle": "مشاهدة الخرائط المتاحة",
+    "panelLabel": "الخرائط المتاحة",
+    "panelDescription": "النقر على خريطة بالأسفل سوف يعرضها في نافذة أو تبويب منفصل."
+  },
+  "about": {
+    "caption": "عن"
   },
   "feedback": {
     "feedbackPreamble": "نود أن نسمع منك!",

@@ -115,6 +115,11 @@ const StandardUserInterface = createReactClass({
   componentDidMount() {
     this._wrapper.addEventListener("dragover", this.dragOverListener, false);
     showStoryPrompt(this.props.viewState, this.props.terria);
+
+    // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
+    const { currentLanguage } = globalURLs;
+    i18next.changeLanguage(currentLanguage);
+    document.body.dir = i18next.dir();
   },
   componentWillUnmount() {
     window.removeEventListener("resize", this.resizeListener, false);
@@ -147,11 +152,6 @@ const StandardUserInterface = createReactClass({
       this.props.viewState.storyShown &&
       !this.props.viewState.explorerPanelIsVisible &&
       !this.props.viewState.storyBuilderShown;
-
-    // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
-    const { currentLanguage } = globalURLs;
-    i18next.changeLanguage(currentLanguage);
-    document.body.dir = i18next.dir();
     return (
       <div className={Styles.storyWrapper}>
         <InternetExplorerOverlay viewState={this.props.viewState} />

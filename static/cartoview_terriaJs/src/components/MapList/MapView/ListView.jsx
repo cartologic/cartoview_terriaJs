@@ -1,6 +1,4 @@
 import {
-    Avatar,
-    Paper,
     Table,
     TableBody,
     TableCell,
@@ -8,24 +6,25 @@ import {
     TableHead,
     TableRow
 } from '@material-ui/core'
+import ListItem from './ListItem/ListItem'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { cyan } from '@material-ui/core/colors'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = () => ({
     table: {
         minWidth: 650,
     },
-    avatar: {
-        backgroundColor: cyan[500],
-        float: 'right'
+    mapRow: {
+        '&:hover': {
+            backgroundColor: '#3BBDD4',
+        },
     }
 })
 
-const ListView = ({ classes, maps }) => {
+const ListView = ({ classes, maps, urls, openSnack }) => {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -37,21 +36,8 @@ const ListView = ({ classes, maps }) => {
                 <TableBody>
                     {
                         maps.map(mapEl => (
-                            <TableRow key={mapEl.id}>
-                                <TableCell component="th" scope="row">
-                                    {mapEl.title}
-                                </TableCell>
-                                <TableCell align="right">
-                                    <Avatar
-                                        aria-label="Recipe"
-                                        className={classes.avatar}
-                                        title={mapEl.owner__username}>
-                                        {mapEl.owner__username[0].toUpperCase()}
-                                    </Avatar>
-                                </TableCell>
-                                <TableCell align="right">
-                                    {new Date(mapEl.date).toDateString()}
-                                </TableCell>
+                            <TableRow key={mapEl.id} className={classes.mapRow}>
+                                <ListItem openSnack={openSnack} urls={urls} map={mapEl}/>
                             </TableRow>
                         ))}
                 </TableBody>
@@ -62,7 +48,9 @@ const ListView = ({ classes, maps }) => {
 
 ListView.propTypes = {
     classes: PropTypes.object.isRequired,
-    maps: PropTypes.array.isRequired
+    maps: PropTypes.array.isRequired,
+    urls: PropTypes.object.isRequired,
+    openSnack: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(ListView)

@@ -80,7 +80,7 @@ const MapList = ({classes, urls}) => {
                                     mapsView === 'grid' ?
                                         <GridView maps={maps} handleSnackOpen={handleSnackOpen} urls={urls}/>
                                         :
-                                        <ListView maps={maps}/>
+                                        <ListView maps={maps} urls={urls} openSnack={handleSnackOpen}/>
                                 }
                                 <Snackbar
                                     anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}

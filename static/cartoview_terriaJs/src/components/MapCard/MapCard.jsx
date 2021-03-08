@@ -78,8 +78,8 @@ class MapCard extends React.Component {
                         <div>
                             <IconButton
                                 ref={this.anchorRef}
-                                aria-label="settings"
-                                aria-controls={this.state.open ? 'menu-list-grow' : undefined}
+                                aria-label="grid"
+                                aria-controls={this.state.open ? 'menu-grid-grow' : undefined}
                                 onClick={this.handleToggle}
                             >
                                 <MoreVertIcon />
@@ -92,7 +92,7 @@ class MapCard extends React.Component {
                                     >
                                         <Paper>
                                             <ClickAwayListener onClickAway={this.handleClose}>
-                                                <MenuList autoFocusItem={this.state.open} id="menu-list-grow">
+                                                <MenuList autoFocusItem={this.state.open} id="menu-grid-grow">
                                                     <MenuItem>
                                                         <IconButton
                                                             className={classes.menuItemButton}

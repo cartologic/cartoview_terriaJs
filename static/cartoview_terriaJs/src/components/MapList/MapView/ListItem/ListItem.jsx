@@ -22,6 +22,9 @@ import { cyan } from '@material-ui/core/colors'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = () => ({
+    mapTitle: {
+        cursor: 'pointer'
+    },
     avatar: {
         backgroundColor: cyan[500],
         float: 'right'
@@ -67,7 +70,13 @@ const ListItem = ({ classes, urls, map, openSnack }) => {
     
     return (
         <Fragment>
-            <TableCell component="th" scope="row">
+            <TableCell 
+                component="th" 
+                scope="row"
+                title={`Open ${map.title} map`}
+                onClick={() => window.location.href = urls.getTerriaUrl(map.id)}
+                className={classes.mapTitle}
+            >
                 {map.title}
             </TableCell>
             <TableCell align="right">

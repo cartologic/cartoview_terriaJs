@@ -17,7 +17,9 @@ const styles = () => ({
     },
     mapRow: {
         '&:hover': {
-            backgroundColor: '#3BBDD4',
+            backgroundColor: '#b0e4ed',
+            transition: 'all 0.2s ease-in-out',
+            boxShadow: '0 9px 4px -6px #3bbdd4'
         },
     }
 })

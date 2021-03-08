@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import "inobounce";
 import { withTranslation } from "react-i18next";
-
+import i18next from "i18next";
 import Branding from "./CustomComponents/Branding/Branding";
 import arrayContains from "terriajs/lib/Core/arrayContains";
 import DragDropFile from "terriajs/lib/ReactViews/DragDropFile.jsx";
@@ -147,6 +147,11 @@ const StandardUserInterface = createReactClass({
       this.props.viewState.storyShown &&
       !this.props.viewState.explorerPanelIsVisible &&
       !this.props.viewState.storyBuilderShown;
+
+    // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
+    const { currentLanguage } = globalURLs;
+    i18next.changeLanguage(currentLanguage);
+    document.body.dir = i18next.dir();
     return (
       <div className={Styles.storyWrapper}>
         <InternetExplorerOverlay viewState={this.props.viewState} />

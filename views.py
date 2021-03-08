@@ -85,7 +85,11 @@ class CartoviewTerriaMap(object):
 
     def map_list(self, request):
         template = self.map_list_template
-        return render(request, template, context={"site_url": settings.SITEURL})
+        context = {
+            'site_url': settings.SITEURL,
+            'current_username': request.user.username
+        }
+        return render(request, template, context)
 
     def server_config_view(self, request):
         return JsonResponse(self.server_config)

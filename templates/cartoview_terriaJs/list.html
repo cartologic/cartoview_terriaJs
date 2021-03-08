@@ -10,8 +10,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="{% static 'TerriaMap/wwwroot/favicons/favicon-96x96.png' %}">
         <title>Terria Map</title>
         <style>
-            html,
-            body {
+            html, body {
                 margin: 0px;
                 height: 100%;
                 padding: 0px;
@@ -23,17 +22,11 @@
     </head>
     <body>
         <div id="map-list"></div>
-        <script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}"></script>
         <script>
             const globalURLs = {
-                mapsApiUrl:
-                    "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
-                getTerriaUrl: function (id) {
-                    return "{{site_url}}apps/cartoview_terriaJs/" + id;
-                },
-                getMapDetailsUrl: function (id) {
-                    return "/maps/" + id;
-                },
+                mapsApiUrl: "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
+                getTerriaUrl: id => "{{site_url}}apps/cartoview_terriaJs/" + id,
+                getMapDetailsUrl: id => "/maps/" + id,
                 currentUsername: "{{current_username}}"
             };
         </script>

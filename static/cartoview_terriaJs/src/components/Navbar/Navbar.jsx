@@ -4,6 +4,7 @@ import {
     FormControl,
     FormControlLabel,
     Grow,
+    Hidden,
     Paper,
     Popper,
     RadioGroup,
@@ -48,7 +49,9 @@ const Navbar = ({ classes, sortMapsBy, handleChange, mapsView, handleChangeMapsV
             <Typography variant="h5" type="title" color="inherit" noWrap className={classes.title}>
                 Terria Map
             </Typography>
-            <ToggleView handleChangeMapsView={handleChangeMapsView} mapsView={mapsView}/>
+            <Hidden smDown>
+                <ToggleView handleChangeMapsView={handleChangeMapsView} mapsView={mapsView}/>
+            </Hidden>
             <Chip
                 icon={<SortIcon className={classes.sortIcon}/>}
                 label="Sort By"

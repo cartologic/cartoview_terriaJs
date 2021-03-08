@@ -3,6 +3,7 @@ from django.urls import re_path
 from django.shortcuts import HttpResponse, get_object_or_404, render
 from django.http import JsonResponse
 from django.views.generic import TemplateView
+from django.utils.translation import get_language
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
@@ -79,7 +80,8 @@ class CartoviewTerriaMap(object):
         context = {
             'mapTitle': map_element.title,
             'site_url': settings.SITEURL,
-            'mapId': map_id
+            'mapId': map_id,
+            'currentLanguage': get_language()
         }
         return render(request, template, context)
 

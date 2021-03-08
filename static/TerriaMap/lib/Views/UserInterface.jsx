@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import "inobounce";
 import { withTranslation } from "react-i18next";
-
+import i18next from "i18next";
 import Branding from "./CustomComponents/Branding/Branding";
 import arrayContains from "terriajs/lib/Core/arrayContains";
 import DragDropFile from "terriajs/lib/ReactViews/DragDropFile.jsx";
@@ -115,6 +115,11 @@ const StandardUserInterface = createReactClass({
   componentDidMount() {
     this._wrapper.addEventListener("dragover", this.dragOverListener, false);
     showStoryPrompt(this.props.viewState, this.props.terria);
+
+    // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
+    const { currentLanguage } = globalURLs;
+    i18next.changeLanguage(currentLanguage);
+    document.body.dir = i18next.dir();
   },
   componentWillUnmount() {
     window.removeEventListener("resize", this.resizeListener, false);

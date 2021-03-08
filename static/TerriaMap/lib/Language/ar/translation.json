@@ -1,51 +1,51 @@
 {
   "general": {
-    "close": "Close",
-    "open": "Open",
-    "prev": "Prev",
-    "next": "Next",
-    "skip": "Skip",
-    "delete": "Delete",
-    "cancel": "Cancel"
+    "close": "غلق",
+    "open": "فتح",
+    "prev": "السابق",
+    "next": "التالي",
+    "skip": "تجاوز",
+    "delete": "مسح",
+    "cancel": "إلغاء"
   },
   "measure": {
-    "measureTool": "Measure Tool",
-    "measureDistance": "Measure distance between locations"
+    "measureTool": "أداة القياس",
+    "measureDistance": "قياس المسافة بين المواقع"
   },
   "location": {
-    "errorGettingLocation": "Error getting location",
-    "browserCannotProvide": "Your browser cannot provide your location.",
-    "myLocation": "My Location",
-    "location": "Location",
-    "originError": "Your browser can only provide your location when using https. You may be able to use {{secureUrl}} instead.",
-    "centreMap": "Centre map at your current location"
+    "errorGettingLocation": "ثمة خطأ في الوصول للموقع",
+    "browserCannotProvide": "متصفحك لا يتيح الوصول لموقعك",
+    "myLocation": "موقعي",
+    "location": "موقع",
+    "originError": "يمكن لمتصفحك إتاحة موقعك فقط عند إستخدام https. قد تتمكن من إستخدام {{secureUrl}} بدلًا من ذلك",
+    "centreMap": "حدد مركز الخريطة حسب موقعك الحالي"
   },
   "splitterTool": {
-    "toggleSplitterTool": "Enable side-by-side comparison between two different sets of data",
-    "title": "Drag left or right to adjust views",
+    "toggleSplitterTool": "تمكين المقارنة جنبًا إلى جنب بين مجموعتين مختلفتين من البيانات",
+    "title": "إسحب إلى اليسار أو اليمين لضبط العرض",
     "workbench": {
-      "goleftTitle": "Show on the left side",
-      "goleft": "Left",
-      "bothTitle": "Show on both sides",
-      "both": "Both",
-      "gorightTitle": "Show on the right side",
-      "goright": "Right",
-      "copyName": "{{name}} (copy)"
+      "goleftTitle": "إظهر علي الجانب الأيسر",
+      "goleft": "اليسار",
+      "bothTitle": "إظهر علي كلا الجانبين",
+      "both": "كلاهما",
+      "gorightTitle": "إظهر علي الجانب الأيمن",
+      "goright": "اليمين",
+      "copyName": "{{name}} (نسخ)"
     }
   },
   "zoomCotrol": {
-    "zoomIn": "Zoom in",
-    "zoomReset": "Reset zoom",
-    "zoomOut": "Zoom out"
+    "zoomIn": "تكبير",
+    "zoomReset": "إعادة ضبط التكبير/التصغير",
+    "zoomOut": "تصغير"
   },
   "compass": {
-    "description": "Drag outer ring: rotate view.\nDrag inner gyroscope: free orbit.\nDouble-click: reset view.\nTIP: You can also free orbit by holding the CTRL key and dragging the map.",
-    "title": "Click and drag to rotate the camera"
+    "description": "اسحب الحلقة الخارجية: تدوير العرض.\nاسحب الجيروسكوب الداخلي: المدار الحر.\nانقر نقرًا مزدوجًا: إعادة تعيين العرض.\nنصيحة: يمكنك أيضًا تحرير المدار بالضغط على مفتاح CTRL وسحب الخريطة.",
+    "title": "انقر واسحب لتدوير الكاميرا"
   },
   "AR": {
-    "title": "Experimental Feature: Augmented Reality",
-    "experimentalFeatureMessage": "Augmented Reality mode is currently in beta. This mode is only designed for use on the latest high end mobile devices. <br /><br />WARNING: This mode can consume a lot of data, please be mindful of data usage charges from your network provider. <br /><br />The accuracy of this mode depends on the accuracy of your mobile devices internal compass.",
-    "confirmText": "Got it",
+    "title": "خاصية تجريبية: الواقع الإفتراضي",
+    "experimentalFeatureMessage": "نمط الواقع الإفتراضي المتاح حاليًا في طوره الأول. هذا النمط مصمم فقط للاستخدام على أحدث الأجهزة النقالة الجديدة. <br /><br />تحذير: هذا النمط يمكن أن يستهلك الكثير من البيانات ، يرجى مراعاة رسوم استخدام البيانات من مزود شبكتك. <br /><br />دقة هذا النمط تعتمد على دقة البوصلة الداخلية للأجهزة المحمولة.",
+    "confirmText": "فهمت",
     "manualAlignmentTitle": "Manual Alignment",
     "manualAlignmentMessage": "Align your mobile device so that it corresponds with the maps current alignment, then click the blinking compass. If no landmarks to align with are currently visible on the map, you can move the map using drag and pinch actions until a recognisable landmark is visible before aligning the device with the map. <br /><div>{{img}}</div> <br />Tip: The sun or moon are often good landmarks to align with if you are in a location you aren't familiar with (be careful not to look at the sun - it can hurt your eyes).",
     "resetAlignmentTitle": "Reset Alignment",
@@ -64,424 +64,424 @@
     "elev": "Elev"
   },
   "share": {
-    "browserPrint": "For better printed results, please use {{appName}}'s Print button instead of your web browser's print feature.",
-    "shortLinkShortening": "Shortening...",
-    "shortLinkError": "An error occurred while attempting to shorten the URL.  Please check your internet connection and try again.",
-    "localDataNote": "<0><0>Note:</0></0><1>The following data sources will NOT be shared because they include data from this local system. To share these data sources, publish their data on a web server and <2>add them using a url</2>.</1>",
-    "generatingUrl": "Generating share URL...",
-    "printTitle": "Print Map",
-    "printExplanation": "Open a printable version of this map.",
-    "printButton": "Print",
-    "printViewButton": "Show Print View",
-    "creatingPrintView": "Creating print view...",
-    "btnAdvanced": "Advanced options",
-    "embedTitle": "To embed, copy this code to embed this map into an HTML page:",
-    "shortenUsingService": "Shorten the share URL using a web service",
-    "btnCatalogShareText": "Share",
-    "btnStoryShareText": "Share",
-    "btnMapShareText": "Share",
-    "btnCatalogShareTitle": "Share your catalogue with others",
-    "btnStoryShareTitle": "Share your story with others",
-    "btnMapShareTitle": "Share your map with others"
+    "browserPrint": "للحصول على نتائج طباعة أفضل، يُرجى استخدام زر طباعة {{appName}} بدلًا من ميزة الطباعة في متصفح الويب لديك.",
+    "shortLinkShortening": "جاري تقصير الرابط...",
+    "shortLinkError": "حدث خطأ أثناء محاولة تقصير الرابط. يرجى التحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
+    "localDataNote": "<0><0>ملحوظة:</0></0><1>لن يتم مشاركة مصادر البيانات التالية لأنها تتضمن بيانات من هذا الموقع. لمشاركة مصادر البيانات هذه ، انشر بياناتها على خادم ويب and <2>يمكنك إضافتهم من خلال الرابط</2>.</1>",
+    "generatingUrl": "جاري إعداد رابط المشاركة...",
+    "printTitle": "إطبع الخريطة",
+    "printExplanation": "افتح نسخة قابلة للطباعة من هذه الخريطة.",
+    "printButton": "إطبع",
+    "printViewButton": "إظهر شكل الخريطة في الطباعة",
+    "creatingPrintView": "عرض شكل الخريطة...",
+    "btnAdvanced": "خيارات متقدمة",
+    "embedTitle": "للتضمين ، انسخ هذا الرمز لتضمين هذه الخريطة في صفحة HTML:",
+    "shortenUsingService": "تقصير رابط المشاركة بإستخدام خدمة ويب",
+    "btnCatalogShareText": "شارك",
+    "btnStoryShareText": "شارك",
+    "btnMapShareText": "مشاركة",
+    "btnCatalogShareTitle": "شارك قائمة البيانات الخاصة بك مع الآخرين",
+    "btnStoryShareTitle": "شارك قصتك مع الآخرين",
+    "btnMapShareTitle": "شارك خريطتك مع الآخرين"
   },
   "countDatasets": {
-    "btnText": "Start",
-    "loadError": "failed to load.",
-    "countingMessage": "Counting, please wait...",
-    "totals": "<div>The catalog contains {{items}} items in {{groups}} groups.</div>",
-    "subTotals": "<div> {{name}}: {{items}} items / {{groups}} groups</div>",
-    "recount": "Recount",
-    "title": "Count Datasets",
-    "btnCount": "Count datasets"
+    "btnText": "إبدأ",
+    "loadError": "فشل في التحميل.",
+    "countingMessage": "جاري العدّ، برجاء الإنتظار...",
+    "totals": "<div>تحتوي القائمة علي {{items}} عنصر في {{groups}} مجموعة.</div>",
+    "subTotals": "<div> {{name}}: {{items}} عنصر / {{groups}} مجموعة</div>",
+    "recount": "إعادة العدّ",
+    "title": "عدّ البيانات",
+    "btnCount": "عدّ البيانات"
   },
   "toolsPanel": {
-    "btnText": "Tool",
-    "btnTitle": "Advanced toolbox"
+    "btnText": "أداة",
+    "btnTitle": "أدوات متقدمة"
   },
   "settingPanel": {
-    "none": "(None)",
+    "none": "(لا يوجد)",
     "viewerModeLabels": {
-      "CesiumTerrain": "3D Terrain",
-      "CesiumEllipsoid": "3D Smooth",
-      "Leaflet": "2D"
+      "CesiumTerrain": "تضاريس ثلاثية الأبعاد",
+      "CesiumEllipsoid": "سهول ثلاثية الأبعاد",
+      "Leaflet": "ثنائي الأبعاد"
     },
     "qualityLabels": {
-      "maximumPerformance": "Maximum performance, lower quality",
-      "balancedPerformance": "Balanced performance & quality",
-      "lowerPerformance": "Maximum quality, lower performance"
+      "maximumPerformance": "أقصى أداء ، جودة أقل",
+      "balancedPerformance": "أداء وجودة متوازنان",
+      "lowerPerformance": "جودة قصوى وأداء أقل"
     },
-    "nativeResolutionLabel": "Press to stop using {{resolution1}} resolution and start using {{resolution2}} resolution",
-    "native": "native",
-    "screen": "screen",
-    "btnTitle": "Change map view",
-    "btnText": "Map Settings",
-    "mapView": "Map View",
-    "baseMap": "Base Map",
-    "imageOptimisation": "Image Optimisation",
-    "nativeResolutionHeader": "Use native device resolution",
-    "mapQuality": "Raster Map Quality:",
-    "qualityLabel": "Quality",
-    "performanceLabel": "Performance"
+    "nativeResolutionLabel": "اضغط لإيقاف استخدام الدقة {{resolution1}} وابدأ في استخدام دقة {{resolution2}}",
+    "native": "محلي",
+    "screen": "شاشة",
+    "btnTitle": "تغيير العرض",
+    "btnText": "إعدادات الخريطة",
+    "mapView": "عرض الخريطة",
+    "baseMap": "خريطة أساسية",
+    "imageOptimisation": "تحسين الصورة",
+    "nativeResolutionHeader": "استخدم دقة الجهاز الأصلية",
+    "mapQuality": "جودة الخريطة النقطية:",
+    "qualityLabel": "جودة",
+    "performanceLabel": "أداء"
   },
   "mapPanel": {
-    "btnText": "Maps",
-    "btnTitle": "See available maps",
-    "panelLabel": "Available Maps",
-    "panelDescription": "Clicking on a map below will open it in a separate window or tab."
+    "btnText": "الخرائط",
+    "btnTitle": "مشاهدة الخرائط المتاحة",
+    "panelLabel": "الخرائط المتاحة",
+    "panelDescription": "النقر على خريطة بالأسفل سوف يعرضها في نافذة أو تبويب منفصل."
   },
   "about": {
-    "caption": "About"
+    "caption": "عن"
   },
   "feedback": {
-    "feedbackPreamble": "We would love to hear from you!",
-    "title": "Feedback",
-    "close": "close feedback",
-    "yourName": "Your name (optional)",
-    "email": "Email address (optional)<br/><2>We can't follow up without it!</2>",
-    "commentQuestion": "Comment or question",
-    "shareWithDevelopers": "Share my map view with {{appName}} developers",
-    "captionText": "This helps us to troubleshoot issues by letting us see what you're seeing",
-    "cancel": "Cancel",
-    "sending": "Sending...",
-    "send": "Send",
-    "feedbackBtnText": "Give Feedback"
+    "feedbackPreamble": "نود أن نسمع منك!",
+    "title": "رأيك",
+    "close": "غلق إبداء الرأي",
+    "yourName": "إسمك (إختياري)",
+    "email": "الإيميل الخاص بك (إختياري)<br/><2>لا يمكننا الرد عليك بدونه</2>",
+    "commentQuestion": "تعليق أو سؤال",
+    "shareWithDevelopers": "مشاركة عرض خريطتي مع مطوري {{appName}}",
+    "captionText": "يساعدنا هذا في استكشاف المشكلات وإصلاحها عن طريق السماح لنا برؤية ما تراه",
+    "cancel": "إلغاء",
+    "sending": "جاري الإرسال...",
+    "send": "ارسل",
+    "feedbackBtnText": "إرسل إفادتك"
   },
   "helpMenu": {
-    "btnText": "Help",
-    "btnTitle": "get help",
-    "helpMenuHeader": "What would you like to do?",
-    "helpMenuOpenWelcome": "Show welcome message",
-    "helpMenuSatelliteGuideTitle": "View satellite imagery guide",
-    "helpMenuMoreHelpTitle": "More help",
-    "done": "DONE",
-    "next": "NEXT"
+    "btnText": "مساعدة",
+    "btnTitle": "احصل علي مساعدة",
+    "helpMenuHeader": "ماذا تريد ان تفعل؟",
+    "helpMenuOpenWelcome": "إظهار رسالة الترحيب",
+    "helpMenuSatelliteGuideTitle": "عرض دليل صور القمر الصناعي",
+    "helpMenuMoreHelpTitle": "مزيد من المساعدة",
+    "done": "تم",
+    "next": "التالي"
   },
   "sui": {
     "notifications": {
-      "title": "This map contains a story",
-      "message": "Would you like to view it now?",
-      "confirmText": "Yes",
-      "denyText": "Maybe later"
+      "title": "تحتوي هذه الخريطة على قصة",
+      "message": "هل ترغب في عرضه الآن؟",
+      "confirmText": "نعم",
+      "denyText": "ربما فيما بعد"
     },
-    "showWorkbench": "Show Workbench",
-    "hideWorkbench": "Hide Workbench"
+    "showWorkbench": "إعرض لوحة التحكم",
+    "hideWorkbench": "إخفاء لوحة التحكم"
   },
   "featureInfo": {
     "catalogItem": {
-      "moreThanMax": "More than {{maximum}} {{catalogItemName}} features were found.",
-      "featuresFound": "{{featCount}} {catalogItemName} features were found.",
-      "featureInfoShown": "The first {{maximum}} are shown below."
+      "moreThanMax": "تم العثور علي أكثر من {{maximum}} من ميزات {{catalogItemName}} ",
+      "featuresFound": "تم العثور علي {{featCount}} {catalogItemName}.",
+      "featureInfoShown": "أول {{maximum}} بالأسفل."
     },
-    "download": "Download this Table",
-    "pickLocation": "Pick Location",
-    "clickMap": "Click on the map to learn more about a location",
-    "noDataAvailable": "No data is available here - try another location.",
-    "clickToAddData": "Click '$t(addData.addDataBtnText)' to add data to the map.",
-    "userSelection": "User Selection",
-    "panelHeading": "Feature Information",
-    "btnCloseFeature": "Close data panel",
-    "satelliteSuggestionBtn": "Show {{catalogItemName}} at this location",
-    "locationMarker": "Location Marker",
-    "noInfoAvailable": "No information available",
-    "siteData": "Site Data",
-    "latLon": "Lat / Lon "
+    "download": "تحميل هذه البيانات",
+    "pickLocation": "اختر الموقع",
+    "clickMap": "إضغط على الخريطة لمعرفة المزيد عن هذا الموقع",
+    "noDataAvailable": "لا توجد بيانات متاحة هنا - جرب موقعًا آخر.",
+    "clickToAddData": "إضغط علي '$t(addData.addDataBtnText)' لإضافة بيانات للخريطة.",
+    "userSelection": "إختيار المستخدم",
+    "panelHeading": "معلومات الميزة",
+    "btnCloseFeature": "إغلاق لوحة البيانات",
+    "satelliteSuggestionBtn": "إعرض {{catalogItemName}} في هذا الموقع",
+    "locationMarker": "علامة الموقع",
+    "noInfoAvailable": "لا توجد معلومات متاحة",
+    "siteData": "بيانات الموقع",
+    "latLon": "عرض / طول "
   },
   "welcomeMessage": {
-    "title": "Spatial data made <2>easy.</2>",
-    "WelcomeMessage": "Access rich spatial data from multiple data sources, all from one convenient location.",
-    "WelcomeMessagePrimaryBtn": "Explore Data",
-    "WelcomeMessageSecondaryBtn": "Take a tour",
-    "WelcomeMessageDissmissText": "Don't show me this again"
+    "title": "أصبحت البيانات المكانية <2>سهلة.</2>",
+    "WelcomeMessage": "يمكنك الوصول إلى البيانات المكانية الثرية من مصادر بيانات متعددة ، كل ذلك من موقع واحد مناسب.",
+    "WelcomeMessagePrimaryBtn": "اكتشف البيانات",
+    "WelcomeMessageSecondaryBtn": "خذ جولة",
+    "WelcomeMessageDissmissText": "لا تريني هذا مرة أخرى"
   },
   "story": {
-    "viewStory": "view",
-    "view": "View",
-    "editStory": "edit",
-    "edit": "Edit",
-    "recaptureStory": "re-capture",
-    "recapture": "Recapture",
-    "deleteStory": "delete",
-    "delete": "Delete",
-    "untitledScene": "untitled scene",
-    "doesNotExist": "Story does not exist",
-    "message": "<2>This is your story editor</2><1>Create and share interactive stories directly from your map<1><0><0></0>Getting Started </0></1></1>",
-    "removeAllStories": "Remove All",
-    "removeStoriesPanel": "Are you sure you wish to delete {{ count }} scene?",
-    "removeStoriesPanel_plural": "Are you sure you wish to delete {{ count }} scenes?",
-    "confirmRemove": "Delete",
-    "cancelRemove": "Cancel",
-    "preview": "preview stories",
-    "play": "Play Story",
-    "captureSceneTitle": "capture current scene",
-    "captureScene": "Capture Scene",
+    "viewStory": "عرض",
+    "view": "عرض",
+    "editStory": "تعديل",
+    "edit": "تعديل",
+    "recaptureStory": "إعادة الالتقاط",
+    "recapture": "إعادة الالتقاط",
+    "deleteStory": "حذف",
+    "delete": "حذف",
+    "untitledScene": "مشهد بلا عنوان",
+    "doesNotExist": "القصة غير موجودة",
+    "message": "<2>هذا هو محرر قصتك</2><1>قم بإنشاء ومشاركة القصص التفاعلية مباشرةً من خريطتك<1><0><0></0>ابدء </0></1></1>",
+    "removeAllStories": "حذف الكل",
+    "removeStoriesPanel": "هل أنت متأكد أنك ترغب في حذف هذا {{ count }} المشهد?",
+    "removeStoriesPanel_plural": "هل أنت متأكد أنك ترغب في حذف هذه {{ count }} المشاهد?",
+    "confirmRemove": "حذف",
+    "cancelRemove": "إلغاء",
+    "preview": "معاينة القصص",
+    "play": "تشغيل القصة",
+    "captureSceneTitle": "التقاط المشهد الحالي",
+    "captureScene": "التقاط المشهد",
     "editor": {
-      "placeholder": "Enter a title here",
-      "cancelBtn": "cancel",
-      "cancelEditing": "Cancel",
-      "saveBtn": "save",
-      "saveStory": "Save"
+      "placeholder": "أدخل عنوان هنا",
+      "cancelBtn": "إلغاء",
+      "cancelEditing": "إلغاء",
+      "saveBtn": "حفظ",
+      "saveStory": "حفظ"
     },
-    "locationBtn": "center scene",
-    "exitBtn": "exit story",
-    "previousBtn": "go to previous scene",
-    "untitled": "untitled scene",
-    "navBtn": "go to story {{title}}",
-    "nextBtn": "go to next scene",
-    "navBtnMobile": "go to story {{title}}",
-    "promptHtml1": "<0>You can view and create stories at any time by clicking here.</0>",
-    "promptHtml2": "<0><0>INTRODUCING</0><1>Data Stories</1><2>Create and share interactive stories directly from your map.</2></0>",
-    "story": "Story",
-    "dismissText": "Got it, thanks!",
-    "mobileViewStory": "View Stories {{storiesLength}}",
-    "storyEditor": "Story Editor",
-    "hideStoryPanel": "hide story builder"
+    "locationBtn": "عرض مركز المشهد",
+    "exitBtn": "الخروج من القصة",
+    "previousBtn": "إرجع إلي المشهد السابق",
+    "untitled": "مشهد بلا عنوان",
+    "navBtn": "إذهب إلي القصة {{title}}",
+    "nextBtn": "إذهب إلي المشهد التالي",
+    "navBtnMobile": "إذهب إلي القصة {{title}}",
+    "promptHtml1": "<0>يمكنك عرض وإنشاء القصص في أي وقت من خلال الضغط هنا.</0>",
+    "promptHtml2": "<0><0>عرض</0><1>قصص البيانات</1><2>قم بإنشاء ومشاركة القصص التفاعلية مباشرة من خريطتك.</2></0>",
+    "story": "قصة",
+    "dismissText": "حسنًا ، شكرًا!",
+    "mobileViewStory": "عرض القصص {{storiesLength}}",
+    "storyEditor": "محرر القصة",
+    "hideStoryPanel": "إخفاء منشئ القصة"
   },
   "satelliteGuidance": {
-    "menuTitle": "You can access map guides at any time by looking in the <2>help menu</2>.",
-    "dismissText": "Got it, thanks!",
-    "titleI": "Satellite Imagery: How do I…?",
-    "bodyI": "A super-quick guide to getting the most out of historical satellite imagery.",
-    "prevI": "No thanks",
-    "nextI": "View guide",
-    "titleII": "Where is my satellite imagery?",
-    "bodyII": "You may need to adjust your zoom level to make satellite imagery visible on the map.",
-    "titleIII": "Loading historical imagery",
-    "bodyIII": "In your data workbench, click on the capture date dropdown and select from available times to load historical imagery.",
-    "titleIV": "Filtering imagery by location",
-    "bodyIV": "Satellite imagery may not always be available at your preferred time and location. If you only want to view imagery for a particular location, click ‘filter by location’ in your data workbench.",
-    "titleV": "How do I view false-colour imagery?",
-    "bodyV": "You can apply a range of styles, such as false-colour, to satellite imagery by clicking on the styles dropdown in your data workbench."
+    "menuTitle": "يمكنك الوصول إلى دليل الخرائط في أي وقت من خلال البحث في <2>قائمة المساعدة</2>.",
+    "dismissText": "حسنًا ، شكرًا!",
+    "titleI": "صور القمر الصناعي: كيف يمكنني…؟",
+    "bodyI": "دليل سريع للغاية للحصول على أقصى استفادة من صور القمر الصناعي التاريخية.",
+    "prevI": "لا شكرًا",
+    "nextI": "عرض الدليل",
+    "titleII": "أين صور القمر الصناعي الخاصة بي؟",
+    "bodyII": "قد تحتاج إلى ضبط مستوى التكبير / التصغير لجعل صور القمر الصناعي مرئية على الخريطة.",
+    "titleIII": "تحميل الصور التاريخية",
+    "bodyIII": "في لوحة التحكم بالبيانات الخاصة بك، انقر على القائمة المنسدلة لتاريخ الالتقاط وحدد من الأوقات المتاحة لتحميل الصور التاريخية.",
+    "titleIV": "تصفية الصور حسب الموقع",
+    "bodyIV": "قد لا تكون صور القمر الصناعي متاحة دائمًا في الوقت والمكان اللذين تفضلهما. إذا كنت تريد فقط عرض صور لموقع معين ، فانقر فوق 'تصفية حسب الموقع' في لوحة التحكم بالبيانات الخاصة بك.",
+    "titleV": "كيف يمكنني عرض الصور ذات الألوان الزائفة؟",
+    "bodyV": "يمكنك تطبيق مجموعة من الأنماط ، مثل الألوان الزائفة ، على صور القمر الصناعي بالنقر فوق القائمة المنسدلة للأنماط في لوحة التحكم بالبيانات الخاصة بك."
   },
   "addData": {
-    "addDataBtnText": "Add Data",
-    "btnHide": "Hide",
-    "load": "Load local/web data",
-    "closeDataPanel": "Close data panel",
-    "done": "Done",
-    "myData": "My Data",
-    "dataCatalogue": "Data Catalogue",
-    "searchPlaceholderWhole": "Search whole catalogue",
-    "searchPlaceholder": "Search the catalogue",
-    "localAdd": "Add local file",
-    "localFileType": "<0>Step 1:</0> Select file type (optional)",
-    "localFile": "<0>Step 2:</0> Select file",
-    "webAdd": "Add web data",
-    "webFileType": "<0>Step 1:</0> Select file type (optional)",
-    "webFile": "<0>Step 2:</0> Enter the URL of the data file or web service",
-    "urlInputBtn": "Add",
-    "browse": "Browse...",
-    "localTitle": "Add Local Data",
-    "webTitle": "Add Web Data",
-    "dragDrop": "Drag and Drop",
-    "infoText": "<0>Drag and drop a file here to view it locally on the map</0><1>(it won’t be saved or uploaded to the internet)</1>",
-    "back": "Back",
-    "note": "<0>Note: </0>Data added in this way is not saved or made visible to others."
+    "addDataBtnText": "إضافة بيانات",
+    "btnHide": "إخفاء",
+    "load": "تحميل البيانات المحلية / الويب",
+    "closeDataPanel": "إغلاق لوحة البيانات",
+    "done": "تم",
+    "myData": "بياناتي",
+    "dataCatalogue": "قائمة البيانات",
+    "searchPlaceholderWhole": "إبحث في القائمة بالكامل",
+    "searchPlaceholder": "إبحث في القائمة",
+    "localAdd": "أضف الملف من جهازك",
+    "localFileType": "<0>الخطوة 1:</0> حدد نوع الملف (إختياري)",
+    "localFile": "<0>الخطوة 2:</0> حدد الملف",
+    "webAdd": "أضف بيانات الويب",
+    "webFileType": "<0>الخطوة 1:</0> حدد نوع الملف (إختياري)",
+    "webFile": "<0>الخطوة 2:</0> أدخل رابط ملف البيانات أو خدمة الويب",
+    "urlInputBtn": "إضف",
+    "browse": "تصفح...",
+    "localTitle": "أضف البيانات من جهازك",
+    "webTitle": "أضف بيانات من الويب",
+    "dragDrop": "السحب والإفلات",
+    "infoText": "<0>قم بسحب الملف وإفلاته هنا لعرضه على الخريطة</0><1>(لن يتم حفظه أو تحميله على الإنترنت)</1>",
+    "back": "عودة",
+    "note": "<0>ملحوظة: </0>لا يتم حفظ البيانات المضافة بهذه الطريقة أو جعلها مرئية للآخرين."
   },
   "search": {
     "resultsLabel": "Search Results",
-    "done": "Done",
-    "data": "Data",
-    "search": "Search for '{{searchText}}' in the Data Catalogue",
-    "viewLess": "View less {{name}} results",
-    "viewMore": "View more {{name}} results",
-    "placeholder": "Search for locations",
-    "searchCatalogue": "Search the catalogue"
+    "done": "تم",
+    "data": "البيانات",
+    "search": "إبحث عن '{{searchText}}' في قائمة البيانات",
+    "viewLess": "إعرض نتائج أقل عن {{name}}",
+    "viewMore": "إعرض نتائج أكثر عن {{name}}",
+    "placeholder": "ابحث عن المواقع",
+    "searchCatalogue": "إبحث في القائمة"
   },
   "mobile": {
-    "toggleNavigation": "toggle navigation"
+    "toggleNavigation": "تبديل التنقل"
   },
   "preview": {
-    "doesNotContainGeospatialData": "This file does not contain geospatial data.",
-    "selectToPreview": "<0>Select a dataset to see a preview </0><1>- OR -</1><2>Go to the map</2>",
-    "loading": "PREVIEW LOADING...",
-    "preview": "{{appName}} preview",
-    "noPreviewAvailable": "NO PREVIEW AVAILABLE",
-    "dataPreviewLoading": "DATA PREVIEW LOADING...",
-    "dataPreview": "DATA PREVIEW",
-    "dataPreviewError": "DATA PREVIEW ERROR",
-    "removeFromMap": "Remove from the map",
-    "addToMap": "Add to the map",
-    "disclaimer": "Disclaimer",
-    "dataDescription": "Data Description",
-    "datasetDescription": "Dataset Description",
-    "serviceDescription": "Service Description",
-    "resourceDescription": "Resource Description",
-    "licence": "Licence",
-    "accessConstraints": "Access Constraints",
-    "author": "Author",
-    "contact": "Contact",
-    "created": "Created",
-    "modified": "Modified",
-    "updateFrequency": "Update Frequency",
-    "dataCustodian": "Data Custodian"
+    "doesNotContainGeospatialData": "لا يحتوي هذا الملف على بيانات جغرافية مكانية.",
+    "selectToPreview": "<0>حدد مجموعة بيانات لمشاهدة العرض المسبق </0><1>- أو -</1><2>إذهب للخريطة</2>",
+    "loading": "تحميل العرض المسبق...",
+    "preview": "عرض مسبق لـ {{appName}}",
+    "noPreviewAvailable": "لا يتوفر عرض مسبق",
+    "dataPreviewLoading": "جاري إظهر العرض المسبق للبيانات...",
+    "dataPreview": "عرض مسبق للبيانات",
+    "dataPreviewError": "خطأ في العرض المسبق للبيانات",
+    "removeFromMap": "إزالة من الخريطة",
+    "addToMap": "أضف إلى الخريطة",
+    "disclaimer": "إخلاء مسؤولية",
+    "dataDescription": "وصف البيانات",
+    "datasetDescription": "وصف مجموعة البيانات",
+    "serviceDescription": "وصف الخدمة",
+    "resourceDescription": "وصف المصادر",
+    "licence": "تصريح",
+    "accessConstraints": "القيود على إمكانية الوصول",
+    "author": "مؤلف",
+    "contact": "اتصل",
+    "created": "أنشئت",
+    "modified": "معدل",
+    "updateFrequency": "تحديث التردد",
+    "dataCustodian": "متعهد البيانات"
   },
   "description": {
-    "name": "Description",
-    "dataLocal": "This file only exists in your browser. To share it, you must load it onto a public web server.",
-    "dataNotLocal": "Please contact the provider of this data for more information, including information about usage rights and constraints.",
-    "wms": "This is a <1>WMS service</1>, which generates map images on request. It can be used in GIS software with this URL:",
-    "wfs": "This is a <1>WFS service</1>, which transfers raw spatial data on request. It can be used in GIS software with this URL:",
-    "layerName": "Layer name",
-    "typeName": "Type name",
-    "metadataUrl": "Metadata URL",
-    "dataUrl": "Data URL",
-    "useLinkBelow": "Use the link below to download the data. See the {{link}} for more information on customising URL query parameters.",
-    "downloadInFormat": "Download the currently selected data in {{format}} format",
-    "downloadNotSupported": "Unfortunately your browser does not support the functionality needed to download this data as a file. Please use Chrome, Firefox or Safari to download this data.",
-    "useTheLinkToDownload": "Use the link below to download the data directly.",
-    "downloadData": "Download Data",
-    "dataSourceDetails": "Data Source Details",
-    "dataServiceDetails": "Data Service Details",
-    "dataCustodian": "Data Custodian"
+    "name": "وصف",
+    "dataLocal": "هذا الملف موجود فقط في المتصفح. لمشاركتها، عليك تحميلها على خادم ويب عام.",
+    "dataNotLocal": "يرجى الاتصال بموفر هذه البيانات للحصول على مزيد من المعلومات، بما في ذلك معلومات حول حقوق الاستخدام والقيود.",
+    "wms": "هذه <1>WMS خدمة</1>, التي تقوم بإنشاء صور خرائط حسب الطلب. يمكن استخدامها في برنامج نظام المعلومات الجغرافية (GIS) باستخدام هذا الرابط:",
+    "wfs": "هذه <1>WFS خدمة</1>, التي تنقل البيانات المكانية الأولية عند الطلب. يمكن استخدامها في برنامج نظام المعلومات الجغرافية (GIS) باستخدام عنوان هذا الرابط:",
+    "layerName": "اسم الطبقة",
+    "typeName": "اسم النوع",
+    "metadataUrl": "رابط البيانات الوصفية",
+    "dataUrl": "رابط البيانات",
+    "useLinkBelow": "استخدم الرابط أدناه لتنزيل البيانات. تصفح هذا الرابط {{link}} للمزيد من المعلومات حول تعديل معلمات إستعلام الرابط.",
+    "downloadInFormat": "تحميل البيانات المختارة حاليًا بصيغة {{format}}",
+    "downloadNotSupported": "لسوء الحظ، لا يدعم متصفحك الوظائف المطلوبة لتنزيل هذه البيانات كملف. يرجى استخدام Chrome أو Firefox أو Safari لتنزيل هذه البيانات.",
+    "useTheLinkToDownload": "استخدم الرابط أدناه لتنزيل البيانات مباشرًة.",
+    "downloadData": "تحميل البيانات",
+    "dataSourceDetails": "تفاصيل مصدر البيانات",
+    "dataServiceDetails": "تفاصيل خدمة البيانات",
+    "dataCustodian": "متعهد البيانات"
   },
   "workbench": {
-    "colorScaleRangeTitle": "Invalid color scale range",
-    "colorScaleRangeMin": "The minimum value must be a number.",
-    "colorScaleRangeMax": "The maximum value must be a number.",
-    "colorScaleRangeMinSmallerThanMax": "The minimum value of the color scale range must be less than the maximum value.",
-    "colorScaleRange": "Color Scale Range",
-    "rangeMax": "Maximum:",
-    "rangeMin": "Minimum:",
-    "colorScaleUpdateRange": "Update Range",
-    "displayPercent": "Display as a percentage of regional total",
-    "opacity": "Opacity: {{opacity}} %",
-    "zoomToTitle": "Zoom to extent",
-    "zoomTo": "Zoom To Extent",
-    "openFeatureTitle": "Zoom to data",
-    "openFeature": "Zoom to",
-    "previewItemTitle": "info",
-    "previewItem": "About This Data",
-    "splitItemTitle": "Duplicate and show splitter",
-    "splitItem": "Split",
-    "exportDataTitle": "Export map data",
-    "exportData": "Export",
-    "removeFromMapTitle": "Remove this data",
-    "removeFromMap": "Remove",
-    "label": "Data Sets",
-    "removeAll": "Remove All",
-    "toggleVisibility": "Data show/hide"
+    "colorScaleRangeTitle": "نطاق مقياس ألوان غير صالح",
+    "colorScaleRangeMin": "يجب أن يكون الحد الأدنى للقيمة رقمًا.",
+    "colorScaleRangeMax": "يجب أن يكون الحد الأقصي للقيمة رقمًا.",
+    "colorScaleRangeMinSmallerThanMax": "يجب أن تكون القيمة الدنيا لنطاق مقياس الألوان أقل من القيمة القصوى.",
+    "colorScaleRange": "نطاق تدرج الألوان",
+    "rangeMax": "أقصى:",
+    "rangeMin": "أدني:",
+    "colorScaleUpdateRange": "تحديث النطاق",
+    "displayPercent": "العرض كنسبة مئوية من الإجمالي الإقليمي",
+    "opacity": "تعتيم: {{opacity}} %",
+    "zoomToTitle": "تكبير/تصغير إلى الحد",
+    "zoomTo": "تكبير/تصغير إلى الحد",
+    "openFeatureTitle": "تكبير/تصغير البيانات",
+    "openFeature": "تكبير/تصغير إلى",
+    "previewItemTitle": "معلومات",
+    "previewItem": "حول هذه البيانات",
+    "splitItemTitle": "تكرار وإظهار المقسم",
+    "splitItem": "تقسيم",
+    "exportDataTitle": "تصدير بيانات الخريطة",
+    "exportData": "تصدير",
+    "removeFromMapTitle": "إزالة هذه البيانات",
+    "removeFromMap": "أزال",
+    "label": "مجموعات البيانات",
+    "removeAll": "إزالة الكل",
+    "toggleVisibility": "إظهار/إخفاء البيانات"
   },
   "dateTime": {
-    "previous": "Previous time",
-    "selectTime": "Select a time",
-    "outOfRange": "Currently out of range.",
-    "next": "Next time",
-    "useTimeline": "Use timeline",
-    "availableTimeChart": "Show available times on chart",
+    "previous": "الوقت السابق",
+    "selectTime": "اختر وقتًا",
+    "outOfRange": "حاليًا خارج النطاق.",
+    "next": "الوقت التالي",
+    "useTimeline": "استخدام المخطط الزمني",
+    "availableTimeChart": "إظهار الأوقات المتوفرة على المخطط",
     "timeline": {
-      "textCell": "Name of the dataset whose time range is shown",
-      "gotoStart": "Go to beginning",
-      "togglePlay": "Play",
-      "playSlower": "Play Slower",
-      "playFaster": "Play Faster"
+      "textCell": "اسم مجموعة البيانات التي يظهر نطاق الوقت الخاص بها",
+      "gotoStart": "الانتقال إلى البداية",
+      "togglePlay": "تشغيل",
+      "playSlower": "تشغيل أبطأ",
+      "playFaster": "تشغيل أسرع"
     }
   },
   "satellite": {
-    "pickPoint": "Select a point by clicking on the map.",
-    "querying": "Querying position...",
-    "filterByLocation": "Filter by location",
-    "infoGroup": "Only showing available capture times for:",
-    "removeFilter": "Remove filter",
-    "zoomTo": "Zoom to",
-    "newLocation": "New location"
+    "pickPoint": "اختر نقطة بالنقر فوق الخريطة.",
+    "querying": "موضع الاستعلام...",
+    "filterByLocation": "التصفية حسب الموقع",
+    "infoGroup": "إظهار أوقات الالتقاط المتوفرة فقط لـ:",
+    "removeFilter": "مسح التصفية",
+    "zoomTo": "تكبير/تصغير إلى",
+    "newLocation": "موقع جديد"
   },
   "timer": {
-    "nextScheduledUpdateTime": "Next data update at {{scheduledUpdateTime}}",
-    "nextScheduledUpdateCountdown": "Next data update in {{timeCountdown}}"
+    "nextScheduledUpdateTime": "تحديث البيانات التالي في {{scheduledUpdateTime}}",
+    "nextScheduledUpdateCountdown": "تحديث البيانات التالي في {{timeCountdown}}"
   },
   "concept": {
     "active": {
-      "edit": "Edit condition",
-      "remove": "Remove condition"
+      "edit": "تعديل الشرط",
+      "remove": "إزالة الشرط"
     },
     "inactive": {
-      "cancel": "Cancel",
-      "newText": "New condition"
+      "cancel": "إلغاء",
+      "newText": "شرط جديد"
     },
     "summary": {
-      "addMoreText": "Add a condition",
-      "addFirstText": "Add new condition"
+      "addMoreText": "إضافة شرط",
+      "addFirstText": "إضافة شرط جديد"
     }
   },
   "clipboard": {
-    "success": "Copied to clipboard",
-    "unsuccessful": "Copy unsuccessful...",
-    "shareURL": "Share URL",
-    "shareExplanation": "Anyone with this URL will be able to access this map.",
-    "copy": "Copy"
+    "success": "تم النسخ إلى الحافظة",
+    "unsuccessful": "فشل النسخ...",
+    "shareURL": "شارك الرابط",
+    "shareExplanation": "سيتمكن أي شخص لديه هذا الرابط من الوصول لهذه الخريطة.",
+    "copy": "نسخ"
   },
   "dragDrop": {
-    "text": "<0>Drag & Drop</0><1>Your data anywhere to view on the map<1>",
+    "text": "<0>السحب والإفلات</0><1>بياناتك في أي مكان لعرضها على الخريطة<1>",
     "not": "<0>bbbb</0>"
   },
   "loader": {
-    "loadingMessage": "Loading"
+    "loadingMessage": "تحميل"
   },
-  "emptyWorkbenchMessage": "<0><0>Your workbench is empty</0><1><strong>Click '$t(addData.addDataBtnText)' above to </strong></1><2><0>Browse the Data Catalogue</0><1>Load your own data onto the map</1></2><3><0></0><strong>TIP.</strong><2>All your active data sets will be listed here</2></3></0>",
+  "emptyWorkbenchMessage": "<0><0>لا توجد بيانات مُضافة</0><1><strong>إضغط علي '$t(addData.addDataBtnText)' بالأعلي لـ </strong></1><2><0>تصفح قائمة البيانات</0><1>إضافة البيانات الخاصة بك علي الخريطة</1></2><3><0></0><strong>معلومة.</strong><2>سيتم إدراج كل مجموعات البيانات النشطة هنا</2></3></0>",
   "dataCatalog": {
-    "groupRemove": "remove this group",
-    "groupEmpty": "This group is empty"
+    "groupRemove": "قم بإزالة هذه المجموعة",
+    "groupEmpty": "هذه المجموعة فارغة"
   },
   "catalogItem": {
-    "loading": "Loading...",
-    "remove": "Remove",
-    "add": "Add",
-    "trash": "Remove from catalogue",
-    "removeFromMap": "Remove from map"
+    "loading": "جاري التحميل...",
+    "remove": "إزالة",
+    "add": "إضافة",
+    "trash": "إزالة من القائمة",
+    "removeFromMap": "إزالة من الخريطة"
   },
   "chart": {
-    "sectionLabel": "Charts",
-    "closePanel": "Close Panel",
-    "expand": "Expand",
-    "download": "Download"
+    "sectionLabel": "مخططات",
+    "closePanel": "أغلق لوحة المخططات",
+    "expand": "توسيع",
+    "download": "تحميل"
   },
   "viewModels": {
-    "searchNoLocations": "Sorry, no locations match your search query.",
-    "searchErrorOccurred": "An error occurred while searching.  Please check your internet connection or try again later.",
-    "searchAddresses": "Addresses",
-    "searchPlaceNames": "Official Place Names",
-    "searchNoPlaceNames": "Sorry, no official place names match your search query",
-    "searchLocations": "Locations",
-    "searchCatalogueItem": "Catalogue Items",
-    "searchNoCatalogueItem": "Sorry, no catalogue items match your search query.",
-    "inMultipleLocations": "In multiple locations including: ",
-    "inDataCatalogue": "In Data Catalogue"
+    "searchNoLocations": "عذرًا، ما من مواقع تتطابق مع استعلام البحث الخاص بك.",
+    "searchErrorOccurred": "حدث خطأ أثناء البحث. يرجى التحقق من اتصال الإنترنت أو إعادة المحاولة لاحقًا.",
+    "searchAddresses": "عناوين",
+    "searchPlaceNames": "أسماء الأماكن الرسمية",
+    "searchNoPlaceNames": "عذرًا، لا يوجد أسماء أماكن رسمية تتطابق مع استعلام البحث الخاص بك",
+    "searchLocations": "مواقع",
+    "searchCatalogueItem": "عناصر القائمة",
+    "searchNoCatalogueItem": "عذرًا، لا يوجد عناصر القائمة تتطابق مع استعلام البحث الخاص بك.",
+    "inMultipleLocations": "في مواقع متعددة بما في ذلك: ",
+    "inDataCatalogue": "في قائمة البيانات"
   },
   "terriaViewer": {
-    "slowWebGLAvailableTitle": "Poor WebGL performance",
-    "slowWebGLAvailableMessage": "Your web browser reports that it has performance issues displaying {{appName}} in 3D, so you will see a limited, 2D-only experience. For the full 3D experience, please try using a different web browser, upgrading your video drivers, or upgrading your operating system.",
-    "slowWebGLAvailableMessageII": "{{appName}}  works best with a web browser that supports {{webGL}} including the latest versions of {{chrome}}, {{firefox}}, {{safari}} , and {{internetExplorer}}. Your web browser does not appear to support WebGL, so you will see a limited, 2D-only experience.",
+    "slowWebGLAvailableTitle": "أداء WebGL ضعيف",
+    "slowWebGLAvailableMessage": "يقوم المتصفح الخاص بك بالإبلاغ عن وجود مشاكل في الأداء لعرض {{appName}} بشكل ثلاثي الأبعاد, لذلك ستحظي بتجربة محدودة ثنائية الأبعاد. لتجربة ثلاثية الأبعاد كاملة, حاول إستخدام متصفح آخر, ترقية برامج تشغيل الفيديو لديك أو ترقية نظام التشغيل.",
+    "slowWebGLAvailableMessageII": "{{appName}} يعمل بشكل أفضل مع متصفح يدعم {{webGL}} الذي يتضمن النسخة الأحدث من {{chrome}}, {{firefox}}, {{safari}} , and {{internetExplorer}}. يبدو أن متصفحك الخاص بك لا يدعم WebGL, لذلك ستري نسخة محدودة من التجربة ثنائية الأبعاد",
     "internetExplorer": "Internet Explorer 11",
     "chrome": "Google Chrome",
     "firefox": "Mozilla Firefox",
     "safari": "Apple Safari",
-    "webGLNotSupportedTitle": "WebGL not supported",
-    "webGLNotSupportedOrSlowTitle": "WebGL not supported or too slow",
-    "webGLNotSupportedOrSlowMessage": "Your web browser cannot display the map in 3D, either because it does not support WebGL or because your web browser has reported that WebGL will be extremely slow. Please try a different web browser, such as the latest version of {{chrome}}, {{firefox}}, {{safari}}, {{internetExplorer}}.In some cases, you may need to upgrade your computer's video driver or operating system in order to get the 3D view in {{appName}}."
+    "webGLNotSupportedTitle": "WebGL غير مدعوم",
+    "webGLNotSupportedOrSlowTitle": "WebGL غير مدعوم أو بطئ جدًا",
+    "webGLNotSupportedOrSlowMessage": "يتعذر على المتصفح عرض الخريطة في الوضع ثلاثي الأبعاد, إما لأنه لا يدعم WebGL أو بسبب أفادة متصفح الويب بأن WebGL سيكون بطيئاً للغاية. يرجى تجربة متصفح ويب آخر, مثل أحدث نسخة من {{chrome}}, {{firefox}}, {{safari}}, {{internetExplorer}}.في بعض الحالات, قد تحتاج إلى ترقية برنامج تشغيل الفيديو الخاص بالكمبيوتر أو نظام التشغيل للحصول على العرض ثلاثي الأبعاد في {{appName}}."
   },
   "analytics": {
-    "selectLocation": "Select Location",
-    "point": "Point (lat/lon)",
-    "polygon": "Polygon",
-    "existingPolygon": "Existing Polygon",
-    "nothingSelected": "Nothing has been selected, please use the buttons above to make a selection.",
-    "runAnalysis": "Run Analysis",
-    "clickToDrawLine": "Click to draw line",
-    "enterValidCoords": "Please enter valid coordinates (e.g. 131.0361, -25.3450).",
-    "selectPoint": "Select a point by clicking on the map.",
-    "clickToDrawPolygon": "Click to draw polygon",
-    "shiftToDrawRectangle": "Press the SHIFT key and hold down the left mouse button to draw a rectangle",
-    "clickToDrawRectangle": "Click to draw rectangle",
-    "selectedPolygon": "Selected Polygon",
-    "regionName": "Region name",
-    "selectExistingPolygon": "Select existing polygon"
+    "selectLocation": "اختر الموقع",
+    "point": "نقطة (عرض/طول)",
+    "polygon": "مضلع",
+    "existingPolygon": "المضلع الموجود",
+    "nothingSelected": "لم يتم تحديد أي شيء، يرجى استخدام الأزرار أعلاه للتحديد.",
+    "runAnalysis": "تشغيل التحليل",
+    "clickToDrawLine": "إضغط لرسم الخط",
+    "enterValidCoords": "يرجى إدخال إحداثيات صالحة (مثل 131.0361, -25.3450).",
+    "selectPoint": "اختر نقطة بالضغط فوق الخريطة.",
+    "clickToDrawPolygon": "إضغط لرسم مضلع",
+    "shiftToDrawRectangle": "اضغط على زر SHIFT مع الاستمرار في الضغط على الماوس الأيسر لرسم مستطيل",
+    "clickToDrawRectangle": "انقر لرسم مستطيل",
+    "selectedPolygon": "المضلع المحدد",
+    "regionName": "اسم المنطقة",
+    "selectExistingPolygon": "حدد مضلع موجود"
   },
   "core": {
-    "userAddedData": "User-Added Data",
-    "chartData": "Chart Data",
+    "userAddedData": "بيانات تمت إضافتها من قبل المستخدم",
+    "chartData": "بيانات المخطط",
     "dataUri": {
-      "errorTitle": "Browser Does Not Support Data Download",
-      "errorMessage": "Unfortunately Microsoft browsers (including all versions of Internet Explorer and Edge) do not support the data uri functionality needed to download data as a file. To download, copy the following uri into another browser such as Chrome, Firefox or Safari: {{href}}"
+      "errorTitle": "لا يدعم المتصفح تنزيل البيانات",
+      "errorMessage": "لسوء الحظ لا تدعم متصفحات Microsoft (بما في ذلك كافة إصدارات Internet Explorer وEdge) وظيفة Uri للبيانات المطلوبة لتنزيل البيانات كملف. للتنزيل، انسخ Uri التالي إلى متصفح آخر مثل Chrome أو Firefox أو Safari: {{href}}"
     },
     "findIndex": {
       "nullUndefined": "findIndex called on null or undefined",
@@ -489,7 +489,7 @@
       "function": "findIndex predicate must be a function"
     },
     "dataType": {
-      "auto": "Auto-detect (recommended)",
+      "auto": "إكشف تلقائيًا (موصى به)",
       "wms-getCapabilities": "Web Map Service (WMS) Server",
       "wmts-getCapabilities": "Web Map Tile Service (WMTS) Server",
       "wfs-getCapabilities": "Web Feature Service (WFS) Server",
@@ -507,27 +507,27 @@
       "other": "Other (use conversion service)"
     },
     "printWindow": {
-      "errorTitle": "Error printing",
-      "errorMessage": "Printing did not start within 10 seconds. Maybe this web browser does not support printing?",
-      "printMediaStart": "print media start",
-      "printMediaEnd": "print media end",
-      "onbeforeprint": "onbeforeprint",
-      "onafterprint": "onafterprint"
+      "errorTitle": "خطأ في الطباعة",
+      "errorMessage": "لم تبدأ الطباعة في غضون 10 ثوانٍ. ربما لا يدعم متصفحك هذه الطباعة؟",
+      "printMediaStart": "بدء الطباعة",
+      "printMediaEnd": "نهاية الطباعة",
+      "onbeforeprint": "قبل الطباعة",
+      "onafterprint": "بعد الطباعة"
     },
     "googleAnalytics": {
       "log": "Google Analytics tracking is disabled because terria.configParameters.googleAnalyticsKey is not specified"
     },
     "readText": {
-      "fileRequired": "file is require"
+      "fileRequired": "الملف مطلوب"
     },
     "readXml": {
-      "xmlError": "The file does not contain valid XML."
+      "xmlError": "لا يحتوي الملف على XML صالح."
     },
     "serverConfig": {
       "failedToGet": "Failed to get server config from {{serverConfigUrl}}. This means services such as proxy, convert and URL shortening may not work."
     },
     "terriaError": {
-      "defaultValue": "An error occurred"
+      "defaultValue": "حدث خطأ"
     }
   },
   "map": {
@@ -537,18 +537,18 @@
     "cesium": {
       "devError": "cesium is required.",
       "failedToObtain": "Failed to obtain image tile X: {{x}} Y: {{y}} Level: {{level}}.",
-      "notWebMercatorTilingScheme": "This dataset cannot be displayed on the 2D map because it does not support the Web Mercator (EPSG:3857) projection.",
-      "unusalTilingScheme": "This dataset cannot be displayed on the 2D map because it uses an unusual tiling scheme that is not supported."
+      "notWebMercatorTilingScheme": "لا يمكن عرض مجموعة البيانات هذه على الخريطة ثنائية الأبعاد لإنها لا تدعم the Web Mercator (EPSG:3857) projection.",
+      "unusalTilingScheme": "لا يمكن عرض مجموعة البيانات هذه على الخريطة ثنائية الأبعاد لإنه نظام tiling غير مدعوم."
     },
     "computeRingWindingOrder": {
       "devError": "Expected points of type {x:number, y:number}"
     },
     "displayVariablesConcept": {
-      "defaultName": "Display Variable"
+      "defaultName": "عرض المتغير"
     },
     "drawExtentHelper": {
-      "drawExtent": "Draw Extent",
-      "extent": "Extent"
+      "drawExtent": "ارسم المدى",
+      "extent": "مدي"
     },
     "gmlToGeoJson": {
       "missingPos": "GML point element is missing a pos element.",
@@ -563,20 +563,20 @@
       "containsUnsupportedFeatureType": "GeoRSS with W3C geometry contains unsupported feature type: {{type}}"
     },
     "gnafAddressGeocoder": {
-      "noAddresses": "This tableStructure has no addresses!",
-      "noAddresses2": "Even though the tableStructure reports it has an address column, it has no addresses",
-      "suburb": "Suburb",
-      "state": "State",
-      "postcode": "Postcode",
-      "matchedAddresses": "Matched Address",
-      "lon": "Lon",
-      "lat": "Lat",
-      "score": "Score",
-      "poBox": "po box",
-      "postOfficeBox": "post office box"
+      "noAddresses": "لا يحتوي هيكل الطاولة هذا على عناوين!",
+      "noAddresses2": "على الرغم من أن بنية الجدول تشير إلى أنه يحتوي على عمود عنوان، إلا أنه لا يحتوي على عناوين",
+      "suburb": "ضاحية",
+      "state": "ولاية",
+      "postcode": "الرمز البريدي",
+      "matchedAddresses": "عنوان متطابق",
+      "lon": "طول",
+      "lat": "عرض",
+      "score": "نقطة",
+      "poBox": "صندوق بريدي",
+      "postOfficeBox": "صندوق بريدي"
     },
     "imageryProviderHooks": {
-      "devError": "No context for image recoloring."
+      "devError": "لا يوجد سياق لإعادة تلوين الصور."
     },
     "leafletVisualizer": {
       "devError1": "leafletScene is required.",
@@ -610,10 +610,10 @@
       "groupNotAvailableMessage": "An error occurred while invoking GetCodeListValue on the ABS ITT server. <p>This error may indicate that the group you opened is temporarily unavailable or there is a problem with your internet connection.  Try opening the group again, and if the problem persists, please report it by sending an email to {{email}}.</p>"
     },
     "userData": {
-      "addingDataErrorTitle": "Data could not be added",
-      "addingDataErrorMessage": "The specified data could not be added because it is invalid or does not have the expected format.",
+      "addingDataErrorTitle": "تعذر إضافة البيانات",
+      "addingDataErrorMessage": "تعذر إضافة البيانات المحددة لأنها غير صالحة أو لا يحتوي على التنسيق المتوقع.",
       "fileApiNotSupportedTitle": "File API not supported",
-      "fileApiNotSupportedMessage": "Sorry, your web browser does not support the File API, which {{appName}} requires in order to add data from a file on your system.  Please upgrade your web browser.  For the best experience, we recommend {{internetExplorer}} or the latest version of {{chrome}} or {{firefox}}.",
+      "fileApiNotSupportedMessage": "عذرًا، لا يعتمد متصفح الويب الخاص بك واجهة برمجة تطبيقات الملفات, والذي {{appName}} يتطلب إضافة بيانات من ملف على نظامك. يُرجي ترقية متصفحك. للحصول على أفضل تجربة, نفضّل {{internetExplorer}} أو أحدث نسخة من {{chrome}} أو {{firefox}}.",
       "internetExplorer": "Internet Explorer 11",
       "chrome": "Google Chrome",
       "firefox": "Mozilla Firefox"
@@ -648,17 +648,17 @@
       "copyrightText": "Copyright Text"
     },
     "bing": {
-      "name": "Bing Maps"
+      "name": "خرائط Bing"
     },
     "wcs": {
-      "asyncResultDescription": "This is the result of exporting data from {{name}} service at {{timestamp}} with the input parameters below.",
-      "exportFailedTitle": "Data export failed",
+      "asyncResultDescription": "هذا هو نتيجة تصدير البيانات من الخدمة {{name}} بتاريخ {{timestamp}} مع المدخلات أدناه.",
+      "exportFailedTitle": "فشل تصدير البيانات",
       "exportFailedMessage": "The Web Coverage Service failed",
       "exportFailedMessageII": "The Web Coverage Service failed: {{error}}"
     },
     "cartoMap": {
       "name": "Carto Map",
-      "noUrlTitle": "No URL",
+      "noUrlTitle": "لا يوجد رابط",
       "noUrlMessage": "Unable to find a usable URL for the Carto Map layer."
     },
     "cesiumTerrain": {
@@ -697,27 +697,27 @@
       "notCompatibleMessageII": "The CKAN dataset does not have any resources with a supported format."
     },
     "catalog": {
-      "name": "Unnamed Item",
-      "group": "Group",
-      "idForMatchingError": "A catalog member must have a name or a id for matching.",
-      "catalogMemberMustHaveName": "A newly created catalog member must have a name.",
-      "catalogMemberMustHaveType": "A catalog member must have a type.",
-      "userAddedDataGroup": "The group for data that was added by the user via the Add Data panel.",
-      "chartDataGroup": "A group for chart data.",
-      "dataSourceErrorMessage": "This data source does not have any details available.",
-      "serviceErrorMessage": "This service does not have any details available.",
-      "unsupportedTypeTitle": "Unsupported catalogue item type",
-      "unsupportedTypeMessage": "Unknown catalogue item type: {{type}}. If you are loading your own catalogue, please verify that it is correct. This error may also indicate an attempt to load a newer catalogue file in an older version of {{appName}}.",
-      "unsupportedFileTypeTitle": "Unsupported file type",
-      "unsupportedFileTypeMessage": "This file format is not supported by {{appName}}. Supported file formats include: <ul><li>.geojson</li><li>.kml, .kmz</li><li>.csv (in {{link}})</li></ul>",
-      "unsupportedFileTypeMessageII": "This file format is not supported by {{appName}}. Directly supported file formats include: <ul><li>.geojson</li><li>.kml, .kmz</li><li>.csv (in {{link}})</li></ul>  File formats supported through the online conversion service include: <ul><li>Shapefile (.zip)</li><li>MapInfo TAB (.zip)</li><li>Possibly other {{linkII}}</li></ul>",
+      "name": "عنصر غير مسمى",
+      "group": "مجموعة",
+      "idForMatchingError": "يجب أن يكون لعضو الكتالوج اسم أو معرّف للمطابقة.",
+      "catalogMemberMustHaveName": "يجب أن يكون لعضو الكتالوج الذي تم إنشاؤه حديثًا اسم.",
+      "catalogMemberMustHaveType": "يجب أن يكون لعضو الكتالوج نوع.",
+      "userAddedDataGroup": "مجموعة البيانات التي تمت إضافتها بواسطة المستخدم عبر لوحة إضافة البيانات.",
+      "chartDataGroup": "مجموعة لبيانات المخطط.",
+      "dataSourceErrorMessage": "لا تتوفر أي تفاصيل حول مصدر البيانات هذا.",
+      "serviceErrorMessage": "لا تتوفر أي تفاصيل حول هذه الخدمة.",
+      "unsupportedTypeTitle": "نوع العنصر الموجود في الكتالوج غير مدعوم",
+      "unsupportedTypeMessage": "نوع عنصر كتالوج غير معروف: {{type}}. إذا كنت تقوم بتحميل الكتالوج الخاص بك، فيرجى التحقق من صحته. قد يشير هذا الخطأ أيضًا إلى محاولة تحميل ملف كتالوج أحدث في إصدار أقدم من {{appName}}.",
+      "unsupportedFileTypeTitle": "نوع ملف غير مدعوم",
+      "unsupportedFileTypeMessage": "تنسيق الملف هذا غير مدعوم من قبل {{appName}}. تتضمن تنسيقات الملفات المدعومة: <ul><li>.geojson</li><li>.kml, .kmz</li><li>.csv (في {{link}})</li></ul>",
+      "unsupportedFileTypeMessageII": "تنسيق الملف هذا غير مدعوم من قبل {{appName}}. تتضمن تنسيقات الملفات المدعومة مباشرةً: <ul><li>.geojson</li><li>.kml, .kmz</li><li>.csv (في {{link}})</li></ul>  تتضمن تنسيقات الملفات المدعومة من خلال خدمة التحويل عبر الإنترنت: <ul><li>Shapefile (.zip)</li><li>MapInfo TAB (.zip)</li><li>Possibly other {{linkII}}</li></ul>",
       "getConfirmationMessage": "This file is not directly supported by {{appName}}.\n\nDo you want to try uploading it to the {{appName}} conversion service? This may work for small, zipped Esri Shapefiles or MapInfo TAB files.",
       "readyToUpload": "Ready to upload your file to the {{appName}} conversion service?",
-      "upload": "Upload",
-      "cancel": "Cancel",
-      "useConversion": "Use conversion service?",
-      "mustHaveType": "Each item must have a type.",
-      "compositesError": "Composites cannot include composite items."
+      "upload": "رفع",
+      "cancel": "إلغاء",
+      "useConversion": "هل تريد استخدام خدمة التحويل؟",
+      "mustHaveType": "يجب أن يحتوي كل عنصر على نوع.",
+      "compositesError": "لا يمكن أن يتضمن المركّب عناصر مركبة."
     },
     "createParameter": {
       "unsupportedErrorTitle": "Unsupported function parameter type",
@@ -911,36 +911,36 @@
       "issuesLoadingTitle": "Issues loading {{name}}"
     },
     "feedback": {
-      "thanksTitle": "Thank you for your feedback!",
-      "thanksMessage": "Your feedback helps make {{appName}} better",
-      "unableToSendTitle": "Unable to send feedback",
-      "unableToSendMessage": "This is really embarrassing, but an error occurred while attempting to send your feedback.  Please email it to {{email}} instead."
+      "thanksTitle": "شكرًا لك علي تعليقك!",
+      "thanksMessage": "تساعدك ملاحظاتك في إنشاء {{appName}} أفضل",
+      "unableToSendTitle": "يتعذر إرسال الملاحظات",
+      "unableToSendMessage": "هذا أمر محرج حقًا, ولكن حدث خطأ أثناء محاولة إرسال ملاحظاتك. الرجاء إرسال إيميل إلي {{email}} بدلًا من ذلك."
     },
     "resultPending": {
-      "name": "Result Pending"
+      "name": "النتيجة معلقة"
     },
     "sensorObservationService": {
-      "procedure": "Procedure",
-      "property": "Property",
+      "procedure": "إجراء",
+      "property": "ملكية",
       "sos": "SOS",
-      "alreadyLoadingTitle": "Data already loading",
-      "alreadyLoadingMessage": "Your data is still loading. You will be able to change the display once it has loaded",
-      "unknownError": "The server reported an unknown error.",
-      "exceptionMessage": "The server reported an error: \n\n {{exceptionText}}",
-      "missingBody": "The server responded with missing body.",
-      "noFeatures": "There are no features matching your query.",
-      "unknownFormat": "The server responded with an unknown feature format.",
-      "noMatchingFeatures": "The Sensor Observation Service did not return any features matching your query."
+      "alreadyLoadingTitle": "يتم تحميل البيانات بالفعل",
+      "alreadyLoadingMessage": "لا تزال بياناتك قيد التحميل. ستتمكن من تغيير شاشة العرض بمجرد أن يتم التحميل",
+      "unknownError": "أبلغ الخادم عن خطأ غير معروف.",
+      "exceptionMessage": "أبلغ الخادم عن خطأ غير معروف: \n\n {{exceptionText}}",
+      "missingBody": "رد الخادم بنص أساسي مفقود.",
+      "noFeatures": "لا توجد ميزات تطابق استعلامك.",
+      "unknownFormat": "استجاب الخادم بتنسيق ميزة غير معروف.",
+      "noMatchingFeatures": "لم تقم خدمة مراقبة الإستشعار بإرجاع أي ميزات مطابقة استعلامك."
     },
     "time": {
-      "invalidDate": "Invalid Date",
+      "invalidDate": "تاريخ غير صالح",
       "invalidInitialTimeSource": "Invalid initialTimeSource specified in config file: {{initialTimeSource}}"
     },
     "shareData": {
-      "generateErrorTitle": "Couldn't generate short URL.",
-      "generateErrorMessage": "Something went wrong when trying to use the share data service to generate a short URL. If you believe it is a bug in {{appName}}, please report it by emailing {{email}}.",
-      "expandErrorTitle": "Couldn't expand URL",
-      "expandErrorMessage": "The share data service used to launch {{appName}} was not located. This may indicate an error in the link or that the service is unavailable at this time. If you believe it is a bug in {{appName}}, please report it by emailing {{email}}"
+      "generateErrorTitle": "تعذر إنشاء رابط قصير.",
+      "generateErrorMessage": "حدث خطأ ما عند محاولة إستخدام خدمة مشاركة البيانات لإنشاء رابط قصير. إذا كنت تعتقد أنه خطأ في {{appName}}, يرجى الإبلاغ عن ذلك عبر البريد الإلكتروني {{email}}.",
+      "expandErrorTitle": "تعذر توسيع الرابط",
+      "expandErrorMessage": "خدمة مشاركة البيانات التي تشغّل {{appName}} لا توجد. قد يشير ذلك إلى خطأ في الرابط أو أن الخدمة غير متوفرة في الوقت الحالي. إذا كنت تعتقد أنه خطأ في {{appName}}, يرجى الإبلاغ عن ذلك عبر البريد الإلكتروني {{email}}"
     },
     "socrataServer": {
       "name": "Socrata Server",
@@ -978,13 +978,13 @@
       "bulkGeocoderErrorMessage": "Unable to map addresses to lat-long coordinates, as an error occurred while retrieving address coordinates. Please check your internet connection or try again later."
     },
     "terrainCatalog": {
-      "notSupportedErrorTitle": "Not supported in 2D",
-      "notSupportedErrorMessage": "{{name}} cannot be show in the 2D view.  Switch to 3D and try again"
+      "notSupportedErrorTitle": "غير مدعوم في النظام ثنائي الأبعاد",
+      "notSupportedErrorMessage": "{{name}} لا يمكن عرضه في عرض ثنائي الأبعاد.  قم بالتبديل إلى الوضع الثلاثي الأبعاد وحاول مرة أخرى"
     },
     "terria": {
-      "initErrorTitle": "Welcome",
-      "initErrorMessage": "Welcome to the geospatial portal.",
-      "urlLoadErrorTitle": "Problem loading URL",
+      "initErrorTitle": "فشل في بدء الخدمات",
+      "initErrorMessage": "حدثت مشكلة مع خادم (Terria). وقد يتسبب ذلك في عدم توافر بعض الطبقات أو خدمة التحويل.",
+      "urlLoadErrorTitle": "ثمة مشكلة في تحميل الرابط",
       "urlLoadErrorMessage": "A problem occurred while initialising Terria with URL parameters.",
       "loadingInitSourceErrorTitle": "Error loading initialization source",
       "loadingInitSourceErrorMessage": "Could not load initialization information from {{fragment}} because no initFragmentPaths are defined.",
@@ -1013,17 +1013,17 @@
     },
     "userDrawing": {
       "devError": "Terria instance is required.",
-      "messageHeader": "Draw on Map",
-      "pointEntities": "Points",
-      "otherEntities": "Lines and polygons",
-      "line": "Line",
-      "firstPoint": "First Point",
-      "btnCancel": "Cancel",
-      "btnDone": "Done",
-      "clickToAddFirstPoint": "Click to add a point",
-      "clickToAddAnotherPoint": "Click to add another point",
-      "anotherPoint": "Another Point",
-      "userPolygon": "User polygon"
+      "messageHeader": "إرسم علي الخريطة",
+      "pointEntities": "نقاط",
+      "otherEntities": "خطوط ومضلعات",
+      "line": "خط",
+      "firstPoint": "النقطة الأولي",
+      "btnCancel": "إلغاء",
+      "btnDone": "تم",
+      "clickToAddFirstPoint": "إضغط لإضافة نقطة",
+      "clickToAddAnotherPoint": "إضغط لإضافة نقطة آخري",
+      "anotherPoint": "نقطة آخري",
+      "userPolygon": "مضلع المستخدم"
     },
     "webFeatureServiceCatalogGroup": {
       "wfsServer": "Web Feature Service (WFS) Server",
@@ -1105,25 +1105,25 @@
     }
   },
   "deltaTool": {
-    "titlePrefix": "Change Detection",
-    "description": "This tool visualizes the difference between imagery captured at two discrete points in time.",
-    "pickLocation": "To view available imagery, please select your location of interest on the map opposite.",
-    "cancelBtn": "Cancel",
-    "generateDeltaBtn": "Generate Difference Map",
-    "selectedLocation": "Selected Location",
-    "primaryImage": "Primary Image",
-    "secondaryImage": "Secondary Image",
+    "titlePrefix": "كشف التغير",
+    "description": "تصور هذه الأداة الفرق بين الصور الملتقطة عند نقطتين مميزتين بالنسبة للزمن.",
+    "pickLocation": "لعرض الصور المتوفرة، يرجى تحديد موقع اهتمامك على الخريطة المقابلة.",
+    "cancelBtn": "إلغاء",
+    "generateDeltaBtn": "إنشاء خريطة الفرق",
+    "selectedLocation": "الموقع المُختار",
+    "primaryImage": "الصورة الأساسية",
+    "secondaryImage": "الصورة الثانوية",
     "pickerMessage": {
-      "pickFirst": "Select a point by clicking on the map",
-      "pickAnother": "Click another point to change the selection",
-      "pickError": "Error when trying to resolve imagery at location! Please select a point again by clicking on the map."
+      "pickFirst": "اختر نقطة بالنقر فوق الخريطة",
+      "pickAnother": "انقر فوق نقطة أخرى لتغيير المُختار",
+      "pickError": "حدث خطأ أثناء محاولة إستخدام الصور في الموقع! يرجى تحديد نقطة مرة أخرى بالنقر فوق الخريطة."
     },
     "catalogItem": {
-      "description": "This layer visualizes the difference between imagery captured at two discrete points in time"
+      "description": "تصور هذه الطبقة الفرق بين الصور الملتقطة عند نقطتين مميزتين بالنسبة للزمن."
     },
     "loadingError": {
-      "title": "Error loading Delta Tool",
-      "message": "An error occurred while trying to load the delta tool from the server. Please try again."
+      "title": "خطأ في تحميل أداة دلتا",
+      "message": "حدث خطأ أثناء محاولة تحميل أداة الدلتا من الخادم. يرجى المحاولة مرة أخرى."
     }
   }
 }

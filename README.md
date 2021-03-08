@@ -78,7 +78,7 @@ module.exports = function(devMode, hot) {
 
 ## TerriaMap Localization
 
-If you want to add a translation for a particular language, you may follow [this guide](static/TerriaMap/README.md) of how to add a new language to Terria map.
+If you want to add a translation for a particular language, you may follow [this guide](static/TerriaMap/README.md#localization) of how to add a new language to Terria map.
 
 ## Limitations
 

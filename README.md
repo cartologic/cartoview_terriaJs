@@ -76,6 +76,10 @@ module.exports = function(devMode, hot) {
 
 3. Move **wwwroot/index.html** to `templates` directory, rename it **terria.html**, and update any static file import.
 
+## TerriaMap Localization
+
+If you want to add a translation for a particular language, you may follow [this guide](static/TerriaMap/README.md) of how to add a new language to Terria map.
+
 ## Limitations
 
 TerriaJS comes with a Node.js-based web server, called [terria-server](https://github.com/TerriaJS/terriajs-server) that offers many useful features like serving static files and a proxy service that allows TerriaJS to access geospatial data servers that don't support CORS.

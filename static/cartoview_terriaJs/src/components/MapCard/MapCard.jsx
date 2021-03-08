@@ -2,7 +2,7 @@ import {Card, CardHeader, CardMedia} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import DescriptionIcon from '@material-ui/icons/Description'
-import DialogWrapper from './Dialog/DialogWrapper'
+import DialogWrapper from '../Dialog/DialogWrapper'
 import Grow from '@material-ui/core/Grow'
 import IconButton from '@material-ui/core/IconButton'
 import LaunchIcon from '@material-ui/icons/Launch'
@@ -16,45 +16,8 @@ import React from 'react'
 import ShareIcon from '@material-ui/icons/Share'
 import Typography from '@material-ui/core/Typography'
 import copy from 'copy-to-clipboard'
-import {cyan} from '@material-ui/core/colors'
+import styles from './Styles'
 import {withStyles} from '@material-ui/core/styles'
-
-const styles = () => ({
-    card: {
-        width: '100%',
-        minHeight: 290,
-        height: 300,
-        boxShadow: 'none',
-        border: '1px solid #DFE1E5',
-        '&:hover': {
-            border: '1px solid #3BBDD4',
-            transform: 'translateY(-10px)',
-            boxShadow: '0 12px 19px -7px #3BBDD4'
-        }
-    },
-    media: {
-        height: 194,
-        cursor: 'pointer'
-    },
-    avatar: {
-        backgroundColor: cyan[500],
-    },
-    menuItemButton: {
-        color: '#3BBDD4',
-        '&:hover': {
-            backgroundColor: 'transparent'
-        }
-    },
-    menuItemIcon: {
-        marginLeft: -16
-    },
-    menuItemText: {
-        marginLeft: 16
-    },
-    mapDescribtion: {
-        padding: 10
-    }
-})
 
 class MapCard extends React.Component {
     constructor(props) {
@@ -115,8 +78,8 @@ class MapCard extends React.Component {
                         <div>
                             <IconButton
                                 ref={this.anchorRef}
-                                aria-label="settings"
-                                aria-controls={this.state.open ? 'menu-list-grow' : undefined}
+                                aria-label="grid"
+                                aria-controls={this.state.open ? 'menu-grid-grow' : undefined}
                                 onClick={this.handleToggle}
                             >
                                 <MoreVertIcon />
@@ -129,7 +92,7 @@ class MapCard extends React.Component {
                                     >
                                         <Paper>
                                             <ClickAwayListener onClickAway={this.handleClose}>
-                                                <MenuList autoFocusItem={this.state.open} id="menu-list-grow">
+                                                <MenuList autoFocusItem={this.state.open} id="menu-grid-grow">
                                                     <MenuItem>
                                                         <IconButton
                                                             className={classes.menuItemButton}

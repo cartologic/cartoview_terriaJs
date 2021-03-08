@@ -197,14 +197,14 @@ body {
         }
     }
 
-    // COVID-19 item
-    .tm-related-maps__dropdown-inner {
+    // GeoNode maps item
+    .tm-maps__dropdown-inner {
         [dir="rtl"] & {
-            right: -408px;
+            right: -520px;
         }
     }
 
-    .tm-related-maps__dropdown-inner .tjs-panel__caret {
+    .tm-maps__dropdown-inner .tjs-panel__caret {
         [dir="rtl"] & {
             right: 515px;
         }
@@ -214,7 +214,7 @@ body {
         .tjs-setting-panel__dropdown-inner,
         .tjs-share-panel__dropdown-inner,
         .tjs-help-panel__dropdown-inner,
-        .tm-related-maps__dropdown-inner {
+        .tm-maps__dropdown-inner {
             [dir="rtl"] & {
                 right: 0px;
             }

@@ -2,154 +2,416 @@
 @import "~terriajs/lib/Sass/global/global";
 
 body {
-  margin: 0;
-  overflow: hidden;
+    margin: 0;
+    overflow: hidden;
 }
 
 :global {
-  @media print {
-    .nationalmap-print-disclaimer {
-      color: #000;
-      display: block;
-    }
-  }
-
-  // To customise the look of your Terria Map, uncomment this section and make changes to your heart's content
-  // You will also want to uncomment and change values in lib/Styles/variables.scss
-  /*
-    // Import any custom fonts here
-    //@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700);
-
-    html {
-        font-family: $font-base;
+    @media print {
+        .nationalmap-print-disclaimer {
+            color: #000;
+            display: block;
+        }
     }
 
-    // Logo area in top left
     .tjs-branding__branding {
-        a:first-child, a:last-child {
-            display: none;
+        margin: 0px 3px;
+    }
 
-            @media screen and (min-width: $sm) {
-                display: inline;
+    .tjs-branding__branding img {
+        display: block;
+        margin: auto;
+    }
+
+    .tjs-side-panel__workbenchEmpty {
+        background-color: #383d45;
+    }
+
+    .tjs-_buttons__btn--map {
+        &:focus,
+        &:hover {
+            background-color: #222831;
+        }
+    }
+
+    .tjs-feedback-form__action {
+        margin-top: 20px;
+    }
+
+    .tjs-feedback-button__btnFeedback span {
+        margin: 5px;
+    }
+
+    .tjs-full_screen_button__btn svg {
+        &:focus,
+        &:active,
+        &:hover {
+            fill: #ffffff;
+        }
+    }
+
+    .tjs-full_screen_button__btn span {
+        align-items: center;
+    }
+
+    .tjs-full_screen_button__btn span svg {
+        margin-left: 5px;
+        margin-right: unset;
+    }
+
+    .tjs-_buttons__btn-grey {
+        height: 60px;
+    }
+
+    .tjs-setting-panel__viewer-selector,
+    .tjs-setting-panel__base-map-selector,
+    .tjs-help-panel__viewer-selector {
+        padding: 5px;
+    }
+
+    .tjs-panel__heading {
+        margin-top: 15px;
+    }
+
+    /* RTL styles */
+    @media (min-width: 992px) {
+        .tjs-standard-user-interface__featureInfo {
+            [dir="rtl"] & {
+                right: 372px;
+                top: 62px;
+                left: 96px;
+                bottom: 0;
             }
         }
-        // Different font size for the branding
-        font-weight: 300;
-        color: white;
-        font-size: 26px;
-        padding-top:2px;
-        padding-left:6px;
-
-        // To make the logo clickable, it should be instead set in config.json, at "brandBarElements"
-        // background:$dark url(http://www.public-domain-image.com/backgrounds/slides/abstract-waves-on-a-blue-background.jpg);
-        // background-position: top right;
-        // background-size: 100%;
-        // background-repeat: no-repeat;
-
-    }
-    // Background of whole left panel
-    .tjs-standard-user-interface__sidePanel {
-        background:$dark-darker;
-    }
-    // Individual sections within the left panel
-    .tjs-side-panel__workBench {
-        font-family:$font-base;
-        font-weight:400;
-        font-size:18px;
-        background:$dark-darker;
     }
 
-    // All kinds of buttons in various screens
-    .tjs-_buttons__btn {
-        &-primary { 
-            font-family: $font-base; 
-        }
-        &:hover { 
-            color: $color-primary;             
+    .tjs-full_screen_button__minifiedFullscreenBtnWrapper {
+        [dir="rtl"] & {
+            right: 348px;
+            left: 0;
         }
     }
 
-    // Buttons like "Share" within the map area.
-    .tjs-_buttons__btn--map {
-        background: $dark;
-        &:focus, &:hover { color: white; }
-    }
-
-    // Lat/lon buttons
-    .tjs-legend__locationBar, .tjs-legend__distanceLegend {
-        
-        background:$dark;
-        color:white;
-        &:hover,&:focus { background: $dark; color: white; }
-    
-    }
-
-    // Progress bar while datasets are loading
-    .tjs-progress-bar__progress-bar {
-        background: $color-primary;
-    }
-
-    // Flatten and simplify display of timeline controls
-    .tjs-timeline-controls__timeline__control {
-        background:$dark-lighter;
-        border:none;
-    }
-
-    .tjs-timeline__text-cell {
-        font-family: $font-base; 
-    }
-
-    .tjs-timeline__timeline {
-        background:$dark-lighter;
-    }
-
-    .cesium-timeline-bar {
-        background:$dark-with-overlay;
-    }
-
-    // Feature info table
-    .tjs-feature-info-section__content {
-        h1 {
-            color: $color-primary;
-        }
-        table th {
-            // font-family: $font-base; // if you don't want monospaced
-            font-weight:200; // not bold
-            padding-right:0.5em;
-        }
-
-        table td {
-            border:none;
-            // font-family: $font-base; // if you don't want monospaced
-            font-weight:normal; // not bold
-            color:hsl(0,0%,90%);
-
-        }
-        a {
-            color:$color-secondary;
+    .tjs-standard-user-interface__showWorkbenchButtonisVisible {
+        [dir="rtl"] & {
+            left: 0;
+            right: 16px;
         }
     }
 
-    // The Data Catalog ("Add Data") page
-      // expandable catalog groups
+    .tjs-side-panel__button svg {
+        [dir="rtl"] & {
+            left: auto;
+        }
+    }
+
+    .tjs-side-panel__uploadData {
+        [dir="rtl"] & {
+            margin-left: 0px;
+            margin-right: 5px;
+        }
+    }
+
+    .tjs-menu-bar__menu-area {
+        [dir="rtl"] & {
+            right: auto;
+            left: 20px;
+        }
+
+        [dir="ltr"] & {
+            right: 20px;
+            left: auto;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .tjs-map-navigation__map-navigation {
+            [dir="rtl"] & {
+                right: auto;
+                left: 16px;
+            }
+        }
+    }
+
+    .tjs-map-navigation__navs {
+        [dir="rtl"] & {
+            direction: initial;
+        }
+    }
+
+    .tjs-workbench-item__header,
+    .tjs-viewing-controls__control,
+    .tjs-legend__legend {
+        [dir="rtl"] & {
+            padding: 0;
+        }
+    }
+
+    .tjs-style-selector-section__style-selector svg {
+        [dir="rtl"] & {
+            float: left;
+        }
+    }
+
+    .tjs-feedback-form__btnSubmit {
+        [dir="rtl"] & {
+            margin-left: auto;
+            margin-right: 10px;
+        }
+    }
+
+    // Base Maps item
+    .tjs-panel__inner-close-btn {
+        left: 5px;
+    }
+
+    .tjs-setting-panel__dropdown-inner {
+        [dir="rtl"] & {
+            right: -232px;
+        }
+    }
+
+    .tjs-panel__caret:first-child {
+        [dir="rtl"] & {
+            right: 267px;
+        }
+    }
+
+    // Share item
+    .tjs-share-panel__dropdown-inner {
+        [dir="rtl"] & {
+            right: -373px;
+        }
+    }
+
+    .tjs-panel__caret:nth-of-type(2) {
+        [dir="rtl"] & {
+            right: 412.5px;
+        }
+    }
+
+    // Help item
+    .tjs-help-panel__dropdown-inner {
+        [dir="rtl"] & {
+            right: -377px;
+        }
+    }
+
+    // COVID-19 item
+    .tm-related-maps__dropdown-inner {
+        [dir="rtl"] & {
+            right: -408px;
+        }
+    }
+
+    .tm-related-maps__dropdown-inner .tjs-panel__caret {
+        [dir="rtl"] & {
+            right: 515px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .tjs-setting-panel__dropdown-inner,
+        .tjs-share-panel__dropdown-inner,
+        .tjs-help-panel__dropdown-inner,
+        .tm-related-maps__dropdown-inner {
+            [dir="rtl"] & {
+                right: 0px;
+            }
+        }
+
+        .tjs-panel__caret {
+            [dir="rtl"] & {
+                right: 15px;
+            }
+        }
+    }
+
+    /* Catalog */
+    @media (min-width: 992px) {
+        .tjs-explorer-window__modal-wrapper {
+            [dir="rtl"] & {
+                padding-right: 380px;
+                padding-left: 30px;
+            }
+        }
+    }
+
+    .tjs-explorer-window__btn--close-modal {
+        [dir="rtl"] & {
+            left: 0;
+            right: unset;
+        }
+    }
+
+    .tjs-tabs__tab-list {
+        [dir="rtl"] & {
+            padding-right: 0px;
+        }
+    }
+
+    .tjs-tabs__tab-list__item {
+        [dir="rtl"] & {
+            float: right;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .tjs-tabs__tab-left-col {
+            [dir="rtl"] & {
+                float: right;
+            }
+        }
+    }
+
+    .tjs-data-catalog-group__btnCatalogTopLevel {
+        [dir="rtl"] & {
+            padding-left: 0;
+            padding-right: 10px;
+        }
+    }
+
     .tjs-data-catalog-group__btn--catalog {
-        &:hover { background: $color-secondary; color: white; }
-        &:focus { background: $color-primary; color: white;}
-    }
-      // The currently selected item in the list
-    .tjs-data-catalog-item__btn-catalog-item--is-previewed {
-        ,&:focus {color: $color-primary; }
-    }
-      // The tabs at the top 
-    .tjs-tabs__btn--tab {    
-        font-family:$font-base
+        [dir="rtl"] & {
+            text-align: right;
+        }
     }
 
-    .tjs-tabs__btn--selected {
-        color:$color-primary-dark;
+    @media (min-width: 768px) {
+        [dir="rtl"] & {
+            .tjs-data-catalog-group__caret {
+                left: 5px;
+                right: unset;
+            }
+        }
     }
-    .tjs-tabs__btn--tab:hover {    
-        color:$color-secondary;
+
+    .tjs-data-catalog-group__care {
+        [dir="rtl"] & {
+            right: unset;
+        }
     }
-    */
+
+    .tjs-data-catalog-group__catalog-group {
+        [dir="rtl"] & {
+            padding-left: 0;
+            padding-right: 10px;
+        }
+    }
+
+    .tjs-data-catalog-group__folder {
+        [dir="rtl"] & {
+            left: unset;
+            right: 8px;
+        }
+    }
+
+    .tjs-data-catalog-group__catalog-group--lower-level {
+        [dir="rtl"] & {
+            margin-left: unset;
+            margin-right: 20px;
+            border-left: 0;
+            border-right: 1px solid #ddd;
+        }
+    }
+
+    .tjs-data-catalog-item__btn-action {
+        [dir="rtl"] & {
+            right: unset;
+            left: 0;
+        }
+    }
+
+    .tjs-data-catalog-item__btn-catalog-item {
+        [dir="rtl"] & {
+            text-align: right;
+        }
+    }
+
+    .tjs-share-panel__story-share {
+        margin-left: unset;
+        margin-right: 5px;
+    }
+
+    .tjs-story-panel__full-panel {
+        [dir="rtl"] & {
+            padding-right: 380px;
+            bottom: 90px;
+            padding-left: 50px;
+        }
+    }
+
+    .tjs-story-panel__left {
+        [dir="rtl"] & {
+            border-right: 0;
+            border-left: 1px solid #ddd;
+        }
+    }
+
+    .tjs-story-panel__right {
+        [dir="rtl"] & {
+            border-left: 0;
+            border-right: 1px solid #ddd;
+        }
+    }
+
+    .tjs-story-panel__body {
+        [dir="rtl"] & {
+            float: right;
+        }
+    }
+
+    /* Change arrows direction */
+    .tjs-full_screen_button__btn svg,
+    .tjs-full_screen_button__minified svg,
+    .tjs-story-panel__nextBtn,
+    .tjs-story-panel__previousBtn {
+        [dir="rtl"] & {
+            transform: rotate(180deg);
+        }
+    }
+
+    .tjs-full_screen_button__btn span svg {
+        [dir="rtl"] & {
+            margin-right: 5px;
+            margin-left: unset;
+        }
+    }
+
+    .tjs-mobile-header__group-left {
+        [dir="rtl"] & {
+            left: unset;
+            right: 5px;
+        }
+    }
+
+    .tjs-mobile-header__btnMenu {
+        [dir="rtl"] & {
+            margin-right: unset;
+            margin-left: 3px;
+        }
+    }
+
+    .tjs-mobile-header__group-right {
+        [dir="rtl"] & {
+            right: unset;
+            left: 5px;
+        }
+    }
+
+    .tjs-mobile-menu__mobile-nav--hidden {
+        [dir="rtl"] & {
+            right: -9999px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        [dir="rtl"] & {
+            .tjs-map-column__feedback-button-wrapper,
+            .tjs-feedback-form__form {
+                left: 20px;
+                right: unset;
+            }
+        }
+    }
 }

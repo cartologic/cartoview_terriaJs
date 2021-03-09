@@ -10,6 +10,7 @@ import {
     RadioGroup
 } from '@material-ui/core';
 import React, {useRef, useState} from 'react';
+import { useTranslation } from 'react-i18next';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import PropTypes from 'prop-types';
 import SortIcon from '@material-ui/icons/Sort';
@@ -22,6 +23,7 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
     const [openFilterMenu, setOpenFilterMenu] = useState(false);
     const anchorSortRef = useRef(null);
     const anchorFilterRef = useRef(null);
+    const { t } = useTranslation();
 
     const handleToggle = () => {
         setOpenSortMenu((prevOpenSortMenu) => !prevOpenSortMenu);
@@ -46,7 +48,7 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
         <Box className={classes.settingWrapper}>
             <Chip
                 icon={<FilterListIcon className={classes.sortIcon}/>}
-                label="Filter"
+                label={t("mapPanel.settings.filter")}
                 className={classes.filterButton}
                 onClick={handleFilterToggle}
                 ref={anchorFilterRef}
@@ -76,13 +78,13 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
                                         <FormControlLabel
                                             value=""
                                             control={<StyledRadio/>}
-                                            label="All maps"
+                                            label={t("mapPanel.settings.allMaps")}
                                             className={classes.formControlLabel}
                                         />
                                         <FormControlLabel
                                             value={currentUsername}
                                             control={<StyledRadio/>}
-                                            label="My maps"
+                                            label={t("mapPanel.settings.myMaps")}
                                             className={classes.formControlLabel}
                                         />
                                     </RadioGroup>
@@ -94,7 +96,7 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
             </Popper>
             <Chip
                 icon={<SortIcon className={classes.sortIcon}/>}
-                label="Sort By"
+                label={t("mapPanel.settings.sort")}
                 className={classes.sortButton}
                 onClick={handleToggle}
                 ref={anchorSortRef}
@@ -124,25 +126,25 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
                                         <FormControlLabel
                                             value="-date"
                                             control={<StyledRadio/>}
-                                            label="Most recent"
+                                            label={t("mapPanel.settings.mostRecent")}
                                             className={classes.formControlLabel}
                                         />
                                         <FormControlLabel
                                             value="date"
                                             control={<StyledRadio/>}
-                                            label="Less recent"
+                                            label={t("mapPanel.settings.lessRecent")}
                                             className={classes.formControlLabel}
                                         />
                                         <FormControlLabel
                                             value="title"
                                             control={<StyledRadio/>}
-                                            label="A - Z"
+                                            label={t("mapPanel.settings.aZ")}
                                             className={classes.formControlLabel}
                                         />
                                         <FormControlLabel
                                             value="-title"
                                             control={<StyledRadio/>}
-                                            label="Z - A"
+                                            label={t("mapPanel.settings.zA")}
                                             className={classes.formControlLabel}
                                         />
                                     </RadioGroup>

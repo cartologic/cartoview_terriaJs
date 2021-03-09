@@ -81,7 +81,8 @@ class CartoviewTerriaMap(object):
             'mapTitle': map_element.title,
             'site_url': settings.SITEURL,
             'mapId': map_id,
-            'currentLanguage': get_language()
+            'currentLanguage': get_language(),
+            'current_username': request.user.username
         }
         return render(request, template, context)
 

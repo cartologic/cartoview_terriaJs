@@ -10,15 +10,18 @@ import {
     RadioGroup
 } from '@material-ui/core';
 import React, {useRef, useState} from 'react';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import PropTypes from 'prop-types';
 import SortIcon from '@material-ui/icons/Sort';
 import {withStyles} from '@material-ui/core/styles';
 import StyledRadio from './StyledRadio';
 import styles from './Styles';
 
-const MapSettings = ({ classes, sortMapsBy, handleSortByChange }) => {
+const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, handleFilterChange, currentUsername }) => {
     const [openSortMenu, setOpenSortMenu] = useState(false);
+    const [openFilterMenu, setOpenFilterMenu] = useState(false);
     const anchorSortRef = useRef(null);
+    const anchorFilterRef = useRef(null);
 
     const handleToggle = () => {
         setOpenSortMenu((prevOpenSortMenu) => !prevOpenSortMenu);
@@ -29,9 +32,66 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange }) => {
         }
         setOpenSortMenu(false);
     };
+    const handleFilterToggle = () => {
+        setOpenFilterMenu((prevOpenSortMenu) => !prevOpenSortMenu);
+    };
+    const handleFilterMenuClose = event => {
+        if (anchorFilterRef.current && anchorFilterRef.current.contains(event.target)) {
+            return;
+        }
+        setOpenFilterMenu(false);
+    };
 
     return (
         <Box className={classes.settingWrapper}>
+            <Chip
+                icon={<FilterListIcon className={classes.sortIcon}/>}
+                label="Filter"
+                className={classes.filterButton}
+                onClick={handleFilterToggle}
+                ref={anchorFilterRef}
+            />
+            <Popper
+                open={openFilterMenu}
+                anchorEl={anchorFilterRef.current}
+                role={undefined}
+                transition
+                disablePortal
+            >
+                {({TransitionProps, placement}) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                    >
+                        <Paper>
+                            <ClickAwayListener onClickAway={handleFilterMenuClose}>
+                                <FormControl component="fieldset">
+                                    <RadioGroup
+                                        aria-label="order by"
+                                        name="order by"
+                                        value={filterMapsBy}
+                                        onChange={handleFilterChange}
+                                        className={classes.radioGroup}
+                                    >
+                                        <FormControlLabel
+                                            value=""
+                                            control={<StyledRadio/>}
+                                            label="All maps"
+                                            className={classes.formControlLabel}
+                                        />
+                                        <FormControlLabel
+                                            value={currentUsername}
+                                            control={<StyledRadio/>}
+                                            label="My maps"
+                                            className={classes.formControlLabel}
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
             <Chip
                 icon={<SortIcon className={classes.sortIcon}/>}
                 label="Sort By"
@@ -100,6 +160,9 @@ MapSettings.propTypes = {
     classes: PropTypes.object.isRequired,
     sortMapsBy: PropTypes.string.isRequired,
     handleSortByChange: PropTypes.func.isRequired,
+    filterMapsBy: PropTypes.string.isRequired,
+    handleFilterChange: PropTypes.func.isRequired,
+    currentUsername: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(MapSettings);

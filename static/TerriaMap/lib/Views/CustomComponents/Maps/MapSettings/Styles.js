@@ -26,10 +26,12 @@ const styles = () => ({
         }
     },
     filterButton: {
-        margin: '0px 10px 0px 40px',
+        margin: '0px 10px',
         padding: 5,
         backgroundColor: '#f5f8fa',
+        borderRadius: 4,
         fontSize: 15,
+        fontWeight: 500,
         color: '#3f4854',
         '&:hover, &:focus': {
             backgroundColor: '#e5e5e5'

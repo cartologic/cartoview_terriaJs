@@ -16,14 +16,23 @@ const Maps = (props) => {
 
     const [maps, setMaps] = useState([]);
     const [sortMapsBy, setSortMapsBy] = useState('-date');
+    const [filterMapsBy, setFilterMapsBy] = useState('');
     const { t } = props;
     // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
-    const { mapsApiUrl, getTerriaUrl, currentMapId, newMap } = globalURLs;
+    const { mapsApiUrl, getTerriaUrl, currentMapId, newMap, currentUsername } = globalURLs;
 
     const getMaps = () => {
         const params = {
             order_by: sortMapsBy,
         };
+        if ( filterMapsBy !== '' ){
+            params.owner__username__in = filterMapsBy;
+        }
+        else {
+            if ("owner__username__in" in params){
+                delete params.owner__username__in;
+            }
+        }
         axios(mapsApiUrl, { params })
             .then(response => {
                 const allMaps = response.data.objects;
@@ -34,9 +43,10 @@ const Maps = (props) => {
 
     useEffect(() => {
         getMaps();
-    }, [sortMapsBy]);
+    }, [sortMapsBy, filterMapsBy]);
 
     const handleSortByChange = event => setSortMapsBy(event.target.value);
+    const handleFilterChange = event => setFilterMapsBy(event.target.value);
 
     return (
         <MenuPanel
@@ -52,6 +62,9 @@ const Maps = (props) => {
                     <MapSettings
                         sortMapsBy={sortMapsBy}
                         handleSortByChange={handleSortByChange}
+                        filterMapsBy={filterMapsBy}
+                        handleFilterChange={handleFilterChange}
+                        currentUsername={currentUsername}
                     />
                     <button
                         onClick={() => window.open(newMap, '_blank')}

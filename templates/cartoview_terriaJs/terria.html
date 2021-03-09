@@ -43,7 +43,8 @@
       getTerriaUrl: id => "{{site_url}}apps/cartoview_terriaJs/" + id,
       currentMapId: Number("{{ mapId }}"),
       currentLanguage: "{{ currentLanguage }}",
-      newMap: "{% url 'new_map' %}"
+      newMap: "{% url 'new_map' %}",
+      currentUsername: "{{current_username}}"
     }
   </script>
   <script src="{% static 'TerriaMap/wwwroot/build/TerriaMap.js' %}"></script>

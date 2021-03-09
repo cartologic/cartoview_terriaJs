@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MenuPanel from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuPanel.jsx";
 import PanelStyles from "terriajs/lib/ReactViews/Map/Panels/panel.scss";
 import Styles from "./maps.scss";
+import MapSettings from "./MapSettings/MapSettings";
 import classNames from "classnames";
 import axios from "axios";
 import {withTranslation} from "react-i18next";
@@ -14,17 +15,28 @@ const Maps = (props) => {
     };
 
     const [maps, setMaps] = useState([]);
+    const [sortMapsBy, setSortMapsBy] = useState('-date');
     const { t } = props;
     // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
     const { mapsApiUrl, getTerriaUrl, currentMapId, newMap } = globalURLs;
 
+    const getMaps = () => {
+        const params = {
+            order_by: sortMapsBy,
+        };
+        axios(mapsApiUrl, { params })
+            .then(response => {
+                const allMaps = response.data.objects;
+                const filteredMaps = allMaps.filter(mapEl => mapEl.id !== currentMapId);
+                setMaps(filteredMaps);
+            });
+    };
+
     useEffect(() => {
-        axios(mapsApiUrl).then(response => {
-            const allMaps = response.data.objects;
-            const filteredMaps = allMaps.filter(mapEl => mapEl.id !== currentMapId);
-            setMaps(filteredMaps);
-        });
-    }, []);
+        getMaps();
+    }, [sortMapsBy]);
+
+    const handleSortByChange = event => setSortMapsBy(event.target.value);
 
     return (
         <MenuPanel
@@ -35,14 +47,20 @@ const Maps = (props) => {
             btnTitle={t("mapPanel.btnTitle")}
         >
             <div className={classNames(PanelStyles.section)}>
-                <h2>{t("mapPanel.panelLabel")}</h2>
-                <button
-                    onClick={() => window.open(newMap, '_blank')}
-                    className={Styles.createMap}
-                    title={t("mapPanel.createMap")}
-                >
-                    {t("mapPanel.createMap")}
-                </button>
+                <div className={Styles.headingWrapper}>
+                    <h2>{t("mapPanel.panelLabel")}</h2>
+                    <MapSettings
+                        sortMapsBy={sortMapsBy}
+                        handleSortByChange={handleSortByChange}
+                    />
+                    <button
+                        onClick={() => window.open(newMap, '_blank')}
+                        className={Styles.createMap}
+                        title={t("mapPanel.createMap")}
+                    >
+                        {t("mapPanel.createMap")}
+                    </button>
+                </div>
                 <p>{t("mapPanel.panelDescription")}</p>
                 {
                     maps.map(mapElement => {

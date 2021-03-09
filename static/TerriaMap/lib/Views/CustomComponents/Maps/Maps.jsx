@@ -16,7 +16,7 @@ const Maps = (props) => {
     const [maps, setMaps] = useState([]);
     const { t } = props;
     // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
-    const { mapsApiUrl, getTerriaUrl, currentMapId } = globalURLs;
+    const { mapsApiUrl, getTerriaUrl, currentMapId, newMap } = globalURLs;
 
     useEffect(() => {
         axios(mapsApiUrl).then(response => {
@@ -35,7 +35,14 @@ const Maps = (props) => {
             btnTitle={t("mapPanel.btnTitle")}
         >
             <div className={classNames(PanelStyles.section)}>
-                <label className={PanelStyles.heading}>{t("mapPanel.panelLabel")}</label>
+                <h2>{t("mapPanel.panelLabel")}</h2>
+                <button
+                    onClick={() => window.open(newMap, '_blank')}
+                    className={Styles.createMap}
+                    title={t("mapPanel.createMap")}
+                >
+                    {t("mapPanel.createMap")}
+                </button>
                 <p>{t("mapPanel.panelDescription")}</p>
                 {
                     maps.map(mapElement => {

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MenuPanel from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuPanel.jsx";
 import PanelStyles from "terriajs/lib/ReactViews/Map/Panels/panel.scss";
 import Styles from "./maps.scss";
+import MapSettings from "./MapSettings/MapSettings";
 import classNames from "classnames";
 import axios from "axios";
 import {withTranslation} from "react-i18next";
@@ -14,17 +15,38 @@ const Maps = (props) => {
     };
 
     const [maps, setMaps] = useState([]);
+    const [sortMapsBy, setSortMapsBy] = useState('-date');
+    const [filterMapsBy, setFilterMapsBy] = useState('');
     const { t } = props;
     // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
-    const { mapsApiUrl, getTerriaUrl, currentMapId } = globalURLs;
+    const { mapsApiUrl, getTerriaUrl, currentMapId, newMap, currentUsername } = globalURLs;
+
+    const getMaps = () => {
+        const params = {
+            order_by: sortMapsBy,
+        };
+        if ( filterMapsBy !== '' ){
+            params.owner__username__in = filterMapsBy;
+        }
+        else {
+            if ("owner__username__in" in params){
+                delete params.owner__username__in;
+            }
+        }
+        axios(mapsApiUrl, { params })
+            .then(response => {
+                const allMaps = response.data.objects;
+                const filteredMaps = allMaps.filter(mapEl => mapEl.id !== currentMapId);
+                setMaps(filteredMaps);
+            });
+    };
 
     useEffect(() => {
-        axios(mapsApiUrl).then(response => {
-            const allMaps = response.data.objects;
-            const filteredMaps = allMaps.filter(mapEl => mapEl.id !== currentMapId);
-            setMaps(filteredMaps);
-        });
-    }, []);
+        getMaps();
+    }, [sortMapsBy, filterMapsBy]);
+
+    const handleSortByChange = event => setSortMapsBy(event.target.value);
+    const handleFilterChange = event => setFilterMapsBy(event.target.value);
 
     return (
         <MenuPanel
@@ -35,7 +57,23 @@ const Maps = (props) => {
             btnTitle={t("mapPanel.btnTitle")}
         >
             <div className={classNames(PanelStyles.section)}>
-                <label className={PanelStyles.heading}>{t("mapPanel.panelLabel")}</label>
+                <div className={Styles.headingWrapper}>
+                    <h2>{t("mapPanel.panelLabel")}</h2>
+                    <MapSettings
+                        sortMapsBy={sortMapsBy}
+                        handleSortByChange={handleSortByChange}
+                        filterMapsBy={filterMapsBy}
+                        handleFilterChange={handleFilterChange}
+                        currentUsername={currentUsername}
+                    />
+                    <button
+                        onClick={() => window.open(newMap, '_blank')}
+                        className={Styles.createMap}
+                        title={t("mapPanel.createMap")}
+                    >
+                        {t("mapPanel.createMap")}
+                    </button>
+                </div>
                 <p>{t("mapPanel.panelDescription")}</p>
                 {
                     maps.map(mapElement => {

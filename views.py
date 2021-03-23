@@ -81,7 +81,8 @@ class CartoviewTerriaMap(object):
             'mapTitle': map_element.title,
             'site_url': settings.SITEURL,
             'mapId': map_id,
-            'currentLanguage': get_language()
+            'currentLanguage': get_language(),
+            'current_username': request.user.username
         }
         return render(request, template, context)
 
@@ -102,7 +103,10 @@ class CartoviewTerriaMap(object):
     def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
         for layer in map.local_layers:
-            workspace, name = layer.typename.split(':')
+            if layer.typename != None:
+                workspace, name = layer.typename.split(':')
+            else:
+                workspace, name = layer.alternate.split(':')
             layer_item = {
                 "name": layer.title,
                 "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url, workspace, name, access_token),

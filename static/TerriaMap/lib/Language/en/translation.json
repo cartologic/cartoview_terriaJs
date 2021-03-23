@@ -127,7 +127,18 @@
     "btnText": "Maps",
     "btnTitle": "See available maps",
     "panelLabel": "Available Maps",
-    "panelDescription": "Clicking on a map below will open it in a separate window or tab."
+    "panelDescription": "Clicking on a map below will open it in a separate window or tab.",
+    "createMap": "Create a new map",
+    "settings": {
+      "filter": "Filter",
+      "allMaps": "All maps",
+      "myMaps": "My maps",
+      "sort": "Sort By",
+      "mostRecent": "Most recent",
+      "lessRecent": "Less recent",
+      "aZ": "A - Z",
+      "zA": "Z - A"
+    }
   },
   "about": {
     "caption": "About"

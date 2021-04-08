@@ -103,10 +103,10 @@ class CartoviewTerriaMap(object):
     def build_map_catalog(self, map, current_map_id, access_token):
         layers = []
         for layer in map.local_layers:
-            if layer.typename != None:
-                workspace, name = layer.typename.split(':')
-            else:
+            if layer.alternate != None:
                 workspace, name = layer.alternate.split(':')
+            else:
+                workspace, name = layer.typename.split(':')
             layer_item = {
                 "name": layer.title,
                 "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url, workspace, name, access_token),

@@ -84,4 +84,4 @@ ENV/
 
 # Rope project settings
 .ropeproject
-static/cartoview_terriaJs/node_modules
+static/*/node_modules

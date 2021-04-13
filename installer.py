@@ -1,12 +1,12 @@
-__author__ = 'hisham Karam'
+__author__ = 'Cartologic'
 
 info = {
-    "title": "Cartoview TerriaMap",
-    "description": "Cartoview TerriaMap",
+    "title": "TerriaMap",
+    "description": "TerriaMap",
     "author": 'Cartologic',
-    "home_page": 'http://cartologic.com/cartoview/apps/cartoview_terriaJs',
+    "home_page": 'http://cartologic.com/cartoview/apps/TerriaMap',
     "help_url": "http://cartologic.com",
-    "tags": ['map', 'viewer', 'terriaJs'],
+    "tags": ['map', 'viewer', 'terriaJs', 'TerriaMap'],
     "licence": 'BSD',
     "author_website": "http://www.cartologic.com",
     "single_instance": True

@@ -25,12 +25,12 @@
         <script>
             const globalURLs = {
                 mapsApiUrl: "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
-                getTerriaUrl: id => "{{site_url}}apps/cartoview_terriaJs/" + id,
+                getTerriaUrl: id => "{{site_url}}apps/TerriaMap/" + id,
                 getMapDetailsUrl: id => "/maps/" + id,
                 currentUsername: "{{current_username}}"
             };
         </script>
-        <script src="{% static 'cartoview_terriaJs/dist/vendors-CartoviewTerria-chunk.js' %}"></script>
-        <script src="{% static 'cartoview_terriaJs/dist/CartoviewTerria.bundle.js' %}"></script>
+        <script src="{% static 'MapsViewer/dist/vendors-CartoviewTerria-chunk.js' %}"></script>
+        <script src="{% static 'MapsViewer/dist/CartoviewTerria.bundle.js' %}"></script>
     </body>
 </html>

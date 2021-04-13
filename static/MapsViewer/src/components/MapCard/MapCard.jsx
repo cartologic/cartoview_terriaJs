@@ -65,7 +65,7 @@ class MapCard extends React.Component {
             >
                 <CardMedia
                     className={classes.media}
-                    image={map.thumbnail_url || "/static/cartoview_terriaJs/img/no-img.png"}
+                    image={map.thumbnail_url || "/static/MapsViewer/img/no-img.png"}
                     onClick={() => window.location.href = urls.getTerriaUrl(map.id)}
                 />
                 <CardHeader

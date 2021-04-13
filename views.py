@@ -12,9 +12,9 @@ from pyproj import Proj, transform
 from . import APP_NAME
 
 _templates = {
-    "terria_template": "cartoview_terriaJs/terria.html",
-    "map_list_template": "cartoview_terriaJs/list.html",
-    "terria_help_template": "cartoview_terriaJs/help/help.html",
+    "terria_template": "TerriaMap/terria.html",
+    "map_list_template": "TerriaMap/list.html",
+    "terria_help_template": "TerriaMap/help/help.html",
 }
 _config = {
     'allowProxyFor': [

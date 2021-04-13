@@ -13,7 +13,7 @@ const plugins = [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.SourceMapDevToolPlugin({
         filename: "sourcemaps/[file].map",
-        publicPath: "/static/cartoview_terriaJs/dist/",
+        publicPath: "/static/MapsViewer/dist/",
         fileContext: "public",
     }),
     new CompressionPlugin(),
@@ -38,7 +38,7 @@ const config = {
         libraryTarget: "umd",
         umdNamedDefine: true,
         chunkFilename: "[name]-chunk.js",
-        publicPath: "/static/cartoview_terriaJs/dist/",
+        publicPath: "/static/MapsViewer/dist/",
     },
     node: {
         fs: "empty",

@@ -75,7 +75,7 @@ const DialogWrapper = ({classes, map, mapDetailsURL, openDialog, onDialogChange}
                 <Box className={classes.statisticsBoxWrapper}>
                     <img
                         alt="Map Thumbnail"
-                        src={map.thumbnail_url || "/static/cartoview_terriaJs/img/no-img.png"}
+                        src={map.thumbnail_url || "/static/MapsViewer/img/no-img.png"}
                         title={map.title}
                     />
                     <div className={classes.statisticsBox}>

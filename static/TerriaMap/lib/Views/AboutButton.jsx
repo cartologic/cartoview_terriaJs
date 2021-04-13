@@ -14,7 +14,7 @@ const AboutButton = props => {
 };
 
 AboutButton.propTypes = {
-    t: PropTypes.object.isRequired
+    t: PropTypes.func.isRequired
 };
 
 export default withTranslation()(AboutButton);

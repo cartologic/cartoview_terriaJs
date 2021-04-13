@@ -77,8 +77,14 @@ class CartoviewTerriaMap(object):
         if not current_id or current_id != map_id:
             request.session[self.terria_map] = map_id
         map_element = Map.objects.get(id=map_id)
+        mapBboxNull = 0	
+        for bboxElement in map_element.bbox:	
+            if bboxElement is None:	
+                mapBboxNull = 1	
+                break
         context = {
             'mapTitle': map_element.title,
+            'mapBboxNull': mapBboxNull,
             'site_url': settings.SITEURL,
             'mapId': map_id,
             'currentLanguage': get_language(),

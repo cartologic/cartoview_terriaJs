@@ -39,6 +39,7 @@
   <script>
     const globalURLs = {
       mapTitle: "{{ mapTitle }}",
+      mapBboxNull: Number("{{ mapBboxNull }}"),
       mapsApiUrl: "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
       getTerriaUrl: id => "{{site_url}}apps/cartoview_terriaJs/" + id,
       currentMapId: Number("{{ mapId }}"),

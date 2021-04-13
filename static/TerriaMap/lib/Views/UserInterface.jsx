@@ -120,6 +120,15 @@ const StandardUserInterface = createReactClass({
     const { currentLanguage } = globalURLs;
     i18next.changeLanguage(currentLanguage);
     document.body.dir = i18next.dir();
+
+    // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
+    const { mapBboxNull } = globalURLs;
+    if (mapBboxNull === 1){
+      this.props.viewState.notifications.push({
+        title: "Error loading initialization source",
+        message: "Map BBox is not valid.",
+      });
+    }
   },
   componentWillUnmount() {
     window.removeEventListener("resize", this.resizeListener, false);

@@ -143,6 +143,9 @@
   "about": {
     "caption": "About"
   },
+  "TerriaMapsList": {
+    "caption": "Back to Terria maps launcher"
+  },
   "feedback": {
     "feedbackPreamble": "We would love to hear from you!",
     "title": "Feedback",

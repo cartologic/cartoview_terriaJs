@@ -14,6 +14,7 @@ import Prompt from "terriajs/lib/ReactViews/Generic/Prompt";
 import Styles from "terriajs/lib/ReactViews/Map/menu-bar.scss";
 import Maps from "./Maps/Maps";
 import AboutButton from "../AboutButton";
+import TerriaMapList from "./TerriaMapList";
 
 // The map navigation region
 const MenuBar = createReactClass({
@@ -95,6 +96,9 @@ const MenuBar = createReactClass({
                 onClick={this.handleClick}
             >
                 <ul className={Styles.menu}>
+                    <li className={Styles.menuItem}>
+                        <TerriaMapList/>
+                    </li>
                     <If condition={storyEnabled}>
                         <li className={Styles.menuItem}>
                             <button

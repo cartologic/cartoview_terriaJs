@@ -27,7 +27,8 @@
                 mapsApiUrl: "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
                 getTerriaUrl: id => "{{site_url}}apps/TerriaMap/" + id,
                 getMapDetailsUrl: id => "/maps/" + id,
-                currentUsername: "{{current_username}}"
+                currentUsername: "{{current_username}}",
+                newMap: "{% url 'new_map' %}",
             };
         </script>
         <script src="{% static 'MapsViewer/dist/vendors-CartoviewTerria-chunk.js' %}"></script>

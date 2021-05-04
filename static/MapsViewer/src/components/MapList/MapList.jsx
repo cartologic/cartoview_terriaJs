@@ -87,6 +87,7 @@ const MapList = ({classes, urls}) => {
                         filterMapsBy={filterMapsBy}
                         handleFilterChange={handleFilterChange}
                         currentUsername={urls.currentUsername}
+                        newMapURL={urls.newMap}
                     />
                     {
                         loadingMaps ? (

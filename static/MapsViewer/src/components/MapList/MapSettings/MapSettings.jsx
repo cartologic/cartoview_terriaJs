@@ -10,6 +10,7 @@ import {
     RadioGroup
 } from '@material-ui/core'
 import React, {useRef, useState} from 'react'
+import AddIcon from '@material-ui/icons/Add'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import PropTypes from 'prop-types'
 import SortIcon from '@material-ui/icons/Sort'
@@ -17,7 +18,7 @@ import StyledRadio from '../../StyledRadio/StyledRadio'
 import styles from './Styles'
 import { withStyles } from '@material-ui/core/styles'
 
-const MapSettings = ({ classes, sortMapsBy, handleChange, filterMapsBy, handleFilterChange, currentUsername }) => {
+const MapSettings = ({ classes, sortMapsBy, handleChange, filterMapsBy, handleFilterChange, currentUsername, newMapURL }) => {
     const [openSortMenu, setOpenSortMenu] = useState(false)
     const [openFilterMenu, setOpenFilterMenu] = useState(false)
     const anchorSortRef = useRef(null)
@@ -44,6 +45,15 @@ const MapSettings = ({ classes, sortMapsBy, handleChange, filterMapsBy, handleFi
 
     return (
         <Box className={classes.settingWrapper}>
+            <Chip
+                icon={<AddIcon className={classes.sortIcon}/>}
+                component="a"
+                label="Create a new map"
+                href={newMapURL}
+                target="_blank"
+                className={classes.newMapButton}
+                clickable
+            />
             <Chip
                 icon={<FilterListIcon className={classes.sortIcon}/>}
                 label="Filter"
@@ -158,12 +168,12 @@ const MapSettings = ({ classes, sortMapsBy, handleChange, filterMapsBy, handleFi
 
 MapSettings.propTypes = {
     classes: PropTypes.object.isRequired,
-    urls: PropTypes.object.isRequired,
     sortMapsBy: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     filterMapsBy: PropTypes.string.isRequired,
     handleFilterChange: PropTypes.func.isRequired,
     currentUsername: PropTypes.string.isRequired,
+    newMapURL: PropTypes.string.isRequired
 }
 
 export default withStyles(styles)(MapSettings)

@@ -7,6 +7,18 @@ const styles = () => ({
             justifyContent: 'center'
         }
     },
+    newMapButton: {
+        padding: 5,
+        backgroundColor: '#09274b',
+        fontSize: 15,
+        color: '#fff',
+        '&:hover, &:focus': {
+            backgroundColor: '#124e96'
+        },
+        ['@media (max-width: 768px)']: {
+            margin: '0px 14px',
+        }
+    },
     sortIcon: {
         color: '#fff'
     },
@@ -24,7 +36,7 @@ const styles = () => ({
         }
     },
     filterButton: {
-        margin: '0px 10px 0px 40px',
+        margin: '0px 10px',
         padding: 5,
         backgroundColor: '#09274b',
         fontSize: 15,

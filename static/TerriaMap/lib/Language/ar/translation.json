@@ -143,6 +143,9 @@
   "about": {
     "caption": "عن"
   },
+  "TerriaMapsList": {
+    "caption": "عودة إلى مشغّل خرائط تريا"
+  },
   "feedback": {
     "feedbackPreamble": "نود أن نسمع منك!",
     "title": "رأيك",

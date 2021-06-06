@@ -7,11 +7,10 @@ import terriaLogo from '../../../img/terria-logo.png'
 import { withStyles } from '@material-ui/core/styles'
 
 const Navbar = ({ classes, mapsView, handleChangeMapsView }) => {
-    const preventDefault = (event) => event.preventDefault()
 
     return (
         <Toolbar disableGutters>
-            <Link href="/" onClick={preventDefault} className={classes.navLink} title="Home">
+            <Link href="/" className={classes.navLink} title="Home">
                 <img src={terriaLogo} alt="Terria Maps list" className={classes.media}/>
             </Link>
             <Typography variant="h5" type="title" color="inherit" noWrap className={classes.title}>

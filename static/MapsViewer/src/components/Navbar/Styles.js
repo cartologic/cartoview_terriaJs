@@ -1,4 +1,9 @@
 const styles = () => ({
+    navLink: {
+        '&:hover': {
+            transform: 'translateY(-10px)',
+        },
+    },
     media: {
         height: 40,
         margin: "0px 20px",

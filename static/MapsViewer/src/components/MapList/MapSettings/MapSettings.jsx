@@ -77,8 +77,8 @@ const MapSettings = ({ classes, sortMapsBy, handleChange, filterMapsBy, handleFi
                             <ClickAwayListener onClickAway={handleFilterMenuClose}>
                                 <FormControl component="fieldset">
                                     <RadioGroup
-                                        aria-label="order by"
-                                        name="order by"
+                                        aria-label="filter by"
+                                        name="filter by"
                                         value={filterMapsBy}
                                         onChange={handleFilterChange}
                                         className={classes.radioGroup}

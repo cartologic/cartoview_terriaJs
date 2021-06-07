@@ -82,6 +82,7 @@ const MapSettings = ({ classes, sortMapsBy, handleSortByChange, filterMapsBy, ha
                                             className={classes.formControlLabel}
                                         />
                                         <FormControlLabel
+                                            disabled={!currentUsername}
                                             value={currentUsername}
                                             control={<StyledRadio/>}
                                             label={t("mapPanel.settings.myMaps")}

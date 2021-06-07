@@ -4,6 +4,7 @@ import MenuPanel from "terriajs/lib/ReactViews/StandardUserInterface/customizabl
 import PanelStyles from "terriajs/lib/ReactViews/Map/Panels/panel.scss";
 import Styles from "./maps.scss";
 import MapSettings from "./MapSettings/MapSettings";
+import CustomizedCircularProgress from './CircularProgress/CustomCircularProgress';
 import classNames from "classnames";
 import axios from "axios";
 import {withTranslation} from "react-i18next";
@@ -15,6 +16,7 @@ const Maps = (props) => {
     };
 
     const [maps, setMaps] = useState([]);
+    const [loadingMaps, setLoadingMaps] = useState(true);
     const [sortMapsBy, setSortMapsBy] = useState('-date');
     const [filterMapsBy, setFilterMapsBy] = useState('');
     const { t } = props;
@@ -22,6 +24,9 @@ const Maps = (props) => {
     const { mapsApiUrl, getTerriaUrl, currentMapId, newMap, currentUsername } = globalURLs;
 
     const getMaps = () => {
+        if (!loadingMaps){
+            setLoadingMaps(true);
+        }
         const params = {
             order_by: sortMapsBy,
         };
@@ -38,6 +43,7 @@ const Maps = (props) => {
                 const allMaps = response.data.objects;
                 const filteredMaps = allMaps.filter(mapEl => mapEl.id !== currentMapId);
                 setMaps(filteredMaps);
+                setLoadingMaps(false);
             });
     };
 
@@ -76,36 +82,40 @@ const Maps = (props) => {
                 </div>
                 <p>{t("mapPanel.panelDescription")}</p>
                 {
-                    maps.map(mapElement => {
-                        return (
-                            <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
-                                <a
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    href={getTerriaUrl(mapElement.id)}
-                                >
-                                    <img
-                                        className={Styles.image}
-                                        src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
-                                        alt={mapElement.title}
-                                    />
-                                </a>
+                    loadingMaps ? (
+                        <CustomizedCircularProgress />
+                    ):(
+                        maps.map(mapElement => {
+                            return (
+                                <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
+                                    <a
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        href={getTerriaUrl(mapElement.id)}
+                                    >
+                                        <img
+                                            className={Styles.image}
+                                            src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
+                                            alt={mapElement.title}
+                                        />
+                                    </a>
 
-                                <a
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={Styles.link}
-                                    href={getTerriaUrl(mapElement.id)}
-                                >
-                                    {mapElement.title}
-                                </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={Styles.link}
+                                        href={getTerriaUrl(mapElement.id)}
+                                    >
+                                        {mapElement.title}
+                                    </a>
 
-                                <p>
-                                    {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
-                                </p>
-                            </div>
-                        );
-                    })
+                                    <p>
+                                        {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
+                                    </p>
+                                </div>
+                            );
+                        })
+                    )
                 }
             </div>
         </MenuPanel>

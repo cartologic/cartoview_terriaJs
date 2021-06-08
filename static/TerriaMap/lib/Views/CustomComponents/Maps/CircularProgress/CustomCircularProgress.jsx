@@ -5,6 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 const useStylesFacebook = makeStyles(() => ({
     root: {
         position: 'relative',
+        zIndex: -1
     },
     bottom: {
         color: '#8b9198',

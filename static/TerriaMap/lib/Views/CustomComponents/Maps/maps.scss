@@ -42,3 +42,8 @@
     composes: link from "~terriajs/lib/Sass/common/_base.scss";
     font-size: 1.2em;
 }
+
+.noMaps {
+    color: #f55c47;
+    font-size: 16px;
+}

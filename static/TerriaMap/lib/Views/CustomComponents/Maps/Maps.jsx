@@ -85,36 +85,40 @@ const Maps = (props) => {
                     loadingMaps ? (
                         <CustomizedCircularProgress />
                     ):(
-                        maps.map(mapElement => {
-                            return (
-                                <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
-                                    <a
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        href={getTerriaUrl(mapElement.id)}
-                                    >
-                                        <img
-                                            className={Styles.image}
-                                            src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
-                                            alt={mapElement.title}
-                                        />
-                                    </a>
+                        maps.length !== 0 ? (
+                            maps.map(mapElement => {
+                                return (
+                                    <div className={classNames(PanelStyles.section, Styles.section)} key={mapElement.id}>
+                                        <a
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            href={getTerriaUrl(mapElement.id)}
+                                        >
+                                            <img
+                                                className={Styles.image}
+                                                src={mapElement.thumbnail_url || "../../../../wwwroot/images/no-img.png"}
+                                                alt={mapElement.title}
+                                            />
+                                        </a>
 
-                                    <a
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={Styles.link}
-                                        href={getTerriaUrl(mapElement.id)}
-                                    >
-                                        {mapElement.title}
-                                    </a>
+                                        <a
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={Styles.link}
+                                            href={getTerriaUrl(mapElement.id)}
+                                        >
+                                            {mapElement.title}
+                                        </a>
 
-                                    <p>
-                                        {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
-                                    </p>
-                                </div>
-                            );
-                        })
+                                        <p>
+                                            {mapElement.abstract === "" ? "No Description provided." : mapElement.abstract}
+                                        </p>
+                                    </div>
+                                );
+                            })
+                        ):(
+                            <p className={Styles.noMaps}>There are no available maps</p>
+                        )
                     )
                 }
             </div>

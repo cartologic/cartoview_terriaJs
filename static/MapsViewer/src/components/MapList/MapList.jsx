@@ -13,18 +13,25 @@ import GridView from './MapView/GridView'
 import ListView from './MapView/ListView'
 import MapSettings from './MapSettings/MapSettings'
 import Navbar from '../Navbar/Navbar'
+import Pagination from '@material-ui/lab/Pagination'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import styles from './Styles'
 import {withStyles} from '@material-ui/core/styles'
 
+const MAPS_LIMIT = 8
+
 const MapList = ({classes, urls}) => {
     const [maps, setMaps] = useState([])
     const [loadingMaps, setLoadingMaps] = useState(true)
+    const [mapsOffset, setMapsOffset] = useState(0)
+    const [totalMapsCount, setTotalMapsCount] = useState(0)
     const [mapsView, setMapsView] = useState('grid')
     const [sortMapsBy, setSortMapsBy] = useState('-date')
     const [filterMapsBy, setFilterMapsBy] = useState('')
     const [snackOpen, setSnackOpen] = useState(false)
+
+    const paginate = (e, selectedPageNumber) => setMapsOffset(Math.ceil((selectedPageNumber - 1) * MAPS_LIMIT))
 
     const handleSnackOpen = () => setSnackOpen(true)
 
@@ -41,6 +48,8 @@ const MapList = ({classes, urls}) => {
         }
         let params = {
             order_by: sortMapsBy,
+            limit: MAPS_LIMIT,
+            offset: mapsOffset
         }
         if ( filterMapsBy !== '' ){
             params.owner__username__in = filterMapsBy
@@ -53,13 +62,14 @@ const MapList = ({classes, urls}) => {
         axios(urls.mapsApiUrl, { params })
             .then(response => {
                 setMaps(response.data.objects)
+                setTotalMapsCount(response.data.meta["total_count"])
                 setLoadingMaps(false)
             })
     }
 
     useEffect(() => {
         getMaps()
-    }, [sortMapsBy, filterMapsBy])
+    }, [sortMapsBy, filterMapsBy, mapsOffset])
 
     const handleChange = event => {
         setSortMapsBy(event.target.value)
@@ -70,6 +80,8 @@ const MapList = ({classes, urls}) => {
     const handleChangeMapsView = (event, nextView) => {
         setMapsView(nextView)
     }
+
+    const pagesCount = Math.ceil(totalMapsCount/MAPS_LIMIT)
 
     return (
         <div className={classes.root}>
@@ -135,6 +147,16 @@ const MapList = ({classes, urls}) => {
                                 }
                             </Box>
                         )
+                    }
+                    {
+                        pagesCount > 1 &&
+                        <Pagination
+                            variant="outlined"
+                            shape="rounded"
+                            className={classes.pagination}
+                            count={pagesCount}
+                            onChange={paginate}
+                        />
                     }
                 </main>
             </div>

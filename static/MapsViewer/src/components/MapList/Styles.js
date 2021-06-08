@@ -48,6 +48,11 @@ const styles = theme => ({
     },
     noMaps: {
         textAlign: 'center'
+    },
+    pagination: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: 50
     }
 })
 

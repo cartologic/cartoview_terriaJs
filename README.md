@@ -10,7 +10,7 @@ It uses the starting project of TerriaJS, [TerriaMap](https://github.com/TerriaJ
 
 The following steps describe how to run this app in Cartoview for development purposes.
 
-1. Clone this repository.
+1. Clone this repository inside the pre-installed cartoview, apps directory (e.g. `installed-cartoview/apps/`).
 2. Navigate to `static/TerriaMap` directory,
     - Run `npm install` to install the TerriaMap dependencies.
     - Then run `npm run gulp` to build a standard version of TerriaMap. You can otherwise build a minified release build by running `npm run gulp release`.
@@ -23,8 +23,10 @@ The following steps describe how to run this app in Cartoview for development pu
         "pending": false
     }
     ```
-    - Create an entry for the app with its details in Django admin in the `Apps` model.
+    - Open django admin page (e.g. `/admin`) and create an entry for the app with its details in the `Apps` model.
         > **Note:** Make sure to mark the app as a `Single instance`.
+        > ![Terria app in admin](https://user-images.githubusercontent.com/30727109/132563178-3c9ad85b-251d-450e-bc79-f6e2b9ec15dd.png)
+        > ![Terria app in admin](https://user-images.githubusercontent.com/30727109/132563211-9cdb899d-cf5c-4682-940c-e5891b769c26.png)
 4. Restart Cartoview.
 
 Now, you should have the app installed. You can start adding layers and creating maps in [GeoNode](https://github.com/GeoNode/geonode) to be able to show them in the app.

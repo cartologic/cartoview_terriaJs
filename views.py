@@ -7,7 +7,7 @@ from django.utils.translation import get_language
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
-from pyproj import Proj, transform
+from typing import Dict, Any
 
 from . import APP_NAME
 
@@ -18,8 +18,8 @@ _templates = {
 }
 _config = {
     'allowProxyFor': [
-        "nicta.com.au", 
-        "gov.au", 
+        "nicta.com.au",
+        "gov.au",
         "csiro.au",
         "arcgis.com",
         "argo.jcommops.org",
@@ -42,33 +42,27 @@ _config = {
 }
 
 
+def get_layer_metadata(request, layer_id=None):
+    """metadata_xml"""
+    layer = get_object_or_404(Layer, pk=layer_id)
+    layer_metadata = layer.metadata_xml
+    return HttpResponse(layer_metadata, content_type="application/xml")
+
+
 class CartoviewTerriaMap(object):
-    def __init__(self, templates=_templates, config=_config):
-        self.terria_template = _templates.get('terria_template', None)
-        self.map_list_template = _templates.get('map_list_template', None)
+    def __init__(self, templates=None, config=None):
+        if templates is None:
+            templates = _templates
+        if config is None:
+            config = _config
+        self.terria_template = templates.get('terria_template', None)
+        self.map_list_template = templates.get('map_list_template', None)
         self.geoserver_url = settings.OGC_SERVER['default']['PUBLIC_LOCATION']
         self.terria_map = "terria_map_id"
-        self.geonode_projection = settings.DEFAULT_MAP_CRS
-        self.map_projection = "EPSG:3785".lower() if int(
-            self.geonode_projection.split(":")[1]) == 900913 else \
-            self.geonode_projection
-        self.in_proj = Proj(init=self.map_projection, preserve_units=True)
-        self.out_proj = Proj(init='epsg:4326')
-        self.main_config = _config
+        self.main_config = config
         self.server_config = self.main_config.copy()
+        self.server_config: Dict[str, Any]
         self.server_config.update({'version': "2.6.7"})
-
-    def reproject(self, x1, y1):
-        """reproject Geonode maps center to terria
-          :param x1: map.center_x
-          :param y1: map.center_y
-          :type x1: type int
-          :type y1: type int
-          :return: return projected points
-          :rtype:  tuple(int,int)
-        """
-        x2, y2 = transform(self.in_proj, self.out_proj, x1, y1)
-        return (x2, y2)
 
     def index_page(self, request, map_id):
         template = self.terria_template
@@ -77,10 +71,10 @@ class CartoviewTerriaMap(object):
         if not current_id or current_id != map_id:
             request.session[self.terria_map] = map_id
         map_element = Map.objects.get(id=map_id)
-        mapBboxNull = 0	
-        for bboxElement in map_element.bbox:	
-            if bboxElement is None:	
-                mapBboxNull = 1	
+        mapBboxNull = 0
+        for bboxElement in map_element.bbox:
+            if bboxElement is None:
+                mapBboxNull = 1
                 break
         context = {
             'mapTitle': map_element.title,
@@ -106,10 +100,10 @@ class CartoviewTerriaMap(object):
     def proxyable_domains(self, request):
         return JsonResponse(self.main_config)
 
-    def build_map_catalog(self, map, current_map_id, access_token):
+    def build_map_catalog(self, map_obj, current_map_id, access_token):
         layers = []
-        for layer in map.local_layers:
-            if layer.alternate != None:
+        for layer in map_obj.local_layers:
+            if layer.alternate is not None:
                 workspace, name = layer.alternate.split(':')
             else:
                 workspace, name = layer.typename.split(':')
@@ -120,20 +114,17 @@ class CartoviewTerriaMap(object):
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
-                "layers": name
+                "layers": name,
+                "opacity": 0.8,
             }
-            if current_map_id and int(current_map_id) == map.id:
+            if current_map_id and int(current_map_id) == map_obj.id:
                 layer_item.update({"isShown": True})
             layers.append(layer_item)
         return layers
 
-    def layer_metadata(self, request, layer_id=None):
-        """metadata_xml"""
-        layer = get_object_or_404(Layer, pk=layer_id)
-        layer_metadata = layer.metadata_xml
-        return HttpResponse(layer_metadata, content_type="application/xml")
-
-    def build_main_catalog(self, permitted_ids, current_map_id, access_token=None, config={}):
+    def build_main_catalog(self, permitted_ids, current_map_id, access_token=None, config=None):
+        if config is None:
+            config = {}
         maps = Map.objects.filter(id__in=permitted_ids)
         maps_catalog = {
             "name": "Cartoview Maps",
@@ -142,24 +133,22 @@ class CartoviewTerriaMap(object):
             "isOpen": True
         }
         catalog = []
-        for map in maps:
+        for map_element in maps:
             map_item = {
-                "name": map.title,
+                "name": map_element.title,
                 "type": "group",
                 "isOpen": False
             }
             layers_as_catalog_item = self.build_map_catalog(
-                map, current_map_id, access_token)
-            if current_map_id and int(current_map_id) == map.id:
-                x0, y0 = self.reproject(map.bbox[0], map.bbox[3])
-                x1, y1 = self.reproject(map.bbox[2], map.bbox[1]) 
+                map_element, current_map_id, access_token)
+            if current_map_id and int(current_map_id) == map_element.id:
                 config.update(
                     {
                         "homeCamera": {
-                            "south": y0,
-                            "west": x0,
-                            "north": y1,
-                            "east": x1 
+                            "south": map_element.center_y - 10,
+                            "west": map_element.center_x - 10,
+                            "north": map_element.center_y + 10,
+                            "east": map_element.center_x + 10,
                         },
                     }
                 )
@@ -182,9 +171,9 @@ class CartoviewTerriaMap(object):
             re_path(r'^(?P<map_id>\d+)$', self.index_page, name='%s.list' % APP_NAME),
             re_path(r'^serverconfig/$', self.server_config_view, name='%s.config' % APP_NAME),
             re_path(r'^proxyabledomains/$', self.proxyable_domains, name='%s.proxy' % APP_NAME),
-            re_path(r'^metadata/(?P<layer_id>\d+)$', self.layer_metadata, name='%s.metadata' % APP_NAME),
+            re_path(r'^metadata/(?P<layer_id>\d+)$', get_layer_metadata, name='%s.metadata' % APP_NAME),
             re_path(r'^init/terria.json$', self.terria_json, name='%s.json' % APP_NAME),
-            re_path(r'^help/help.html', TemplateView.as_view(template_name=_templates.get('terria_help_template', None)),name='terria_help'),
+            re_path(r'^help/help.html', TemplateView.as_view(template_name=_templates.get('terria_help_template', None)), name='terria_help'),
         ]
         return url_patterns
 

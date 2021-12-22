@@ -101,7 +101,8 @@ class CartoviewTerriaMap(object):
                 "description": layer.abstract,
                 "type": "wms",
                 "isGeoServer": True,
-                "layers": name
+                "layers": name,
+                "opacity": 0.8,
             }
             if current_map_id and int(current_map_id) == map.id:
                 layer_item.update({"isShown": True})

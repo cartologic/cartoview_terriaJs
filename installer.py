@@ -4,11 +4,11 @@ info = {
     "title": "TerriaMap",
     "description": "TerriaMap",
     "author": 'Cartologic',
-    "home_page": 'http://cartologic.com/cartoview/apps/TerriaMap',
-    "help_url": "http://cartologic.com",
-    "tags": ['map', 'viewer', 'terriaJs', 'TerriaMap'],
+    "home_page": 'https://appstore.cartoview.net/app/cartoview_terriaJs/',
+    "help_url": "https://cartologic.com",
+    "tags": ['map', 'viewer', 'TerriaJS', 'TerriaMap'],
     "licence": 'BSD',
-    "author_website": "http://www.cartologic.com",
+    "author_website": "https://www.cartologic.com",
     "single_instance": True
 }
 

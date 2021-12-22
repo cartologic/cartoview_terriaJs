@@ -7,7 +7,6 @@ from django.utils.translation import get_language
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from guardian.shortcuts import get_objects_for_user
-from pyproj import Proj, transform
 
 from . import APP_NAME
 
@@ -48,27 +47,9 @@ class CartoviewTerriaMap(object):
         self.map_list_template = _templates.get('map_list_template', None)
         self.geoserver_url = settings.OGC_SERVER['default']['PUBLIC_LOCATION']
         self.terria_map = "terria_map_id"
-        self.geonode_projection = settings.DEFAULT_MAP_CRS
-        self.map_projection = "EPSG:3785".lower() if int(
-            self.geonode_projection.split(":")[1]) == 900913 else \
-            self.geonode_projection
-        self.in_proj = Proj(init=self.map_projection, preserve_units=True)
-        self.out_proj = Proj(init='epsg:4326')
         self.main_config = _config
         self.server_config = self.main_config.copy()
         self.server_config.update({'version': "2.6.7"})
-
-    def reproject(self, x1, y1):
-        """reproject Geonode maps center to terria
-          :param x1: map.center_x
-          :param y1: map.center_y
-          :type x1: type int
-          :type y1: type int
-          :return: return projected points
-          :rtype:  tuple(int,int)
-        """
-        x2, y2 = transform(self.in_proj, self.out_proj, x1, y1)
-        return (x2, y2)
 
     def index_page(self, request, map_id):
         template = self.terria_template

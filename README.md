@@ -10,14 +10,17 @@ It uses the starting project of TerriaJS, [TerriaMap](https://github.com/TerriaJ
 
 The following steps describe how to run this app in Cartoview for development purposes.
 
-1. Clone this repository inside the pre-installed cartoview, apps directory (e.g. `installed-cartoview/apps/`).
+1. Clone this repository inside the pre-installed cartoview, apps directory (e.g. `installed-cartoview/apps/`) with the name **TerriaMap**.
+    ```shell
+    git clone https://github.com/cartologic/cartoview_terriaJs.git TerriaMap
+    ```
 2. Navigate to `static/TerriaMap` directory,
     - Run `npm install` to install the TerriaMap dependencies It's recommended to use [NodeJS v10.24.1](https://nodejs.org/download/release/v10.24.1/).
     - Then run `npm run gulp` to build a standard version of TerriaMap. You can otherwise build a minified release build by running `npm run gulp release`.
 3. Adjust any configuration that should be done for installing a normal Cartoview app for development.
     - Add the app details to the `apps.json` found in `cartoview/apps` directory.
     ```json
-    "cartoview_terriaJs": {
+    "TerriaMap": {
         "active": true,
         "order": 1,
         "pending": false

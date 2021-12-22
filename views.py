@@ -42,12 +42,16 @@ _config = {
 
 
 class CartoviewTerriaMap(object):
-    def __init__(self, templates=_templates, config=_config):
-        self.terria_template = _templates.get('terria_template', None)
-        self.map_list_template = _templates.get('map_list_template', None)
+    def __init__(self, templates=None, config=None):
+        if templates is None:
+            templates = _templates
+        if config is None:
+            config = _config
+        self.terria_template = templates.get('terria_template', None)
+        self.map_list_template = templates.get('map_list_template', None)
         self.geoserver_url = settings.OGC_SERVER['default']['PUBLIC_LOCATION']
         self.terria_map = "terria_map_id"
-        self.main_config = _config
+        self.main_config = config
         self.server_config = self.main_config.copy()
         self.server_config.update({'version': "2.6.7"})
 

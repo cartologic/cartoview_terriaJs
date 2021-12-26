@@ -1,8 +1,8 @@
 __author__ = 'Cartologic'
 
 info = {
-    "title": "TerriaMap",
-    "description": "TerriaMap",
+    "title": "Terria Map",
+    "description": "A catalog-based web data visualization platform that allows easy access to geo-spatial data.",
     "author": 'Cartologic',
     "home_page": 'https://appstore.cartoview.net/app/cartoview_terriaJs/',
     "help_url": "https://cartologic.com",

@@ -41,12 +41,12 @@
       mapTitle: "{{ mapTitle }}",
       mapBboxNull: Number("{{ mapBboxNull }}"),
       mapsApiUrl: "{% url 'api_dispatch_list' api_name='api' resource_name='maps' %}",
-      getTerriaUrl: id => "{{ site_url }}".slice(0, -1) + "{% url 'app_manager_base_url' %}" + "TerriaMap/" + id,
+      getTerriaUrl: id => "{{ site_url }}".slice(0, -1) + "{% url 'app_manager_base_url' %}" + "{{app_name}}/" + id,
       currentMapId: Number("{{ mapId }}"),
       currentLanguage: "{{ currentLanguage }}",
       newMap: "{% url 'new_map' %}",
       currentUsername: "{{current_username}}",
-      terriaAppURL: "{% url 'app_manager_base_url' %}" + "TerriaMap"
+      terriaAppURL: "{% url 'app_manager_base_url' %}" + "{{app_name}}"
     }
   </script>
   <script src="{% static 'TerriaMap/wwwroot/build/TerriaMap.js' %}"></script>

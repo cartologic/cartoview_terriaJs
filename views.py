@@ -82,7 +82,8 @@ class CartoviewTerriaMap(object):
             'site_url': settings.SITEURL,
             'mapId': map_id,
             'currentLanguage': get_language(),
-            'current_username': request.user.username
+            'current_username': request.user.username,
+            'app_name': APP_NAME,
         }
         return render(request, template, context)
 
@@ -90,7 +91,8 @@ class CartoviewTerriaMap(object):
         template = self.map_list_template
         context = {
             'site_url': settings.SITEURL,
-            'current_username': request.user.username
+            'current_username': request.user.username,
+            'app_name': APP_NAME,
         }
         return render(request, template, context)
 

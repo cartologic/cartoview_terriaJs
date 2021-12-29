@@ -19,8 +19,8 @@ If you want to add another language, you may follow the following steps:
 
 1. Select the language you want to use from the language selector in Cartoview.
 2. Check the list of popular [languages with their codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to find the code of the language that you selected in step 1.
-3. Prepare the translation file that contains the objects that should be translated. For instance, you can find [English file](https://github.com/cartologic/cartoview_terriaJs/blob/master/static/TerriaMap/lib/Language/en/translation.json) for English in the directory `lib/Language`. So, create a folder with the name of the language then inside it, create the translation file as JSON and add the appropriate translations according to the language.
-4. After creating the translation file, import it inside the [i18n.js](https://github.com/cartologic/cartoview_terriaJs/blob/master/static/TerriaMap/lib/Models/i18n.js) file located at `lib/Models`. Then, add it to the `resources` object like that:
+3. Prepare the translation file that contains the objects that should be translated. For instance, you can find [English file](https://github.com/cartologic/cartoview_terriaJs/blob/master/static/terria_map/lib/Language/en/translation.json) for English in the directory `lib/Language`. So, create a folder with the name of the language then inside it, create the translation file as JSON and add the appropriate translations according to the language.
+4. After creating the translation file, import it inside the [i18n.js](https://github.com/cartologic/cartoview_terriaJs/blob/master/static/terria_map/lib/Models/i18n.js) file located at `lib/Models`. Then, add it to the `resources` object like that:
 ```
 import translationEN from "../Language/en/translation.json";
 import translationAR from "../Language/ar/translation.json";

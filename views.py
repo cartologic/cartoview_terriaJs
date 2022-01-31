@@ -65,6 +65,9 @@ class CartoviewTerriaMap(object):
         self.server_config.update({'version': "2.6.7"})
 
     def index_page(self, request, map_id):
+        """
+        View for terria map viewer.
+        """
         template = self.terria_template
         map_id_key = request.session.get(self.terria_map, None)
         current_id = int(map_id_key) if map_id_key else 0
@@ -88,6 +91,9 @@ class CartoviewTerriaMap(object):
         return render(request, template, context)
 
     def map_list(self, request):
+        """
+        View for terria map launcher.
+        """
         template = self.map_list_template
         context = {
             'site_url': settings.SITEURL,
@@ -102,7 +108,61 @@ class CartoviewTerriaMap(object):
     def proxyable_domains(self, request):
         return JsonResponse(self.main_config)
 
+    def build_main_layers_catalog(self, permitted_ids, current_map_id, access_token=None, config=None):
+        """
+        Build Terria catalog to get all public layers.
+        """
+        if config is None:
+            config = {}
+        maps = Map.objects.all()
+        for map_element in maps:
+            if current_map_id and int(current_map_id) == map_element.id:
+                config.update(
+                    {
+                        "homeCamera": {
+                            "south": map_element.center_y - 10,
+                            "west": map_element.center_x - 10,
+                            "north": map_element.center_y + 10,
+                            "east": map_element.center_x + 10,
+                        },
+                    }
+                )
+        layers = Layer.objects.all()
+        layers_catalog = {
+            "name": "Cartoview Layers",
+            "type": "group",
+            "preserveOrder": True,
+            "isOpen": True
+        }
+        catalog = []
+        for layer_element in layers:
+            if layer_element.alternate is not None:
+                workspace, name = layer_element.alternate.split(':')
+            else:
+                workspace, name = layer_element.typename.split(':')
+            layer_item = {
+                "name": layer_element.title,
+                "metadataUrl": "{}{}/{}/wms?request=GetCapabilities&version=1.1.0&access_token={}".format(self.geoserver_url, workspace, name, access_token),
+                "url": "{}{}/{}/wms?&access_token={}".format(self.geoserver_url, workspace, name, access_token),
+                "description": layer_element.abstract,
+                "type": "wms",
+                "isGeoServer": True,
+                "layers": name,
+                "opacity": 0.8,
+            }
+            current_map_obj = Map.objects.get(id=current_map_id)
+            if layer_element in set(current_map_obj.local_layers):
+                layer_item.update({"isShown": True})
+            catalog.append(layer_item)
+        layers_catalog.update({"items": catalog})
+
+        config.update({"catalog": [layers_catalog]})
+        return config
+
     def build_map_catalog(self, map_obj, current_map_id, access_token):
+        """
+        Return layers of a particular map in terria catalog format.
+        """
         layers = []
         for layer in map_obj.local_layers:
             if layer.alternate is not None:
@@ -125,6 +185,9 @@ class CartoviewTerriaMap(object):
         return layers
 
     def build_main_catalog(self, permitted_ids, current_map_id, access_token=None, config=None):
+        """
+        Build Terria catalog to get all public maps.
+        """
         if config is None:
             config = {}
         maps = Map.objects.filter(id__in=permitted_ids)
@@ -161,10 +224,14 @@ class CartoviewTerriaMap(object):
         return config
 
     def terria_json(self, request):
+        """
+        Return terria catalog in JSON format.
+        """
         access_token = request.session.get('access_token', None)
         map_id = request.session.get(self.terria_map, None)
         permitted_ids = get_objects_for_user(request.user, 'base.view_resourcebase').values('id')
-        catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
+        # catalog = self.build_main_catalog(permitted_ids, map_id, access_token)
+        catalog = self.build_main_layers_catalog(permitted_ids, map_id, access_token)
         return JsonResponse(catalog)
 
     def get_urls_patterns(self):

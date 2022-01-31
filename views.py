@@ -65,6 +65,9 @@ class CartoviewTerriaMap(object):
         self.server_config.update({'version': "2.6.7"})
 
     def index_page(self, request, map_id):
+        """
+        View for terria map viewer.
+        """
         template = self.terria_template
         map_id_key = request.session.get(self.terria_map, None)
         current_id = int(map_id_key) if map_id_key else 0
@@ -88,6 +91,9 @@ class CartoviewTerriaMap(object):
         return render(request, template, context)
 
     def map_list(self, request):
+        """
+        View for terria map launcher.
+        """
         template = self.map_list_template
         context = {
             'site_url': settings.SITEURL,
@@ -154,6 +160,9 @@ class CartoviewTerriaMap(object):
         return config
 
     def build_map_catalog(self, map_obj, current_map_id, access_token):
+        """
+        Return layers of a particular map in terria catalog format.
+        """
         layers = []
         for layer in map_obj.local_layers:
             if layer.alternate is not None:
@@ -176,6 +185,9 @@ class CartoviewTerriaMap(object):
         return layers
 
     def build_main_catalog(self, permitted_ids, current_map_id, access_token=None, config=None):
+        """
+        Build Terria catalog to get all public maps.
+        """
         if config is None:
             config = {}
         maps = Map.objects.filter(id__in=permitted_ids)
@@ -212,6 +224,9 @@ class CartoviewTerriaMap(object):
         return config
 
     def terria_json(self, request):
+        """
+        Return terria catalog in JSON format.
+        """
         access_token = request.session.get('access_token', None)
         map_id = request.session.get(self.terria_map, None)
         permitted_ids = get_objects_for_user(request.user, 'base.view_resourcebase').values('id')

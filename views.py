@@ -129,7 +129,7 @@ class CartoviewTerriaMap(object):
                 )
         layers = Layer.objects.all()
         layers_catalog = {
-            "name": "Cartoview Layers",
+            "name": "Available Layers",
             "type": "group",
             "preserveOrder": True,
             "isOpen": True
